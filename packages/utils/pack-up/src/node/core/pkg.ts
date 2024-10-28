@@ -30,7 +30,7 @@ const record = (value: unknown) =>
  * The schema for the package.json that we expect,
  * currently pretty loose.
  */
-const packageJsonSchema = yup.object({
+const packageJsonSchema: any = yup.object({
   name: yup.string().required(),
   version: yup.string().required(),
   description: yup.string().optional(),
@@ -88,7 +88,6 @@ const packageJsonSchema = yup.object({
         typeof value === 'object'
           ? Object.entries(value).reduce((acc, [key, value]) => {
               if (typeof value === 'object') {
-                // @ts-expect-error yup is not typed correctly
                 acc[key] = yup
                   .object({
                     types: yup.string().optional(),
