@@ -43,9 +43,9 @@
   },
   "devDependencies": {
     "@strapi/pack-up": "workspace:*",
-    "@strapi/types": "4.14.5",
-    "eslint-config-custom": "4.14.5",
-    "tsconfig": "4.14.5"
+    "@strapi/types": "^4.14.5",
+    "eslint-config-custom": "^4.14.5",
+    "tsconfig": "^4.14.5"
   },
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
