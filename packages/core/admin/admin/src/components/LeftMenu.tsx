@@ -126,6 +126,7 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
         }
       />
       <Divider />
+      <span>testing</span>
 
       <NavSections>
         <NavLink

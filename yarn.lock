@@ -17880,9 +17880,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"getstarted@workspace:examples/getstarted":
+"getstarted2@workspace:examples/getstarted":
   version: 0.0.0-use.local
-  resolution: "getstarted@workspace:examples/getstarted"
+  resolution: "getstarted2@workspace:examples/getstarted"
+  dependencies:
+    "@strapi/icons": 1.11.0
+    "@strapi/plugin-color-picker": 4.14.5
+    "@strapi/plugin-documentation": 4.14.5
+    "@strapi/plugin-graphql": 4.14.5
+    "@strapi/plugin-i18n": 4.14.5
+    "@strapi/plugin-sentry": 4.14.5
+    "@strapi/plugin-users-permissions": 4.14.5
+    "@strapi/provider-email-mailgun": 4.14.5
+    "@strapi/provider-upload-aws-s3": 4.14.5
+    "@strapi/provider-upload-cloudinary": 4.14.5
+    "@strapi/strapi": 4.14.5
+    better-sqlite3: 8.6.0
+    lodash: 4.17.21
+    mysql: 2.18.1
+    mysql2: 3.6.0
+    passport-google-oauth2: 0.2.0
+    pg: 8.11.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-intl: 6.4.1
+    react-router-dom: 5.3.4
+    sqlite3: 5.1.2
+    styled-components: 5.3.3
+  languageName: unknown
+  linkType: soft
+
+"getstarted@workspace:examples/getstarted2":
+  version: 0.0.0-use.local
+  resolution: "getstarted@workspace:examples/getstarted2"
   dependencies:
     "@strapi/icons": 1.11.0
     "@strapi/plugin-color-picker": 4.14.5
