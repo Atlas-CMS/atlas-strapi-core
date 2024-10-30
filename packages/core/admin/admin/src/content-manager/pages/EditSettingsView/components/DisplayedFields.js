@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
-import { Menu } from '@strapi/design-system/v2';
+import { Menu } from '@atlas/design-system/v2';
 import { Plus } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

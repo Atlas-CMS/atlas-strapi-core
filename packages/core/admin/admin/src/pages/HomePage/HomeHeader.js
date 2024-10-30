@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Button, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
-import { Link } from '@strapi/design-system/v2';
+import { Link } from '@atlas/design-system/v2';
 import { ArrowRight } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

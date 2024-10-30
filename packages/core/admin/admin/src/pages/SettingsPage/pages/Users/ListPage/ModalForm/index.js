@@ -12,7 +12,7 @@ import {
   ModalLayout,
   Typography,
 } from '@atlas/design-system';
-import { Breadcrumbs, Crumb } from '@strapi/design-system/v2';
+import { Breadcrumbs, Crumb } from '@atlas/design-system/v2';
 import {
   Form,
   GenericInput,

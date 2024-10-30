@@ -15,6 +15,8 @@ type SortedMenuItems = {
   floatingTop: Array<MenuItem>;
   plugins: Array<MenuItem>;
   mySite: Array<MenuItem>;
+  // Rest of the items. Useful for testing.
+  remainder: Array<MenuItem>;
 };
 
 type SideMenuConfig = AtlasConfig['sideMenu'];
@@ -28,15 +30,25 @@ function isRetardedMenuItem(item: MenuItem | RetardedMenuItem): item is Retarded
   }
 }
 
-function getId(item: MenuItem | RetardedMenuItem): string {
+export function getId(item: MenuItem | RetardedMenuItem): string {
   if (isRetardedMenuItem(item)) {
     return item.intlLabel.id.name;
   }
   return item.intlLabel.id as string;
 }
 
+export function getIntl(item: MenuItem | RetardedMenuItem): IntlLabel {
+  if (isRetardedMenuItem(item)) {
+    // @ts-ignore
+    return item.intlLabel.id;
+  }
+
+  return item.intlLabel;
+}
+type _MenuItem = Optional<MenuItem, 'permissions' | 'Component' | 'notificationsCount'>;
+
 export default function sortMenuItems(
-  items: Array<MenuItem>,
+  items: Array<MenuItem | _MenuItem>,
   sideMenuConfig: SideMenuConfig
 ): SortedMenuItems {
   const sorted: SortedMenuItems = {
@@ -44,9 +56,12 @@ export default function sortMenuItems(
     floatingTop: [],
     plugins: [],
     mySite: [],
+    // All the rest. Useful for testing.
+    remainder: [],
   };
 
-  for (const item of items) {
+  for (const _item of items) {
+    const item = _item as MenuItem;
     const id = getId(item);
 
     if (sideMenuConfig.floatingBottom.includes(id)) {
@@ -57,6 +72,8 @@ export default function sortMenuItems(
       sorted.plugins.push(item);
     } else if (sideMenuConfig.mySite.includes(id)) {
       sorted.mySite.push(item);
+    } else {
+      sorted.remainder.push(item);
     }
   }
 

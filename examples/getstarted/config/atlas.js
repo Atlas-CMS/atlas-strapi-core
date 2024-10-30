@@ -11,7 +11,7 @@ module.exports = ({ env }) => {
       organizationTitle: 'Iliad.dev',
     },
     sideMenu: {
-      floatingTop: ['upload.plugin.name'],
+      floatingTop: ['atlas.home', 'upload.plugin.name', 'global.content-manager'],
       mySite: ['strapi-plugin-redirects', 'plausible.plugin.name', 'menus.plugin.name'],
       plugins: [
         'email-designer.plugin.name',

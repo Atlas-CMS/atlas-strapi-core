@@ -1,0 +1,28 @@
+#atlas-content-container {
+  padding-top: var(--electron-padding-top, 1rem) !important;
+  background: rgb(33, 33, 52) !important;
+}
+
+#overflow-wrapper {
+  background: rgb(246, 246, 249) !important;
+  border-top-left-radius: 1rem !important;
+  height: calc(100dvh - 1rem) !important;
+  overflow: hidden !important;
+}
+
+#atlas-content-left-menu {
+  height: calc(100dvh - 1rem);
+  position: sticky;
+  top: 0;
+}
+
+#atlasStyleWrapperOuter {
+  overflow: auto;
+  height: 100%;
+}
+
+body:has(#atlas-content-left-menu) #overflow-wrapper [data-strapi-header-sticky='true'] {
+  position: fixed;
+  right: unset !important;
+  top: 1rem !important;
+}

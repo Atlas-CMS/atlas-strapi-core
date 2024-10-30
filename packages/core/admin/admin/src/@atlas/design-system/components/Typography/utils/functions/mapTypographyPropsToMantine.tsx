@@ -20,6 +20,7 @@ export default function mapTypographyPropsToMantine(
   { ...props }: TypographyPropsSansChildren,
   theme: DefaultTheme
 ): TypographyPropsSansChildren {
+  // console.log(theme.colors);
   let og: Record<string, any> = { ...props };
   delete og.as;
   const mappedProps: Record<string, any> = Object.entries(og).reduce((acc, [key, value]) => {
@@ -38,7 +39,7 @@ export default function mapTypographyPropsToMantine(
     delete og.textColor;
   }
 
-  props?.variant && (mappedProps['data-variant'] = props.variant);
+  props?.variant && (mappedProps['data-variant'] = props.variant?.toLowerCase());
   props?.ellipsis && (mappedProps['className'] = clsx(styles.ellipses, props?.className));
 
   delete og.variant;

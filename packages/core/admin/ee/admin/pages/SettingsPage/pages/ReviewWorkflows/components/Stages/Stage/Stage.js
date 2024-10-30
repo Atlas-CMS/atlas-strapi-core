@@ -18,7 +18,7 @@ import {
   Typography,
   VisuallyHidden,
 } from '@atlas/design-system';
-import { Menu, MenuItem } from '@strapi/design-system/v2';
+import { Menu, MenuItem } from '@atlas/design-system/v2';
 import {
   ConfirmDialog,
   useNotification,

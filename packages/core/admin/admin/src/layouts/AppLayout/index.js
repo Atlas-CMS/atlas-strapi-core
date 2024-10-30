@@ -1,27 +1,46 @@
 import React from 'react';
 
-import { Box, Flex, SkipToContent } from '@atlas/design-system';
+import { Box, Flex, SkipToContent } from '@strapi/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';
 
-const FlexBox = styled(Box)`
+const AtlasFlexBox = styled(Box).attrs({
+  className: 'atlas-AtlasFlexBox-sds',
+  id: 'atlas-content-container',
+})`
   flex: 1;
 `;
 
-const AppLayout = ({ children, sideNav }) => {
-  const { formatMessage } = useIntl();
+const AtlasOverflowWrapper = styled(Box).attrs({
+  className: 'atlas-AtlasOverflowWrapper-sds',
+  id: 'overflow-wrapper',
+})`
+  flex: 1;
+`;
 
+const AtlasFlex = styled(Flex).attrs({
+  className: 'atlas-AtlasFlex-sds',
+  id: 'atlas-layout-container',
+})`
+  align-items: flex-start;
+`;
+
+const AtlasBox = styled(Box).attrs({
+  className: 'atlas-MainContainer-sds',
+  id: 'atlas-main-container',
+})``;
+
+const AppLayout = ({ children, sideNav }) => {
   return (
-    <Box background="neutral100">
-      <SkipToContent>
-        {formatMessage({ id: 'skipToContent', defaultMessage: 'Skip to content' })}
-      </SkipToContent>
-      <Flex alignItems="flex-start">
+    <AtlasBox background="neutral100">
+      <AtlasFlex alignItems="flex-start">
         {sideNav}
-        <FlexBox>{children}</FlexBox>
-      </Flex>
-    </Box>
+        <AtlasFlexBox>
+          <AtlasOverflowWrapper id="overflow-wrapper">{children}</AtlasOverflowWrapper>
+        </AtlasFlexBox>
+      </AtlasFlex>
+    </AtlasBox>
   );
 };
 

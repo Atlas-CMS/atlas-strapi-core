@@ -5,6 +5,7 @@
  */
 
 import React, { useMemo, useState } from 'react';
+import styled from 'styled-components';
 
 import {
   SubNav,
@@ -20,6 +21,10 @@ import { NavLink } from 'react-router-dom';
 
 import getTrad from '../../../utils/getTrad';
 import { makeSelectModelLinks } from '../selectors';
+
+const AtlasSubNav = styled(SubNav).attrs({
+  id: 'atlas-content-left-menu',
+})``;
 
 const LeftMenu = () => {
   const [search, setSearch] = useState('');
@@ -76,7 +81,10 @@ const LeftMenu = () => {
           .map((link) => {
             return {
               ...link,
-              title: formatMessage({ id: link.title, defaultMessage: link.title }),
+              title: formatMessage({
+                id: link.title,
+                defaultMessage: link.title,
+              }),
             };
           }),
       })),
@@ -97,7 +105,7 @@ const LeftMenu = () => {
   });
 
   return (
-    <SubNav ariaLabel={label}>
+    <AtlasSubNav ariaLabel={label}>
       <SubNavHeader
         label={label}
         searchable
@@ -112,7 +120,10 @@ const LeftMenu = () => {
       <SubNavSections>
         {menu.map((section) => {
           const label = formatMessage(
-            { id: section.title.id, defaultMessage: section.title.defaultMessage },
+            {
+              id: section.title.id,
+              defaultMessage: section.title.defaultMessage,
+            },
             section.title.values
           );
 
@@ -135,7 +146,7 @@ const LeftMenu = () => {
           );
         })}
       </SubNavSections>
-    </SubNav>
+    </AtlasSubNav>
   );
 };
 

@@ -1,34 +1,48 @@
+// React
 import React, { useEffect, useRef } from 'react';
 
-import { HeaderLayout, Layout, Main } from '@atlas/design-system';
-import {
-  AnErrorOccurred,
-  CheckPagePermissions,
-  LoadingIndicatorPage,
-  useGuidedTour,
-} from '@strapi/helper-plugin';
-import sortBy from 'lodash/sortBy';
-import { Helmet } from 'react-helmet';
-import { useIntl } from 'react-intl';
-import { useSelector } from 'react-redux';
-import { Redirect, Route, Switch, useLocation, useRouteMatch } from 'react-router-dom';
-
-import { DragLayer } from '../../../components/DragLayer';
+// Pages
 import { selectAdminPermissions } from '../../../pages/App/selectors';
-import ModelsContext from '../../contexts/ModelsContext';
-import getTrad from '../../utils/getTrad';
+
+// Hooks
+import useContentManagerInitData from './useContentManagerInitData';
+import { useSelector } from 'react-redux';
+import { useIntl } from 'react-intl';
+
+// Utils
 import ItemTypes from '../../utils/ItemTypes';
+import getTrad from '../../utils/getTrad';
+import sortBy from 'lodash/sortBy';
+
+// Context
+import ModelsContext from '../../contexts/ModelsContext';
+import { MantineProvider } from '@mantine/core';
+
+// Components - Library
+import { Route, Switch, Redirect, useLocation, useRouteMatch } from 'react-router-dom';
+import {
+  useGuidedTour,
+  AnErrorOccurred,
+  LoadingIndicatorPage,
+  CheckPagePermissions,
+} from '@strapi/helper-plugin';
+import { Helmet } from 'react-helmet';
+import { HeaderLayout, Layout, Main } from '@strapi/design-system';
+
+// Components - Internal
+import { ComponentDragPreview } from './components/ComponentDragPreview';
 import CollectionTypeRecursivePath from '../CollectionTypeRecursivePath';
+import { RelationDragPreview } from './components/RelationDragPreview';
+import SingleTypeRecursivePath from '../SingleTypeRecursivePath';
+import { CardDragPreview } from './components/CardDragPreview';
 import ComponentSettingsView from '../ComponentSetttingsView';
+import { DragLayer } from '../../../components/DragLayer';
+
+// Components - Errors
 import NoContentType from '../NoContentType';
 import NoPermissions from '../NoPermissions';
-import SingleTypeRecursivePath from '../SingleTypeRecursivePath';
 
-import { CardDragPreview } from './components/CardDragPreview';
-import { ComponentDragPreview } from './components/ComponentDragPreview';
-import { RelationDragPreview } from './components/RelationDragPreview';
 import LeftMenu from './LeftMenu';
-import useContentManagerInitData from './useContentManagerInitData';
 
 function renderDraglayerItem({ type, item }) {
   if ([ItemTypes.EDIT_FIELD, ItemTypes.FIELD].includes(type)) {
@@ -62,17 +76,20 @@ function renderDraglayerItem({ type, item }) {
 }
 
 const App = () => {
-  const contentTypeMatch = useRouteMatch(`/content-manager/:kind/:uid`);
   const { status, collectionTypeLinks, singleTypeLinks, models, refetchData } =
     useContentManagerInitData();
+  const contentTypeMatch = useRouteMatch(`/content-manager/:kind/:uid`);
+  const permissions = useSelector(selectAdminPermissions);
+  const { startSection } = useGuidedTour();
+  const { formatMessage } = useIntl();
+  const { pathname } = useLocation();
+
+  // Refs
+  const startSectionRef = useRef(startSection);
+
   const authorisedModels = sortBy([...collectionTypeLinks, ...singleTypeLinks], (model) =>
     model.title.toLowerCase()
   );
-  const { pathname } = useLocation();
-  const { formatMessage } = useIntl();
-  const { startSection } = useGuidedTour();
-  const startSectionRef = useRef(startSection);
-  const permissions = useSelector(selectAdminPermissions);
 
   useEffect(() => {
     if (startSectionRef.current) {
@@ -82,7 +99,7 @@ const App = () => {
 
   if (status === 'loading') {
     return (
-      <Main aria-busy="true">
+      <Main data-component="mainContainer" aria-busy="true">
         <HeaderLayout
           title={formatMessage({
             id: getTrad('header.name'),
@@ -122,31 +139,36 @@ const App = () => {
   }
 
   return (
-    <Layout sideNav={<LeftMenu />}>
-      <DragLayer renderItem={renderDraglayerItem} />
-      <ModelsContext.Provider value={{ refetchData }}>
-        <Switch>
-          <Route path="/content-manager/components/:uid/configurations/edit">
-            <CheckPagePermissions permissions={permissions.contentManager.componentsConfigurations}>
-              <ComponentSettingsView />
-            </CheckPagePermissions>
-          </Route>
-          <Route
-            path="/content-manager/collectionType/:slug"
-            component={CollectionTypeRecursivePath}
-          />
-          <Route path="/content-manager/singleType/:slug" component={SingleTypeRecursivePath} />
-
-          <Route path="/content-manager/403">
-            <NoPermissions />
-          </Route>
-          <Route path="/content-manager/no-content-types">
-            <NoContentType />
-          </Route>
-          <Route path="" component={AnErrorOccurred} />
-        </Switch>
-      </ModelsContext.Provider>
-    </Layout>
+    <div id="atlasStyleWrapperOuter">
+      <Layout special={true} sideNav={<LeftMenu />}>
+        <div id="atlasStyleWrapperInner">
+          <DragLayer renderItem={renderDraglayerItem} />
+          <ModelsContext.Provider value={{ refetchData }}>
+            <Switch>
+              <Route path="/content-manager/components/:uid/configurations/edit">
+                <CheckPagePermissions
+                  permissions={permissions.contentManager.componentsConfigurations}
+                >
+                  <ComponentSettingsView />
+                </CheckPagePermissions>
+              </Route>
+              <Route
+                path="/content-manager/collectionType/:slug"
+                component={CollectionTypeRecursivePath}
+              />
+              <Route path="/content-manager/singleType/:slug" component={SingleTypeRecursivePath} />
+              <Route path="/content-manager/403">
+                <NoPermissions />
+              </Route>
+              <Route path="/content-manager/no-content-types">
+                <NoContentType />
+              </Route>
+              <Route path="" component={AnErrorOccurred} />
+            </Switch>
+          </ModelsContext.Provider>
+        </div>
+      </Layout>
+    </div>
   );
 };
 
@@ -158,9 +180,14 @@ export default function () {
   return (
     <>
       <Helmet
-        title={formatMessage({ id: getTrad('plugin.name'), defaultMessage: 'Content Manager' })}
+        title={formatMessage({
+          id: getTrad('plugin.name'),
+          defaultMessage: 'Content Manager',
+        })}
       />
-      <App />
+      <MantineProvider>
+        <App />
+      </MantineProvider>
     </>
   );
 }

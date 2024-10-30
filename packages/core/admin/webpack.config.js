@@ -1,57 +1,53 @@
 'use strict';
 
-const path = require('path');
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ESBuildMinifyPlugin } = require('esbuild-loader');
-const WebpackBar = require('webpackbar');
-const browserslist = require('browserslist');
-const browserslistToEsbuild = require('browserslist-to-esbuild');
+const path = require('path');
 
-const alias = require('./webpack.alias');
+// Configuration
 const getClientEnvironment = require('./env');
+const alias = require('./webpack.alias');
+
+// Utils
 const { createPluginsExcludePath } = require('./utils/plugins');
 
+// Plugins / Loaders / etc
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const browserslistToEsbuild = require('browserslist-to-esbuild');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const browserslist = require('browserslist');
+const WebpackBar = require('webpackbar');
+
 module.exports = ({
-  dest,
-  entry,
-  env,
-  optimize,
-  plugins,
   options = {
     backend: 'http://localhost:1337',
     adminPath: '/admin/',
     features: [],
   },
-  tsConfigFilePath,
   enforceSourceMaps,
+  tsConfigFilePath,
+  optimize,
+  plugins,
+  entry,
+  dest,
+  env,
 }) => {
+  const envVariables = getClientEnvironment({ ...options, env });
   const isProduction = env === 'production';
 
-  const envVariables = getClientEnvironment({ ...options, env });
+  const webpackPlugins = isProduction
+    ? [
+        new WebpackBar(),
+        new MiniCssExtractPlugin({
+          filename: '[name].[chunkhash].css',
+          chunkFilename: '[name].[chunkhash].chunkhash.css',
+          ignoreOrder: true,
+        }),
+      ]
+    : [];
 
-  const webpackPlugins = [
-    new MiniCssExtractPlugin({
-      filename: '[name].[chunkhash].css',
-      chunkFilename: '[name].[chunkhash].chunkhash.css',
-      ignoreOrder: true,
-    }),
-    new WebpackBar(),
-  ];
-
-  // const webpackPlugins = isProduction
-  // ? [
-  //     new MiniCssExtractPlugin({
-  //       filename: '[name].[chunkhash].css',
-  //       chunkFilename: '[name].[chunkhash].chunkhash.css',
-  //       ignoreOrder: true,
-  //     }),
-  //     new WebpackBar(),
-  //   ]
-  // : [];
   const nodeModulePluginPaths = Object.values(plugins)
     .filter((plugin) => plugin.info?.packageName || plugin.info?.required)
     .map((plugin) => plugin.pathToPlugin);
@@ -64,23 +60,22 @@ module.exports = ({
   const buildTarget = browserslistToEsbuild(browserslistConfig);
 
   return {
+    devtool: isProduction && !enforceSourceMaps ? false : 'source-map',
     mode: isProduction ? 'production' : 'development',
     bail: !!isProduction,
-    devtool: isProduction && !enforceSourceMaps ? false : 'source-map',
+    entry: [entry],
     experiments: {
       topLevelAwait: true,
     },
-    entry: [entry],
     output: {
-      path: dest,
-      publicPath: options.adminPath,
+      chunkFilename: isProduction ? '[name].[contenthash:8].chunk.js' : '[name].chunk.js',
       // Utilize long-term caching by adding content hashes (not compilation hashes)
       // to compiled assets for production
       filename: isProduction ? '[name].[contenthash:8].js' : '[name].bundle.js',
-      chunkFilename: isProduction ? '[name].[contenthash:8].chunk.js' : '[name].chunk.js',
+      publicPath: options.adminPath,
+      path: dest,
     },
     optimization: {
-      minimize: optimize,
       minimizer: [
         new ESBuildMinifyPlugin({
           target: buildTarget,
@@ -88,6 +83,7 @@ module.exports = ({
         }),
       ],
       moduleIds: 'deterministic',
+      minimize: optimize,
       runtimeChunk: true,
     },
     module: {
@@ -97,9 +93,9 @@ module.exports = ({
           loader: require.resolve('esbuild-loader'),
           exclude: excludeRegex,
           options: {
-            loader: 'tsx',
             target: buildTarget,
             jsx: 'automatic',
+            loader: 'tsx',
           },
         },
         {
@@ -108,8 +104,8 @@ module.exports = ({
           use: {
             loader: require.resolve('esbuild-loader'),
             options: {
-              loader: 'jsx',
               target: buildTarget,
+              loader: 'jsx',
             },
           },
         },
@@ -132,21 +128,65 @@ module.exports = ({
         },
         {
           test: /\.module\.(scss|sass)$/,
-          include: path.resolve(__dirname, 'src'),
+          // include: [path.resolve(__dirname, 'admin/src'), path.resolve(__dirname, 'src')],
+          // use: [
+          //   isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          //   {
+          //     loader: 'css-loader',
+          //     options: {
+          //       modules: true,
+          //       sass: true,
+          //     },
+          //   },
+          //   // {
+          //   //   loader: 'typings-for-css-modules-loader',
+          //   //   options: {
+          //   //     namedExport: true,
+          //   //     camelCase: true,
+          //   //     modules: true,
+          //   //     sass: true,
+          //   //   },
+          //   // },
+          //   'postcss-loader',
+          //   // 'sass-loader',
+          //   // // Don't muck with the order of these loaders
+          //   // isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          //   // {
+          //   //   loader: 'css-loader',
+          //   //   options: {
+          //   //     exportOnlyLocals: true,
+          //   //     modules: true,
+          //   //   },
+          //   // },
+          //   // {
+          //   //   loader: 'typings-for-css-modules-loader',
+          //   //   options: {
+          //   //     namedExport: true,
+          //   //     camelCase: true,
+          //   //     modules: true,
+          //   //     sass: true,
+          //   //   },
+          //   // },
+          //   // 'postcss-loader',
+          //   // 'sass-loader',
+          // ],
+
           use: [
-            // Don't muck with the order of these loaders
+            // Configuration sourced from https://www.npmjs.com/package/css-loader#examples
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
             {
-              loader: 'typings-for-css-modules-loader',
+              loader: 'css-loader',
               options: {
-                sass: true,
-                namedExport: true,
-                camelCase: true,
-                modules: true,
+                importLoaders: 1,
+                import: true,
               },
             },
-            'postcss-loader',
-            'sass-loader',
+            {
+              loader: 'postcss-loader',
+            },
+            {
+              loader: 'sass-loader',
+            },
           ],
         },
         {
@@ -155,7 +195,10 @@ module.exports = ({
           use: [
             // Don't muck with the order of these loaders
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: { import: true },
+            },
             'postcss-loader',
             'sass-loader',
           ],

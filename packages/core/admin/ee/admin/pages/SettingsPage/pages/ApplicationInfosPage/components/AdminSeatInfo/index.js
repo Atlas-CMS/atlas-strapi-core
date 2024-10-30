@@ -4,7 +4,7 @@ import { Flex, GridItem, Icon, Tooltip } from '@atlas/design-system';
 import { ExclamationMarkCircle, ExternalLink } from '@strapi/icons';
 import { pxToRem, useRBAC } from '@strapi/helper-plugin';
 import { Typography } from '@atlas/design-system';
-import { Link } from '@strapi/design-system/v2';
+import { Link } from '@atlas/design-system/v2';
 import { useSelector } from 'react-redux';
 import { useIntl } from 'react-intl';
 

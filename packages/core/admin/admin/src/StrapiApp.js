@@ -37,18 +37,16 @@ import '@mantine/dates/styles.css';
 import '@mantine/dropzone/styles.css';
 import '@mantine/code-highlight/styles.css';
 
-// Mantine - Components
-import { MantineProvider } from '@mantine/core';
-
 // Atlas - Styles
 import '@iliad/styles/mantine/_mantine.scss';
 import '@iliad/styles/coreStyles.scss';
 import '@atlas/styles/variables.scss';
 import '@atlas/styles/mantine.scss';
 import '@atlas/styles/global.scss';
+import '@atlas/styles/medusa.scss';
 
-// Atlas
-import mantineConfig from '@atlas/config/mantineConfig';
+// Atlas - Components
+import AtlasProviders from '@components/AtlasProviders';
 
 class StrapiApp {
   constructor({ adminConfig, appPlugins, atlasConfig, library, middlewares, reducers }) {
@@ -457,7 +455,7 @@ class StrapiApp {
     } = this.library;
 
     return (
-      <MantineProvider {...mantineConfig}>
+      <AtlasProviders>
         <Providers
           showReleaseNotification={this.configurations.notifications.releases}
           getAdminInjectedComponents={this.getAdminInjectedComponents}
@@ -483,6 +481,7 @@ class StrapiApp {
           }}
         >
           <Helmet
+            htmlAttributes={{ lang: localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) || 'en' }}
             link={[
               {
                 href: this.configurations.head.favicon,
@@ -490,18 +489,17 @@ class StrapiApp {
                 rel: 'icon',
               },
             ]}
-            htmlAttributes={{ lang: localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) || 'en' }}
           />
           <BrowserRouter basename={basename}>
             <App store={store} />
           </BrowserRouter>
         </Providers>
-      </MantineProvider>
+      </AtlasProviders>
     );
   }
 }
 
-// Unsure why we can't just export the class directly
+// Unsure why we can't just export the class directly... ghetto typing?
 export default ({ adminConfig = {}, appPlugins, atlasConfig, library, middlewares, reducers }) => {
   return new StrapiApp({ adminConfig, appPlugins, atlasConfig, library, middlewares, reducers });
 };

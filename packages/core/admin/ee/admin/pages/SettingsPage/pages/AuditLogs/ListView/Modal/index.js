@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ModalBody, ModalHeader, ModalLayout } from '@atlas/design-system';
-import { Breadcrumbs, Crumb } from '@strapi/design-system/v2';
+import { Breadcrumbs, Crumb } from '@atlas/design-system/v2';
 import { useFetchClient, useNotification } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useQuery } from 'react-query';

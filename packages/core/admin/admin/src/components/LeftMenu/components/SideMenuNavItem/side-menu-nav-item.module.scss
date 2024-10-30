@@ -1,0 +1,74 @@
+.navItem {
+  $neutral100: #181826;
+  --navItem-textColor: #a5a5ba;
+  --navItem-iconColor: #a5a5ba;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999rem;
+  max-width: 100%;
+
+  position: relative;
+
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+
+  background-color: rgba(0, 0, 0, 0);
+  color: var(--navItem-textColor);
+
+  transition: background-color 20ms ease-in-out;
+
+  &.active {
+    --navItem-textColor: #7b79ff;
+    --navItem-iconColor: #7b79ff;
+  }
+
+  &:hover,
+  &.active {
+    background-color: $neutral100;
+    &:not(.active) {
+      --navItem-textColor: #eaeaef;
+    }
+  }
+}
+
+.iconContainer {
+  justify-content: center;
+  align-items: flex-end;
+  padding-right: 0.5rem;
+  //   margin: 0 1rem 0 auto;
+  display: flex;
+
+  svg {
+    transition: margin-left 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    margin-left: 0px;
+    * {
+      fill: var(--navItem-iconColor);
+    }
+  }
+}
+
+.notificationsContainer {
+  position: absolute;
+  right: 0.5rem;
+  .notifications {
+    color: #eaeaef;
+  }
+}
+
+.textOverflowContainer {
+  //   background-color: red;
+  overflow: hidden;
+  max-width: 100%;
+  flex-grow: 1;
+
+  mask-image: linear-gradient(270deg, transparent, #32324d 1.5rem);
+  mask-mode: alpha;
+  .textOverflow {
+    .title {
+      // Ensure the text never tries to wrap
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}

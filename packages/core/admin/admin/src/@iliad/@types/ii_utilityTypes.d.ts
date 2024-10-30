@@ -1,19 +1,11 @@
-type Enumerate<
-  N extends number,
-  Acc extends number[] = []
-> = Acc['length'] extends N
+type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
   ? Acc[number]
   : Enumerate<N, [...Acc, Acc['length']]>;
 
-type NumericalRange<F extends number, T extends number> = Exclude<
-  Enumerate<T>,
-  Enumerate<F>
->;
+type NumericalRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
 
 type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
-type XOR<T, U> = T | U extends object
-  ? (Without<T, U> & U) | (Without<U, T> & T)
-  : T | U;
+type XOR<T, U> = T | U extends object ? (Without<T, U> & U) | (Without<U, T> & T) : T | U;
 
 type NetworkResponse<T> =
   | {
@@ -29,3 +21,7 @@ type NetworkResponse<T> =
     };
 
 type StandardResponse<T> = NetworkResponse<T>;
+
+type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+type Required<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
+type Nullable<T> = T | null;

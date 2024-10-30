@@ -9,6 +9,8 @@ import clsx from 'clsx';
 import { Box, Divider, Flex, FocusTrap } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { LinkUserWrapper, LinkUser } from './components';
+import { AtlasNavSection, CastAtlasNavSection } from './components/AtlasNavSection';
+import { AtlasNavBrand } from './components/AtlasNavBrand';
 
 import {
   MainNav,
@@ -19,11 +21,12 @@ import {
   NavSection,
   NavSections,
   NavCondense,
-} from '@strapi/design-system/v2';
+} from '@atlas/design-system/v2';
+import DarkTheme from '@components/DarkTheme';
 
 // Icons
 import { Plausible } from '@atlas/design-system/icons';
-import { Exit, Write } from '@strapi/icons';
+import { Exit, Write, House } from '@strapi/icons';
 
 // Utils
 import { NavLink as RouterNavLink, useHistory, useLocation } from 'react-router-dom';
@@ -37,12 +40,15 @@ import {
   useTracking,
   getFetchClient,
   usePersistentState,
-  StrapiAppContextValue,
 } from '@strapi/helper-plugin';
-
 import { useConfiguration } from '@hooks/useConfiguration';
 import { useAtlasConfig } from '@hooks/useAtlasConfig';
 import { Menu } from '@hooks/useMenu';
+
+const AtlasNavSections = styled(NavSections).attrs({ className: 'atlas-NavSections-sds' })`
+  height: 100%;
+  gap: 1rem;
+`;
 
 interface LeftMenuProps extends Pick<Menu, 'generalSectionLinks' | 'pluginsSectionLinks'> {}
 
@@ -68,8 +74,35 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
 
   // Derived State
   const initials = initialsFromName(userDisplayName);
-  const allLinks = [...generalSectionLinks, ...pluginsSectionLinks];
-  const { floatingTop, mySite, plugins, floatingBottom } = sortMenuItems(allLinks, sideMenu);
+  const allLinks = [
+    {
+      to: '/',
+      icon: House,
+      intlLabel: {
+        defaultMessage: 'Home',
+        id: 'atlas.home',
+      },
+      // @ts-ignore
+      isActive: (match, location) => {
+        if (!match) return false;
+        return location.pathname === '/'; // may need to check for /admin/
+      },
+    },
+    {
+      to: '/content-manager',
+      icon: Write,
+      intlLabel: {
+        id: 'global.content-manager',
+        defaultMessage: 'Content manager',
+      },
+    },
+    ...generalSectionLinks,
+    ...pluginsSectionLinks,
+  ];
+  const { floatingTop, mySite, plugins, floatingBottom, remainder } = sortMenuItems(
+    allLinks,
+    sideMenu
+  );
 
   React.useEffect(() => {
     console.log({ floatingTop, mySite, plugins, floatingBottom }, allLinks, sideMenu);
@@ -77,10 +110,6 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
 
   // Event Handlers
   const handleToggleUserLinks = () => setUserLinksVisible((prev) => !prev);
-
-  const handleClickOnLink = (destination: string) => {
-    trackUsage('willNavigate', { from: pathname, to: destination });
-  };
 
   const handleLogout = async () => {
     await post('/admin/logout');
@@ -99,148 +128,141 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
   };
 
   return (
-    <MainNav
-      className={clsx(styles.mainNav, 'atlas-MainNav-sds')}
-      data-condensed={condensed}
-      condensed={condensed}
-    >
-      <NavBrand
-        workplace={client.organizationTitle}
-        title={dashboard.title}
-        as={RouterNavLink}
-        icon={
-          <img
-            src={logos.menu.default}
-            alt={formatMessage({
-              id: 'app.components.LeftMenu.logo.alt',
-              defaultMessage: 'Application logo',
-            })}
-          />
-        }
-      />
-      <NavSections>
-        <NavLink
-          as={RouterNavLink}
-          // @ts-expect-error the props from the passed as prop are not inferred // joined together
-          to="/content-manager"
-          icon={<Write />}
-          onClick={() => handleClickOnLink('/content-manager')}
-        >
-          {formatMessage({ id: 'global.content-manager', defaultMessage: 'Content manager' })}
-        </NavLink>
+    <DarkTheme>
+      <MainNav
+        className={clsx(styles.mainNav, 'atlas-MainNav-sds')}
+        data-condensed={condensed}
+        condensed={condensed}
+      >
+        <AtlasNavBrand
+          workplace={client.organizationTitle}
+          icon={logos.menu.default}
+          title={dashboard.title}
+          condensed={condensed}
+        />
 
-        {pluginsSectionLinks.length > 0 ? (
-          <NavSection
-            label={formatMessage({
-              id: 'app.components.LeftMenu.plugins',
-              defaultMessage: 'Plugins',
-            })}
-          >
-            {pluginsSectionLinks.map((link) => {
-              const Icon = link.icon;
+        <AtlasNavSections>
+          {/* These links float at the top, without a title */}
+          <CastAtlasNavSection navLinks={[...floatingTop]} />
+          {/* <CastAtlasNavSection label="My Site" navLinks={mySite} /> */}
+          {/* <CastAtlasNavSection label="Plugins" navLinks={plugins} /> */}
+          <CastAtlasNavSection label="Unsorted" navLinks={remainder} />
 
-              return (
-                <NavLink
-                  as={RouterNavLink}
-                  // @ts-expect-error the props from the passed as prop are not inferred // joined together
-                  to={link.to}
-                  key={link.to}
-                  icon={<Icon />}
-                  onClick={() => handleClickOnLink(link.to)}
-                >
-                  {formatMessage(link.intlLabel)}
-                </NavLink>
-              );
-            })}
-          </NavSection>
-        ) : null}
+          <div className={styles.navFooter}>
+            <CastAtlasNavSection className={styles.bottom} navLinks={floatingBottom} />
+          </div>
 
-        {generalSectionLinks.length > 0 ? (
-          <NavSection
-            label={formatMessage({
-              id: 'app.components.LeftMenu.general',
-              defaultMessage: 'General',
-            })}
-          >
-            {generalSectionLinks.map((link) => {
-              const LinkIcon = link.icon;
-
-              return (
-                <NavLink
-                  as={RouterNavLink}
-                  badgeContent={
-                    link.notificationsCount && link.notificationsCount > 0
-                      ? link.notificationsCount.toString()
-                      : undefined
-                  }
-                  // @ts-expect-error the props from the passed as prop are not inferred // joined together
-                  to={link.to}
-                  key={link.to}
-                  icon={<LinkIcon />}
-                  onClick={() => handleClickOnLink(link.to)}
-                >
-                  {formatMessage(link.intlLabel)}
-                </NavLink>
-              );
-            })}
-          </NavSection>
-        ) : null}
-      </NavSections>
-
-      <NavFooter>
-        <NavUser
-          id="main-nav-user-button"
-          ref={navUserRef}
-          onClick={handleToggleUserLinks}
-          initials={initials}
-        >
-          {userDisplayName}
-        </NavUser>
-        {userLinksVisible && (
-          <LinkUserWrapper
-            onBlur={handleBlur}
-            padding={1}
-            shadow="tableShadow"
-            background="neutral0"
-            hasRadius
-          >
-            <FocusTrap onEscape={handleToggleUserLinks}>
-              <Flex direction="column" alignItems="stretch" gap={0}>
-                <LinkUser tabIndex={0} onClick={handleToggleUserLinks} to="/me">
-                  <Typography>
-                    {formatMessage({
-                      id: 'global.profile',
-                      defaultMessage: 'Profile',
-                    })}
-                  </Typography>
-                </LinkUser>
-                <LinkUser tabIndex={0} onClick={handleLogout} to="/auth/login">
-                  <Typography textColor="danger600">
-                    {formatMessage({
-                      id: 'app.components.LeftMenu.logout',
-                      defaultMessage: 'Logout',
-                    })}
-                  </Typography>
-                  <Exit />
-                </LinkUser>
-              </Flex>
-            </FocusTrap>
-          </LinkUserWrapper>
-        )}
-
-        <NavCondense onClick={() => setCondensed((s) => !s)}>
-          {condensed
-            ? formatMessage({
-                id: 'app.components.LeftMenu.expand',
-                defaultMessage: 'Expand the navbar',
-              })
-            : formatMessage({
-                id: 'app.components.LeftMenu.collapse',
-                defaultMessage: 'Collapse the navbar',
+          {/* {pluginsSectionLinks.length > 0 ? (
+            <AtlasNavSection
+              label={formatMessage({
+                id: 'app.components.LeftMenu.plugins',
+                defaultMessage: 'Plugins',
               })}
-        </NavCondense>
-      </NavFooter>
-    </MainNav>
+            >
+              {pluginsSectionLinks.map((link) => {
+                const Icon = link.icon;
+
+                return (
+                  <NavLink
+                    as={RouterNavLink}
+                    // @ts-expect-error the props from the passed as prop are not inferred // joined together
+                    to={link.to}
+                    key={link.to}
+                    icon={<Icon />}
+                  >
+                    {formatMessage(link.intlLabel)}
+                  </NavLink>
+                );
+              })}
+            </AtlasNavSection>
+          ) : null}
+
+          {generalSectionLinks.length > 0 ? (
+            <NavSection
+              label={formatMessage({
+                id: 'app.components.LeftMenu.general',
+                defaultMessage: 'General',
+              })}
+            >
+              {generalSectionLinks.map((link) => {
+                const LinkIcon = link.icon;
+
+                return (
+                  <NavLink
+                    as={RouterNavLink}
+                    badgeContent={
+                      link.notificationsCount && link.notificationsCount > 0
+                        ? link.notificationsCount.toString()
+                        : undefined
+                    }
+                    // @ts-expect-error the props from the passed as prop are not inferred // joined together
+                    to={link.to}
+                    key={link.to}
+                    icon={<LinkIcon />}
+                  >
+                    {formatMessage(link.intlLabel)}
+                  </NavLink>
+                );
+              })}
+            </NavSection>
+          ) : null} */}
+        </AtlasNavSections>
+
+        <NavFooter>
+          <NavUser
+            id="main-nav-user-button"
+            ref={navUserRef}
+            onClick={handleToggleUserLinks}
+            initials={initials}
+          >
+            {userDisplayName}
+          </NavUser>
+          {userLinksVisible && (
+            <LinkUserWrapper
+              onBlur={handleBlur}
+              padding={1}
+              shadow="tableShadow"
+              background="neutral0"
+              hasRadius
+            >
+              <FocusTrap onEscape={handleToggleUserLinks}>
+                <Flex direction="column" alignItems="stretch" gap={0}>
+                  <LinkUser tabIndex={0} onClick={handleToggleUserLinks} to="/me">
+                    <Typography>
+                      {formatMessage({
+                        id: 'global.profile',
+                        defaultMessage: 'Profile',
+                      })}
+                    </Typography>
+                  </LinkUser>
+                  <LinkUser tabIndex={0} onClick={handleLogout} to="/auth/login">
+                    <Typography textColor="danger600">
+                      {formatMessage({
+                        id: 'app.components.LeftMenu.logout',
+                        defaultMessage: 'Logout',
+                      })}
+                    </Typography>
+                    <Exit />
+                  </LinkUser>
+                </Flex>
+              </FocusTrap>
+            </LinkUserWrapper>
+          )}
+
+          <NavCondense onClick={() => setCondensed((s) => !s)}>
+            {condensed
+              ? formatMessage({
+                  id: 'app.components.LeftMenu.expand',
+                  defaultMessage: 'Expand the navbar',
+                })
+              : formatMessage({
+                  id: 'app.components.LeftMenu.collapse',
+                  defaultMessage: 'Collapse the navbar',
+                })}
+          </NavCondense>
+        </NavFooter>
+      </MainNav>
+    </DarkTheme>
   );
 };
 

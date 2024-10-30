@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex, Icon, Tooltip } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
-import { LinkButton } from '@strapi/design-system/v2';
+import { LinkButton } from '@atlas/design-system/v2';
 import { useTracking } from '@strapi/helper-plugin';
 import { CheckCircle, ExternalLink } from '@strapi/icons';
 import pluralize from 'pluralize';

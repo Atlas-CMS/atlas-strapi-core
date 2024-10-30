@@ -14,7 +14,13 @@ export interface NavSectionProps extends FlexProps<'ul'> {
   spacing?: number;
 }
 
-export const NavSection = ({ label, children, horizontal = false, spacing = 2, ...props }: NavSectionProps) => {
+export const NavSection = ({
+  label,
+  children,
+  horizontal = false,
+  spacing = 2,
+  ...props
+}: NavSectionProps) => {
   const condensed = useMainNav();
 
   if (condensed) {
@@ -46,7 +52,15 @@ export const NavSection = ({ label, children, horizontal = false, spacing = 2, .
 
   return (
     <Flex direction="column" alignItems="stretch" gap={2}>
-      <Box paddingTop={1} paddingBottom={1} background="neutral0" paddingRight={3} paddingLeft={3} hasRadius as="span">
+      <Box
+        paddingTop={1}
+        paddingBottom={1}
+        background="neutral0"
+        paddingRight={3}
+        paddingLeft={3}
+        hasRadius
+        as="span"
+      >
         <Typography variant="sigma" textColor="neutral600">
           {label}
         </Typography>
