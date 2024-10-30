@@ -20,8 +20,10 @@ const simpleMaps: Record<string, string> = {
 export default function mapTypographyPropsToMantine({
   ...props
 }: TypographyPropsSansChildren): TextProps {
-  const mappedProps: Record<string, any> = Object.entries(props).reduce((acc, [key, value]) => {
+  let og: Record<string, any> = { ...props };
+  const mappedProps: Record<string, any> = Object.entries(og).reduce((acc, [key, value]) => {
     if (simpleMaps[key]) {
+      delete og[key];
       return { ...acc, [simpleMaps[key]]: value };
     }
 
@@ -31,7 +33,10 @@ export default function mapTypographyPropsToMantine({
   props?.variant && (mappedProps['data-variant'] = props.variant);
   props?.ellipsis && (mappedProps['className'] = clsx(styles.ellipses, props?.className));
 
-  return mappedProps;
+  delete og.variant;
+  delete og.ellipsis;
+
+  return { ...og, ...mappedProps };
 }
 
 export { mapTypographyPropsToMantine };
