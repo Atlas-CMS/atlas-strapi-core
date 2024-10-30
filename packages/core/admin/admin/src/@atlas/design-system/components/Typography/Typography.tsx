@@ -11,7 +11,7 @@ import { mapTypographyPropsToMantine } from './utils/functions';
 import { withTheme } from '@atlas/design-system/utils';
 
 // Types
-import type { TypographyProps as StrapiTypographyProps } from '@strapi/design-system';
+import type { TypographyProps as StrapiTypographyProps } from '@atlas/design-system/components/_Typography';
 export type TypographyProps = ComponentBaseProps & StrapiTypographyProps & {};
 
 // This is a wrapper around the Mantine Text component. It attempts to coerce
