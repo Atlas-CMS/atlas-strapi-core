@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, IconButton, ModalLayout, ModalBody } from '@strapi/design-system';
+import { Box, Flex, IconButton, ModalLayout, ModalBody } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { LinkButton } from '@strapi/design-system/v2';
 import { Cross } from '@strapi/icons';

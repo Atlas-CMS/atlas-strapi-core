@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react';
 
-import { Button } from '@strapi/design-system';
+import { Button } from '@atlas/design-system';
 import { ConfirmDialog, useAPIErrorHandler, useNotification } from '@strapi/helper-plugin';
 import { Trash } from '@strapi/icons';
 import isEqual from 'lodash/isEqual';

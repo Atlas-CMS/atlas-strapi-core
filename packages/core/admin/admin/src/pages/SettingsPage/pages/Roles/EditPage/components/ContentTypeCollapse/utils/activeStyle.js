@@ -1,4 +1,4 @@
-import {} from '@strapi/design-system';
+import {} from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 
 import CarretIcon from '../CollapsePropertyMatrix/CarretIcon';

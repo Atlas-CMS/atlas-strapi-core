@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { lightTheme, ThemeProvider } from '@strapi/design-system';
+import { lightTheme, ThemeProvider } from '@atlas/design-system';
 import { render, renderHook, screen } from '@testing-library/react';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';

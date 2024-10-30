@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BaseCheckbox, IconButton, Td, Flex } from '@strapi/design-system';
+import { BaseCheckbox, IconButton, Td, Flex } from '@atlas/design-system';
 import { useTracking, useTableContext, Table } from '@strapi/helper-plugin';
 import { Trash, Duplicate, Pencil } from '@strapi/icons';
 import PropTypes from 'prop-types';

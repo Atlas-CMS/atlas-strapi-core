@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { Button, Flex, IconButtonGroup, Option, Popover, Select } from '@strapi/design-system';
+import { Button, Flex, IconButtonGroup, Option, Popover, Select } from '@atlas/design-system';
 import {
   Bold,
   BulletList,

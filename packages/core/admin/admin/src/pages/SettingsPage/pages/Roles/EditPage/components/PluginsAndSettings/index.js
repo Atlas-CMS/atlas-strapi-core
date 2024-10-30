@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box } from '@strapi/design-system';
+import { Box } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import PermissionRow from './Row';

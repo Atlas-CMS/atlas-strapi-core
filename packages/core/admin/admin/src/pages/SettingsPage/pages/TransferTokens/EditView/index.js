@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { ContentLayout, Flex, Main } from '@strapi/design-system';
+import { ContentLayout, Flex, Main } from '@atlas/design-system';
 import {
   Form,
   SettingsPageTitle,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, IconButton, Td, Tr } from '@strapi/design-system';
+import { Box, Flex, IconButton, Td, Tr } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { onRowClick, pxToRem, stopPropagation } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';

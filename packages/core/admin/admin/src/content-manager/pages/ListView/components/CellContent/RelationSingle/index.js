@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {} from '@strapi/design-system';
+import {} from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';

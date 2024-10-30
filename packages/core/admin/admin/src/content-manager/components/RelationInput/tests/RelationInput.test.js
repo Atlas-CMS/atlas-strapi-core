@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThemeProvider, lightTheme } from '@strapi/design-system';
+import { ThemeProvider, lightTheme } from '@atlas/design-system';
 import { render, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DndProvider } from 'react-dnd';

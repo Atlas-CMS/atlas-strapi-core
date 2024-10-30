@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import { ContentBox, useTracking } from '@strapi/helper-plugin';
 import { CodeSquare, FeatherSquare, InformationSquare, PlaySquare } from '@strapi/icons';
 import { useIntl } from 'react-intl';

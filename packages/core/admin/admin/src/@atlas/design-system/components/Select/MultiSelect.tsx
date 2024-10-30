@@ -67,7 +67,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       withTags,
       ...restProps
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     /**
      * Used for the intersection observer
@@ -142,12 +142,21 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
       skipWhen: !internalIsOpen,
     });
 
-    const value = typeof passedValue !== 'undefined' && passedValue !== null ? passedValue : internalValue;
+    const value =
+      typeof passedValue !== 'undefined' && passedValue !== null ? passedValue : internalValue;
 
-    const renderTags: SelectParts.ValueRenderFn = (arg?: { value?: string; textValue?: string } | string) => {
+    const renderTags: SelectParts.ValueRenderFn = (
+      arg?: { value?: string; textValue?: string } | string
+    ) => {
       if (arg && typeof arg === 'object' && arg.value) {
         return (
-          <Tag tabIndex={-1} key={arg.value} disabled={disabled} icon={<Cross />} onClick={handleTagClick(arg.value)}>
+          <Tag
+            tabIndex={-1}
+            key={arg.value}
+            disabled={disabled}
+            icon={<Cross />}
+            onClick={handleTagClick(arg.value)}
+          >
             {arg.textValue}
           </Tag>
         );
@@ -188,7 +197,10 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
               onClear={value?.length ? onClear : undefined}
               paddingLeft={withTags && value?.length ? 1 : 3}
             >
-              <SelectParts.Value placeholder={placeholder} textColor={value?.length ? 'neutral800' : 'neutral600'}>
+              <SelectParts.Value
+                placeholder={placeholder}
+                textColor={value?.length ? 'neutral800' : 'neutral600'}
+              >
                 {value?.length
                   ? withTags
                     ? renderTags
@@ -199,7 +211,11 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
               </SelectParts.Value>
             </SelectParts.Trigger>
             <SelectParts.Portal>
-              <SelectParts.Content position="popper" sideOffset={4} onCloseAutoFocus={onCloseAutoFocus}>
+              <SelectParts.Content
+                position="popper"
+                sideOffset={4}
+                onCloseAutoFocus={onCloseAutoFocus}
+              >
                 <SelectParts.Viewport ref={viewportRef}>
                   {children}
                   <Box id={intersectionId} width="100%" height="1px" />
@@ -212,7 +228,7 @@ export const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         </Flex>
       </Field>
     );
-  },
+  }
 );
 
 /* -------------------------------------------------------------------------------------------------
@@ -252,7 +268,7 @@ export const MultiSelectOption = React.forwardRef<HTMLDivElement, MultiSelectOpt
         </Typography>
       </SelectParts.Item>
     );
-  },
+  }
 );
 
 interface CheckMarkProps {
@@ -289,7 +305,11 @@ const CheckMark = styled(Box)<CheckMarkProps>`
     css`
       &::after {
         content: '';
-        background: url(${checkmarkIcon}) no-repeat no-repeat center center;
+        background: url(${
+            // @ts-ignore
+            checkmarkIcon
+          })
+          no-repeat no-repeat center center;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -336,5 +356,5 @@ export const MultiSelectGroup = React.forwardRef<HTMLDivElement, MultiSelectGrou
         {children}
       </SelectParts.Group>
     );
-  },
+  }
 );

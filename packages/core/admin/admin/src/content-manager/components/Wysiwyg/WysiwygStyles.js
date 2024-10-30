@@ -1,4 +1,4 @@
-import { BaseButton, IconButton, IconButtonGroup } from '@strapi/design-system';
+import { BaseButton, IconButton, IconButtonGroup } from '@atlas/design-system';
 import styled from 'styled-components';
 
 // NAV BUTTONS

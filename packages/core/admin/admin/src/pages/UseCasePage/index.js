@@ -10,7 +10,7 @@ import {
   TextButton,
   TextInput,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { auth, pxToRem, useFetchClient, useNotification } from '@strapi/helper-plugin';
 import { parse } from 'qs';
 import { useIntl } from 'react-intl';

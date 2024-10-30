@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, Icon, Tooltip } from '@strapi/design-system';
+import { Box, Flex, Icon, Tooltip } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { LinkButton } from '@strapi/design-system/v2';
 import { useTracking } from '@strapi/helper-plugin';

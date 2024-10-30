@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { Box, Button, ContentLayout, Flex, HeaderLayout, Main } from '@strapi/design-system';
+import { Box, Button, ContentLayout, Flex, HeaderLayout, Main } from '@atlas/design-system';
 import {
   Link,
   LoadingIndicatorPage,

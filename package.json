@@ -70,6 +70,7 @@
     "sass": "1.80.4",
     "sass-loader": "16.0.2",
     "style-loader": "3.3.1",
+    "styled-components": "5.3.11",
     "tsconfig-paths-webpack-plugin": "4.1.0",
     "typings-for-css-modules-loader": "1.7.0"
   },

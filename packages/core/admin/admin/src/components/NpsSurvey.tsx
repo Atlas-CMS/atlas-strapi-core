@@ -12,7 +12,7 @@ import {
   FieldLabel,
   FieldInput,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { auth, useNotification, useAppInfo, usePersistentState } from '@strapi/helper-plugin';
 import { Cross } from '@strapi/icons';
 import { Formik, Form } from 'formik';
@@ -329,7 +329,7 @@ const NpsSurvey = () => {
                                 id={`nps-survey-rating-${number}-input`}
                                 name="npsSurveyRating"
                                 checked={values.npsSurveyRating === number}
-                                onChange={(e) =>
+                                onChange={(e: any) =>
                                   setFieldValue('npsSurveyRating', parseInt(e.target.value, 10))
                                 }
                                 value={number}

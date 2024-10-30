@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Badge, Flex, Loader, Typography, useNotifyAT } from '@strapi/design-system';
+import { Badge, Flex, Loader, Typography, useNotifyAT } from '@atlas/design-system';
 import { Menu } from '@strapi/design-system/v2';
 import { useFetchClient } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';

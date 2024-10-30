@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-import { HeaderLayout, Layout, Main } from '@strapi/design-system';
+import { HeaderLayout, Layout, Main } from '@atlas/design-system';
 import {
   AnErrorOccurred,
   CheckPagePermissions,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, GridLayout } from '@strapi/design-system';
+import { Box, GridLayout } from '@atlas/design-system';
 import styled from 'styled-components';
 
 const EmptyPluginCard = styled(Box)`

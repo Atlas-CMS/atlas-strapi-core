@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Flex } from '@strapi/design-system';
+import { Box, Button, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { Link } from '@strapi/design-system/v2';
 import { ArrowRight } from '@strapi/icons';

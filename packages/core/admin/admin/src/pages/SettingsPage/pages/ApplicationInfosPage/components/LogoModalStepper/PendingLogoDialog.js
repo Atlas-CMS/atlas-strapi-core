@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Flex, ModalFooter } from '@strapi/design-system';
+import { Box, Button, Flex, ModalFooter } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';

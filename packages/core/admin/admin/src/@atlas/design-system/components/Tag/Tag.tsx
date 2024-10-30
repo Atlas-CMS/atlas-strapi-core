@@ -10,7 +10,7 @@ export interface TagProps extends FlexProps<'button'> {
 }
 
 export const Tag = ({ children, icon, disabled = false, onClick, ...props }: TagProps) => {
-  const handleClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (e: any) => {
     if (disabled || !onClick) return;
     onClick(e);
   };
@@ -48,12 +48,14 @@ const TagWrapper = styled(Flex)`
   }
 
   & > svg path {
-    fill: ${({ theme, ...p }) => (p['aria-disabled'] ? theme.colors.neutral600 : theme.colors.primary600)};
+    fill: ${({ theme, ...p }) =>
+      p['aria-disabled'] ? theme.colors.neutral600 : theme.colors.primary600};
   }
 `;
 
 const TagText = styled(Typography)<{ $disabled: boolean }>`
   color: inherit;
-  border-right: 1px solid ${({ theme, $disabled }) => ($disabled ? theme.colors.neutral300 : theme.colors.primary200)};
+  border-right: 1px solid
+    ${({ theme, $disabled }) => ($disabled ? theme.colors.neutral300 : theme.colors.primary200)};
   padding-right: ${({ theme }) => theme.spaces[2]};
 `;

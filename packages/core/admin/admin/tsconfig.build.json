@@ -3,7 +3,7 @@
   "extends": "./tsconfig.json",
   "include": [
     "./custom.d.ts",
-    // Custom Types
+    // Type Declarations
     "./src//@types/**/*.d.ts",
     "./src/@types/**/*.ts",
     "./src/@types/**/*",

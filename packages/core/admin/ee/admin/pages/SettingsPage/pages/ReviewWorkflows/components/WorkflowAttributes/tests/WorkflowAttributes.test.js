@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThemeProvider, lightTheme } from '@strapi/design-system';
+import { ThemeProvider, lightTheme } from '@atlas/design-system';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FormikProvider, useFormik } from 'formik';

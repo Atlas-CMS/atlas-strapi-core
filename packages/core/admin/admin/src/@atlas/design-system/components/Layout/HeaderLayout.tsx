@@ -60,7 +60,10 @@ const StickyBox = styled(Box)<{ width?: number }>`
 `;
 
 export const BaseHeaderLayout = React.forwardRef<HTMLDivElement, BaseHeaderLayoutProps>(
-  ({ navigationAction, primaryAction, secondaryAction, subtitle, title, sticky, width, ...props }, ref) => {
+  (
+    { navigationAction, primaryAction, secondaryAction, subtitle, title, sticky, width, ...props },
+    ref
+  ) => {
     const isSubtitleString = typeof subtitle === 'string';
 
     if (sticky) {
@@ -122,7 +125,10 @@ export const BaseHeaderLayout = React.forwardRef<HTMLDivElement, BaseHeaderLayou
           {primaryAction}
         </Flex>
         {isSubtitleString ? (
-          <Typography variant="epsilon" textColor="neutral600" as="p">
+          // <Typography variant="epsilon" textColor="neutral600" as="p">
+          //   {subtitle}
+          // </Typography>
+          <Typography variant="epsilon" textColor="neutral600">
             {subtitle}
           </Typography>
         ) : (
@@ -130,5 +136,5 @@ export const BaseHeaderLayout = React.forwardRef<HTMLDivElement, BaseHeaderLayou
         )}
       </Box>
     );
-  },
+  }
 );

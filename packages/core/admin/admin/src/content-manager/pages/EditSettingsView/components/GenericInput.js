@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Option, Select, TextInput, ToggleInput } from '@strapi/design-system';
+import { Option, Select, TextInput, ToggleInput } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

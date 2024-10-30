@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { darkTheme, lightTheme } from '@strapi/design-system';
+import { darkTheme, lightTheme } from '@atlas/design-system';
 import { useGuidedTour } from '@strapi/helper-plugin';
 import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

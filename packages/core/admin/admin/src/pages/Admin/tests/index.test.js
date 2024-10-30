@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { lightTheme, ThemeProvider } from '@strapi/design-system';
+import { lightTheme, ThemeProvider } from '@atlas/design-system';
 import { useStrapiApp } from '@strapi/helper-plugin';
 import { render, screen, waitFor } from '@testing-library/react';
 import { createMemoryHistory } from 'history';

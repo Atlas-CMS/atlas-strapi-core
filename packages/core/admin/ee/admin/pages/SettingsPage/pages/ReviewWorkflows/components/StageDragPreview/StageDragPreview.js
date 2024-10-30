@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { CarretDown } from '@strapi/icons';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ContentLayout, HeaderLayout, Main } from '@strapi/design-system';
+import { ContentLayout, HeaderLayout, Main } from '@atlas/design-system';
 import { NoPermissions as NoPermissionsCompo, useFocusWhenNavigate } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
 

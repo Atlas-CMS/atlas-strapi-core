@@ -79,7 +79,8 @@ interface DatePickerContextValue {
   value?: CalendarDate;
 }
 
-const [DatePickerProvider, useDatePickerContext] = createContext<DatePickerContextValue>('DatePicker');
+const [DatePickerProvider, useDatePickerContext] =
+  createContext<DatePickerContextValue>('DatePicker');
 
 interface DatePickerInputProps
   extends Pick<FieldProps, 'required' | 'id' | 'error'>,
@@ -159,7 +160,7 @@ const DatePickerInput = React.forwardRef<DatePickerTextInputElement, DatePickerI
       selectedDateLabel: _selectedDateLabel,
       ...restProps
     },
-    ref,
+    ref
   ) => {
     const timeZone = getLocalTimeZone();
 
@@ -200,7 +201,11 @@ const DatePickerInput = React.forwardRef<DatePickerTextInputElement, DatePickerI
         : now.set({ day: 31, month: 12, year: now.year + DEFAULT_FUTURE_RANGE });
 
       if (actualMaxDate.compare(actualMinDate) < 0) {
-        actualMaxDate = actualMinDate.set({ day: 31, month: 12, year: actualMinDate.year + DEFAULT_FUTURE_RANGE });
+        actualMaxDate = actualMinDate.set({
+          day: 31,
+          month: 12,
+          year: actualMinDate.year + DEFAULT_FUTURE_RANGE,
+        });
       }
 
       return [actualMinDate, actualMaxDate];
@@ -214,15 +219,16 @@ const DatePickerInput = React.forwardRef<DatePickerTextInputElement, DatePickerI
         currentValue: value,
         minDate: actualMinDate,
         maxDate: actualMaxDate,
-      }),
+      })
     );
 
     const contentId = useId();
 
     const clearRef = React.useRef(null);
 
-    const handleClearClick: React.MouseEventHandler<HTMLButtonElement> & React.MouseEventHandler<HTMLDivElement> = (
-      e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement>,
+    const handleClearClick: React.MouseEventHandler<HTMLButtonElement> &
+      React.MouseEventHandler<HTMLDivElement> = (
+      e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement>
     ) => {
       if (onClear && !disabled) {
         setTextValue('');
@@ -241,7 +247,7 @@ const DatePickerInput = React.forwardRef<DatePickerTextInputElement, DatePickerI
 
         setOpen(nextOpen);
       },
-      [value],
+      [value]
     );
 
     React.useLayoutEffect(() => {
@@ -315,12 +321,15 @@ const DatePickerInput = React.forwardRef<DatePickerTextInputElement, DatePickerI
         </DatePickerTrigger>
         <Portal>
           <DatePickerContent label={calendarLabel}>
-            <DatePickerCalendar monthSelectLabel={monthSelectLabel} yearSelectLabel={yearSelectLabel} />
+            <DatePickerCalendar
+              monthSelectLabel={monthSelectLabel}
+              yearSelectLabel={yearSelectLabel}
+            />
           </DatePickerContent>
         </Portal>
       </DatePickerProvider>
     );
-  },
+  }
 );
 
 const isPrintableCharacter = (str: string): boolean => {
@@ -451,11 +460,12 @@ const DatePickerTrigger = React.forwardRef<DatePickerTriggerElement, TriggerProp
         />
       </FocusScope>
     );
-  },
+  }
 );
 
 const TriggerElement = styled(Flex)<{ $hasError: boolean; $size: 'S' | 'M' }>`
-  border: 1px solid ${({ theme, $hasError }) => ($hasError ? theme.colors.danger600 : theme.colors.neutral200)};
+  border: 1px solid
+    ${({ theme, $hasError }) => ($hasError ? theme.colors.danger600 : theme.colors.neutral200)};
   min-height: ${({ theme, $size }) => getThemeSize('input')({ theme, size: $size })};
 
   &[data-disabled] {
@@ -505,7 +515,8 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
   ({ placeholder, ...props }, forwardedRef) => {
     const context = useDatePickerContext(DATE_PICKER_TEXT_INPUT_NAME);
 
-    const { onTextValueChange, textValue, onTextInputChange, onOpenChange, disabled, locale } = context;
+    const { onTextValueChange, textValue, onTextInputChange, onOpenChange, disabled, locale } =
+      context;
 
     const composedRefs = useComposedRefs(forwardedRef, (node) => onTextInputChange(node));
 
@@ -525,7 +536,7 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
       const parts = formatter.formatToParts(new Date());
 
       const dateStructure = parts.filter(
-        (part) => part.type === 'year' || part.type === 'month' || part.type === 'day',
+        (part) => part.type === 'year' || part.type === 'month' || part.type === 'day'
       );
 
       const placeholder = dateStructure.map((part) => {
@@ -550,7 +561,9 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
      * the `pattern` prop of an input cannot be a regex it must be a string without the `/` delimiters.
      * Therefore, we manually escape the separator and `d` character.
      */
-    const inputPattern = dateFormatPlaceholder.map((part) => `\\d{${part.length}}`).join(`\\${separator}`);
+    const inputPattern = dateFormatPlaceholder
+      .map((part) => `\\d{${part.length}}`)
+      .join(`\\${separator}`);
 
     return (
       <Input
@@ -578,7 +591,9 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
             return;
           }
 
-          context.onTextValueChange(formatter.format(context.calendarDate.toDate(context.timeZone)));
+          context.onTextValueChange(
+            formatter.format(context.calendarDate.toDate(context.timeZone))
+          );
           context.onValueChange(context.calendarDate);
         })}
         onChange={composeEventHandlers(props.onChange, (event) => {
@@ -666,19 +681,25 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
               month: month && Number(month) <= maxMonthNumber ? Number(month) : undefined,
             });
 
-            const maxDayNumber = newDateWithMonthAndYear.calendar.getDaysInMonth(newDateWithMonthAndYear);
+            const maxDayNumber =
+              newDateWithMonthAndYear.calendar.getDaysInMonth(newDateWithMonthAndYear);
 
             const newDateWithDayMonthAndYear = newDateWithMonthAndYear.set({
               day: day && Number(day) <= maxDayNumber ? Number(day) : undefined,
             });
 
-            context.onCalendarDateChange(constrainValue(newDateWithDayMonthAndYear, context.minDate, context.maxDate));
+            context.onCalendarDateChange(
+              constrainValue(newDateWithDayMonthAndYear, context.minDate, context.maxDate)
+            );
 
             context.onTextValueChange(event.target.value);
           }
         })}
         onKeyDown={composeEventHandlers(props.onKeyDown, (event) => {
-          if (!context.open && (isPrintableCharacter(event.key) || ['ArrowDown', 'Backspace'].includes(event.key))) {
+          if (
+            !context.open &&
+            (isPrintableCharacter(event.key) || ['ArrowDown', 'Backspace'].includes(event.key))
+          ) {
             handleOpenChange();
           } else if (['Tab'].includes(event.key) && context.open) {
             event.preventDefault();
@@ -690,7 +711,10 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
               context.onTextValueChange('');
             }
             event.preventDefault();
-          } else if (context.open && ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+          } else if (
+            context.open &&
+            ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)
+          ) {
             event.preventDefault();
 
             switch (event.key) {
@@ -749,15 +773,17 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
         })}
       />
     );
-  },
+  }
 );
 
 function constrainValue(date: CalendarDate, minValue: CalendarDate, maxValue: CalendarDate) {
   if (minValue) {
+    // @ts-ignore
     date = maxDateFn(date, minValue);
   }
 
   if (maxValue) {
+    // @ts-ignore
     date = minDateFn(date, maxValue);
   }
 
@@ -791,23 +817,25 @@ interface ContentProps extends ContentImplProps {}
 
 type DatePickerContentElement = DatePickerContentImplElement;
 
-const DatePickerContent = React.forwardRef<DatePickerContentElement, ContentProps>((props, forwardedRef) => {
-  const [fragment, setFragment] = React.useState<DocumentFragment>();
-  const context = useDatePickerContext(CONTENT_NAME);
+const DatePickerContent = React.forwardRef<DatePickerContentElement, ContentProps>(
+  (props, forwardedRef) => {
+    const [fragment, setFragment] = React.useState<DocumentFragment>();
+    const context = useDatePickerContext(CONTENT_NAME);
 
-  // setting the fragment in `useLayoutEffect` as `DocumentFragment` doesn't exist on the server
-  React.useLayoutEffect(() => {
-    setFragment(new DocumentFragment());
-  }, []);
+    // setting the fragment in `useLayoutEffect` as `DocumentFragment` doesn't exist on the server
+    React.useLayoutEffect(() => {
+      setFragment(new DocumentFragment());
+    }, []);
 
-  if (!context.open) {
-    const frag = fragment as Element | undefined;
+    if (!context.open) {
+      const frag = fragment as Element | undefined;
 
-    return frag ? createPortal(<div>{props.children}</div>, frag) : null;
+      return frag ? createPortal(<div>{props.children}</div>, frag) : null;
+    }
+
+    return <DatePickerContentImpl {...props} ref={forwardedRef} />;
   }
-
-  return <DatePickerContentImpl {...props} ref={forwardedRef} />;
-});
+);
 
 /* -------------------------------------------------------------------------------------------------
  *  DatePickerContentImpl
@@ -865,7 +893,7 @@ const DatePickerContentImpl = React.forwardRef<DatePickerContentImplElement, Con
     const composedRefs = useComposedRefs<DatePickerContentImplElement>(
       forwardedRef,
       (node) => context.onContentChange(node),
-      refs.setFloating,
+      refs.setFloating
     );
 
     useFocusGuards();
@@ -886,7 +914,7 @@ const DatePickerContentImpl = React.forwardRef<DatePickerContentImplElement, Con
           <ContentElement
             ref={composedRefs}
             data-state={context.open ? 'open' : 'closed'}
-            onContextMenu={(event) => event.preventDefault()}
+            onContextMenu={(event: any) => event.preventDefault()}
             id={context.contentId}
             role="dialog"
             aria-modal="true"
@@ -904,7 +932,7 @@ const DatePickerContentImpl = React.forwardRef<DatePickerContentImplElement, Con
         </DismissibleLayer>
       </RemoveScroll>
     );
-  },
+  }
 );
 
 const ContentElement = styled(Box)`
@@ -941,9 +969,9 @@ const DatePickerCalendar = React.forwardRef<HTMLDivElement, CalendarProps>(
     const months: string[] = React.useMemo(
       () =>
         [...Array(calendarDate.calendar.getMonthsInYear(calendarDate)).keys()].map((m) =>
-          monthFormatter.format(calendarDate.set({ month: m + 1 }).toDate(timeZone)),
+          monthFormatter.format(calendarDate.set({ month: m + 1 }).toDate(timeZone))
         ),
-      [calendarDate, monthFormatter, timeZone],
+      [calendarDate, monthFormatter, timeZone]
     );
 
     const dayFormatter = useDateFormatter(locale, { weekday: 'short' });
@@ -992,7 +1020,13 @@ const DatePickerCalendar = React.forwardRef<HTMLDivElement, CalendarProps>(
 
     return (
       <Flex ref={ref} direction="column" alignItems="stretch" padding={4} {...restProps}>
-        <ToolbarFlex justifyContent="flex-start" paddingBottom={4} paddingLeft={2} paddingRight={2} gap={2}>
+        <ToolbarFlex
+          justifyContent="flex-start"
+          paddingBottom={4}
+          paddingLeft={2}
+          paddingRight={2}
+          gap={2}
+        >
           <SingleSelectInput
             label={monthSelectLabel}
             size="S"
@@ -1041,7 +1075,7 @@ const DatePickerCalendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                     />
                   ) : (
                     <Cell aria-colindex={index + 1} />
-                  ),
+                  )
                 )}
               </tr>
             ))}
@@ -1049,7 +1083,7 @@ const DatePickerCalendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         </table>
       </Flex>
     );
-  },
+  }
 );
 
 const makeGetDatesInWeek = (from: CalendarDate, locale: string) => (weekIndex: number) => {
@@ -1125,13 +1159,20 @@ interface HeaderCellProps extends Omit<BoxProps<'td'>, 'children'> {
 const DatePickerHeaderCell = React.forwardRef<HTMLTableCellElement, HeaderCellProps>(
   ({ children, ...props }, forwardedRef) => {
     return (
-      <Th as="th" role="gridcell" ref={forwardedRef} {...props} height={`${24 / 16}rem`} width={`${32 / 16}rem`}>
+      <Th
+        as="th"
+        role="gridcell"
+        ref={forwardedRef}
+        {...props}
+        height={`${24 / 16}rem`}
+        width={`${32 / 16}rem`}
+      >
         <Typography variant="pi" fontWeight="bold" color="neutral800">
           {children.slice(0, 2)}
         </Typography>
       </Th>
     );
-  },
+  }
 );
 
 const Th = styled(Box)`
@@ -1154,8 +1195,15 @@ interface CalendarCellProps extends BoxProps<'td'> {
 
 const DatePickerCalendarCell = React.forwardRef<DatePickerCalendarCellElement, CalendarCellProps>(
   ({ date, startDate, ...props }, forwardedRef) => {
-    const { timeZone, locale, calendarDate, onValueChange, onOpenChange, onTextValueChange, onCalendarDateChange } =
-      useDatePickerContext(DATE_PICKER_CALEDNAR_CELL_NAME);
+    const {
+      timeZone,
+      locale,
+      calendarDate,
+      onValueChange,
+      onOpenChange,
+      onTextValueChange,
+      onCalendarDateChange,
+    } = useDatePickerContext(DATE_PICKER_CALEDNAR_CELL_NAME);
 
     const isSelected = isSameDay(calendarDate, date);
 
@@ -1166,7 +1214,10 @@ const DatePickerCalendarCell = React.forwardRef<DatePickerCalendarCellElement, C
       year: 'numeric',
     });
 
-    const label = React.useMemo(() => dateFormatter.format(date.toDate(timeZone)), [dateFormatter, date, timeZone]);
+    const label = React.useMemo(
+      () => dateFormatter.format(date.toDate(timeZone)),
+      [dateFormatter, date, timeZone]
+    );
 
     const cellDateFormatter = useDateFormatter(locale, {
       day: 'numeric',
@@ -1174,8 +1225,10 @@ const DatePickerCalendarCell = React.forwardRef<DatePickerCalendarCellElement, C
     });
 
     const formattedDate = React.useMemo(
-      () => cellDateFormatter.formatToParts(date.toDate(timeZone)).find((part) => part.type === 'day')!.value,
-      [cellDateFormatter, date, timeZone],
+      () =>
+        cellDateFormatter.formatToParts(date.toDate(timeZone)).find((part) => part.type === 'day')!
+          .value,
+      [cellDateFormatter, date, timeZone]
     );
 
     const textValueFormatter = useDateFormatter(locale, {
@@ -1220,7 +1273,7 @@ const DatePickerCalendarCell = React.forwardRef<DatePickerCalendarCellElement, C
         </Typography>
       </Cell>
     );
-  },
+  }
 );
 
 const Cell = styled(Box)`
@@ -1246,22 +1299,30 @@ interface DatePickerProps extends Pick<FieldProps, 'hint'>, DatePickerInputProps
   label: string;
 }
 
-const DatePickerField = React.forwardRef<DatePickerTextInputElement, DatePickerProps>((props, ref) => {
-  const { error, hint, id, required, label, ...restProps } = props;
+const DatePickerField = React.forwardRef<DatePickerTextInputElement, DatePickerProps>(
+  (props, ref) => {
+    const { error, hint, id, required, label, ...restProps } = props;
 
-  const generatedId = useId(id);
+    const generatedId = useId(id);
 
-  return (
-    <Field.Field error={error} hint={hint} required={required} id={generatedId}>
-      <Flex direction="column" alignItems="stretch" gap={1}>
-        <Field.FieldLabel>{label}</Field.FieldLabel>
-        <DatePickerInput ref={ref} id={generatedId} error={error} required={required} {...restProps} />
-        <Field.FieldHint />
-        <Field.FieldError />
-      </Flex>
-    </Field.Field>
-  );
-});
+    return (
+      <Field.Field error={error} hint={hint} required={required} id={generatedId}>
+        <Flex direction="column" alignItems="stretch" gap={1}>
+          <Field.FieldLabel>{label}</Field.FieldLabel>
+          <DatePickerInput
+            ref={ref}
+            id={generatedId}
+            error={error}
+            required={required}
+            {...restProps}
+          />
+          <Field.FieldHint />
+          <Field.FieldError />
+        </Flex>
+      </Field.Field>
+    );
+  }
+);
 
 const warnOnce = once(console.warn);
 
@@ -1271,7 +1332,7 @@ const convertUTCDateToCalendarDate = (date: Date | string): CalendarDate => {
    */
   if (typeof date === 'string') {
     warnOnce(
-      "It looks like you're passing a string as representation of a Date to the DatePicker. This is deprecated, look to passing a Date instead.",
+      "It looks like you're passing a string as representation of a Date to the DatePicker. This is deprecated, look to passing a Date instead."
     );
     const timestamp = Date.parse(date);
 

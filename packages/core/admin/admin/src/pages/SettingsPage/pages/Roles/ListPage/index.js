@@ -14,7 +14,7 @@ import {
   Tr,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   ConfirmDialog,
   getFetchClient,

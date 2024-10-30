@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-import { ContentLayout, HeaderLayout, Main } from '@strapi/design-system';
+import { ContentLayout, HeaderLayout, Main } from '@atlas/design-system';
 import {
   LinkButton,
   NoContent,

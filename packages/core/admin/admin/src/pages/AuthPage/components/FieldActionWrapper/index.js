@@ -1,4 +1,4 @@
-import { FieldAction } from '@strapi/design-system';
+import { FieldAction } from '@atlas/design-system';
 import styled from 'styled-components';
 
 const FieldActionWrapper = styled(FieldAction)`

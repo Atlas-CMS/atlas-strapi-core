@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { useCallback, useEffect, useMemo, useReducer, useRef } from 'react';
 
-import { Main } from '@strapi/design-system';
+import { Main } from '@atlas/design-system';
 import {
   ContentManagerEditViewDataManagerContext,
   getAPIInnerErrors,

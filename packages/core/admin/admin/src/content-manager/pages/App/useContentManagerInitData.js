@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-import { useNotifyAT } from '@strapi/design-system';
+import { useNotifyAT } from '@atlas/design-system';
 import {
   useFetchClient,
   useNotification,

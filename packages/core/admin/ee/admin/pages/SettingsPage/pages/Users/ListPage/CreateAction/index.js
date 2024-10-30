@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Flex, Icon, Tooltip } from '@strapi/design-system';
+import { Button, Flex, Icon, Tooltip } from '@atlas/design-system';
 import { Envelop, ExclamationMarkCircle } from '@strapi/icons';
 import isNil from 'lodash/isNil';
 import PropTypes from 'prop-types';

@@ -15,7 +15,7 @@ import {
   Icon,
   Tooltip,
   Loader,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   useTableContext,
   Table,

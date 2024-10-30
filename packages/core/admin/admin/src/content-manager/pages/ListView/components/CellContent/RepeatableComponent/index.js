@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Badge } from '@strapi/design-system';
+import { Badge } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { Menu } from '@strapi/design-system/v2';
 import PropTypes from 'prop-types';

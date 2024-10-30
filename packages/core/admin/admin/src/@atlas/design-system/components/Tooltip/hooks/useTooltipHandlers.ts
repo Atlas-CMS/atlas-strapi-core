@@ -26,6 +26,7 @@ export const useTooltipHandlers = (delay: number) => {
   };
 
   const onMouseEnter = () => {
+    // @ts-ignore
     timerRef.current = setTimeout(() => {
       setVisible(true);
     }, delay);

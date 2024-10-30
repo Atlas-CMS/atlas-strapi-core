@@ -9,7 +9,7 @@ import {
   Td,
   Tr,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { onRowClick, stopPropagation } from '@strapi/helper-plugin';
 import { Pencil, Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';

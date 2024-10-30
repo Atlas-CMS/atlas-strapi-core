@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@strapi/design-system';
+import { Button } from '@atlas/design-system';
 import { Envelop } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

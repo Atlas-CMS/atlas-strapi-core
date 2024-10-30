@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 import { fixtures } from '@strapi/admin-test-utils';
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@atlas/design-system';
 import { NotificationsProvider, RBACContext } from '@strapi/helper-plugin';
 import {
   renderHook as renderHookRTL,

@@ -17,7 +17,8 @@ const Label = styled.label`
   width: 100%;
 `;
 
-export interface ToggleCheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'children'> {
+export interface ToggleCheckboxProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'children'> {
   children: string;
   offLabel: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -81,15 +82,28 @@ const Input = styled.input`
 `;
 
 export const ToggleCheckbox = React.forwardRef<HTMLInputElement, ToggleCheckboxProps>(
-  ({ size = 'M', onLabel, offLabel, children, checked = false, disabled = false, onChange, ...props }, ref) => {
+  (
+    {
+      size = 'M',
+      onLabel,
+      offLabel,
+      children,
+      checked = false,
+      disabled = false,
+      onChange,
+      ...props
+    },
+    ref
+  ) => {
     const { error, hint, id, name, required } = useField();
 
     const labelColor = 'neutral600';
 
-    let offCheckboxLabelColor: keyof DefaultTheme['colors'] = !checked && checked !== null ? 'danger700' : labelColor;
+    let offCheckboxLabelColor: keyof DefaultTheme['colors'] =
+      !checked && checked !== null ? 'danger700' : labelColor;
     let onCheckboxLabelColor: keyof DefaultTheme['colors'] = checked ? 'primary600' : labelColor;
 
-    const handleChange = (e) => {
+    const handleChange = (e: any) => {
       if (disabled) return;
 
       if (onChange) {
@@ -166,7 +180,7 @@ export const ToggleCheckbox = React.forwardRef<HTMLInputElement, ToggleCheckboxP
             type="checkbox"
             aria-disabled={disabled}
             aria-describedby={ariaDescription}
-            onChange={(e) => handleChange(e)}
+            onChange={(e: any) => handleChange(e)}
             name={name}
             ref={ref}
             aria-required={required}
@@ -176,7 +190,7 @@ export const ToggleCheckbox = React.forwardRef<HTMLInputElement, ToggleCheckboxP
         </ToggleCheckboxWrapper>
       </Label>
     );
-  },
+  }
 );
 
 ToggleCheckbox.displayName = 'ToggleCheckbox';

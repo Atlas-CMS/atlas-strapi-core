@@ -70,7 +70,14 @@ export interface MenuItemProps extends Omit<NavLinkProps, 'to'> {
   isExternal?: boolean; // todo find out where this is used
 }
 
-export const MenuItem = ({ children, onClick = () => {}, to, isFocused = false, href, ...props }: MenuItemProps) => {
+export const MenuItem = ({
+  children,
+  onClick = () => {},
+  to,
+  isFocused = false,
+  href,
+  ...props
+}: MenuItemProps) => {
   const menuItemRef = useRef<HTMLAnchorElement>();
 
   useEffect(() => {
@@ -86,7 +93,7 @@ export const MenuItem = ({ children, onClick = () => {}, to, isFocused = false, 
     ...props,
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: any) => {
     if (e.key === KeyboardKeys.SPACE || e.key === KeyboardKeys.ENTER) {
       onClick();
     }
@@ -123,7 +130,15 @@ export const MenuItem = ({ children, onClick = () => {}, to, isFocused = false, 
 
 export type SimpleMenuProps<As extends React.ElementType = React.ElementType> = Omit<
   React.ComponentPropsWithoutRef<As>,
-  'as' | 'children' | 'id' | 'label' | 'onClose' | 'onOpen' | 'onReachEnd' | 'popoverPlacement' | 'size'
+  | 'as'
+  | 'children'
+  | 'id'
+  | 'label'
+  | 'onClose'
+  | 'onOpen'
+  | 'onReachEnd'
+  | 'popoverPlacement'
+  | 'size'
 > & {
   as?: As;
   children: React.ReactNode;
@@ -170,7 +185,7 @@ export const SimpleMenu = <As extends React.ElementType = typeof Button>({
     if (['string', 'number'].includes(typeof label)) {
       // Useful to focus the selected item in the list
       const defaultItemIndexToFocus = childrenArray.findIndex(
-        (c) => (React.isValidElement(c) && c.props.children === label) || c === label,
+        (c) => (React.isValidElement(c) && c.props.children === label) || c === label
       );
 
       if (defaultItemIndexToFocus !== -1) {
@@ -204,7 +219,7 @@ export const SimpleMenu = <As extends React.ElementType = typeof Button>({
     }
   }, [label, focusedItemIndex]);
 
-  const handleWrapperKeyDown = (e) => {
+  const handleWrapperKeyDown = (e: any) => {
     if (visible) {
       if (e.key === KeyboardKeys.ESCAPE) {
         e.stopPropagation();
@@ -222,13 +237,13 @@ export const SimpleMenu = <As extends React.ElementType = typeof Button>({
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: any) => {
     if (e.key === KeyboardKeys.ENTER || e.key === KeyboardKeys.SPACE) {
       setVisible((prevVisible) => !prevVisible);
     }
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: any) => {
     e.preventDefault();
 
     if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -236,7 +251,7 @@ export const SimpleMenu = <As extends React.ElementType = typeof Button>({
     }
   };
 
-  const handleMenuButtonMouseDown = (e) => {
+  const handleMenuButtonMouseDown = (e: any) => {
     e.preventDefault();
     setVisible((prevVisible) => !prevVisible);
   };

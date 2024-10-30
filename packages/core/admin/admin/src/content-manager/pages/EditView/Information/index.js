@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-import { Box, Divider, Flex } from '@strapi/design-system';
+import { Box, Divider, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';

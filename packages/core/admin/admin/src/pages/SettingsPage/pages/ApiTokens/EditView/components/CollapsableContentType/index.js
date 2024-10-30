@@ -10,7 +10,7 @@ import {
   Grid,
   GridItem,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Cog } from '@strapi/icons';
 import capitalize from 'lodash/capitalize';
 import PropTypes from 'prop-types';

@@ -38,8 +38,17 @@ export type SingleSelectElement = SingleSelectInputElement;
 
 export const SingleSelect = React.forwardRef<SingleSelectInputElement, SingleSelectProps>(
   (
-    { error, hint, id, label, labelAction, required, selectButtonTitle: _deprecatedSelectButtonTitle, ...restProps },
-    forwardedRef,
+    {
+      error,
+      hint,
+      id,
+      label,
+      labelAction,
+      required,
+      selectButtonTitle: _deprecatedSelectButtonTitle,
+      ...restProps
+    },
+    forwardedRef
   ) => {
     const generatedId = useId(id);
     /**
@@ -74,10 +83,11 @@ export const SingleSelect = React.forwardRef<SingleSelectInputElement, SingleSel
         </Flex>
       </Field>
     );
-  },
+  }
 );
 
-export interface SingleSelectInputProps extends Omit<SingleSelectPropsWithoutLabel, 'labelAction' | 'hint' | 'id'> {
+export interface SingleSelectInputProps
+  extends Omit<SingleSelectPropsWithoutLabel, 'labelAction' | 'hint' | 'id'> {
   'aria-label'?: string;
   id?: string;
   label?: string;
@@ -108,7 +118,7 @@ export const SingleSelectInput = React.forwardRef<SingleSelectInputElement, Sing
       value: passedValue,
       ...restProps
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     /**
      * These values are drawn out from the internals of the Radix component
@@ -121,7 +131,7 @@ export const SingleSelectInput = React.forwardRef<SingleSelectInputElement, Sing
       setInternalIsOpen(open);
     };
 
-    const handleOnClear = (e) => {
+    const handleOnClear = (e: any) => {
       if (onClear) {
         onClear(e);
       }
@@ -167,7 +177,9 @@ export const SingleSelectInput = React.forwardRef<SingleSelectInputElement, Sing
     });
 
     const value =
-      (typeof passedValue !== 'undefined' && passedValue !== null ? passedValue.toString() : internalValue) ?? '';
+      (typeof passedValue !== 'undefined' && passedValue !== null
+        ? passedValue.toString()
+        : internalValue) ?? '';
 
     return (
       <SelectParts.Root
@@ -190,7 +202,10 @@ export const SingleSelectInput = React.forwardRef<SingleSelectInputElement, Sing
           clearLabel={clearLabel}
           onClear={value && onClear ? handleOnClear : undefined}
         >
-          <SelectParts.Value placeholder={placeholder} textColor={value ? 'neutral800' : 'neutral600'}>
+          <SelectParts.Value
+            placeholder={placeholder}
+            textColor={value ? 'neutral800' : 'neutral600'}
+          >
             {value && customizeContent ? customizeContent(value) : undefined}
           </SelectParts.Value>
         </SelectParts.Trigger>
@@ -204,7 +219,7 @@ export const SingleSelectInput = React.forwardRef<SingleSelectInputElement, Sing
         </SelectParts.Portal>
       </SelectParts.Root>
     );
-  },
+  }
 );
 
 /* -------------------------------------------------------------------------------------------------
@@ -230,5 +245,5 @@ export const SingleSelectOption = React.forwardRef<HTMLDivElement, SingleSelectO
         </Typography>
       </SelectParts.Item>
     );
-  },
+  }
 );

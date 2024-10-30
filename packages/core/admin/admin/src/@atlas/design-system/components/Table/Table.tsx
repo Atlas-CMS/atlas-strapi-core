@@ -24,7 +24,8 @@ const TableBox = styled(Box)<{ overflowing?: Overflowing }>`
     opacity: 0.2;
     position: absolute;
     height: 100%;
-    content: ${({ overflowing }) => (overflowing === 'both' || overflowing === 'left' ? "''" : undefined)};
+    content: ${({ overflowing }) =>
+      overflowing === 'both' || overflowing === 'left' ? "''" : undefined};
     box-shadow: ${({ theme }) => theme.shadows.tableShadow};
     width: ${({ theme }) => theme.spaces[2]};
     left: 0;
@@ -36,7 +37,8 @@ const TableBox = styled(Box)<{ overflowing?: Overflowing }>`
     opacity: 0.2;
     position: absolute;
     height: 100%;
-    content: ${({ overflowing }) => (overflowing === 'both' || overflowing === 'right' ? "''" : undefined)};
+    content: ${({ overflowing }) =>
+      overflowing === 'both' || overflowing === 'right' ? "''" : undefined};
     box-shadow: ${({ theme }) => theme.shadows.tableShadow};
     width: ${({ theme }) => theme.spaces[2]};
     right: 0;
@@ -56,7 +58,7 @@ export const Table = ({ footer, ...props }: TableProps) => {
   const tableRef = useRef<HTMLDivElement>(null!);
   const [overflowing, setOverflowing] = useState<Overflowing>();
 
-  const handleScroll = (e) => {
+  const handleScroll = (e: any) => {
     const maxScrollLeft = e.target.scrollWidth - e.target.clientWidth;
 
     if (e.target.scrollLeft === 0) {

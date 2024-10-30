@@ -6,7 +6,7 @@ import {
   CarouselInput,
   CarouselSlide,
   IconButton,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Plus, Refresh } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

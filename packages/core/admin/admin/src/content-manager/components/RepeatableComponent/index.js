@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import React, { memo, useEffect, useMemo, useState } from 'react';
 
-import { Box, Flex, TextButton, VisuallyHidden } from '@strapi/design-system';
+import { Box, Flex, TextButton, VisuallyHidden } from '@atlas/design-system';
 import { useCMEditViewDataManager, useNotification, useQuery } from '@strapi/helper-plugin';
 import { Plus } from '@strapi/icons';
 import get from 'lodash/get';

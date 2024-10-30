@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useNotifyAT } from '@strapi/design-system';
+import { useNotifyAT } from '@atlas/design-system';
 import { useIntl } from 'react-intl';
 
 import { useFetchMarketplacePlugins } from '../hooks/useFetchMarketplacePlugins';

@@ -1,4 +1,4 @@
-import { lightTheme } from '@strapi/design-system';
+import { lightTheme } from '@atlas/design-system';
 
 import { STAGE_COLORS } from '../constants';
 

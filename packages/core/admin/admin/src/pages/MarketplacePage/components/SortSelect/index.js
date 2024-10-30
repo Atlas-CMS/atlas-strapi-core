@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Option, Select } from '@strapi/design-system';
+import { Box, Option, Select } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';

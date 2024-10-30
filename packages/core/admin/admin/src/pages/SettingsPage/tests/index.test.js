@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { darkTheme, lightTheme } from '@strapi/design-system';
+import { darkTheme, lightTheme } from '@atlas/design-system';
 import { AppInfosContext, StrapiAppProvider, TrackingProvider } from '@strapi/helper-plugin';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

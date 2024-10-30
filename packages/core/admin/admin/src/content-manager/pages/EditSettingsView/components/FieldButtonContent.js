@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, IconButton } from '@strapi/design-system';
+import { Box, Flex, IconButton } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { Pencil, Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';

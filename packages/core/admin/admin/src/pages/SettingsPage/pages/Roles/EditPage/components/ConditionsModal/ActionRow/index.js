@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, MultiSelectNested } from '@strapi/design-system';
+import { Box, Flex, MultiSelectNested } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

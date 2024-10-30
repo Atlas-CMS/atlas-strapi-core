@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 
-import { BaseCheckbox, Flex } from '@strapi/design-system';
+import { BaseCheckbox, Flex } from '@atlas/design-system';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

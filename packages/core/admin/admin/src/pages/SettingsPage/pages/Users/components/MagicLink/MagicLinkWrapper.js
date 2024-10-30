@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconButton } from '@strapi/design-system';
+import { IconButton } from '@atlas/design-system';
 import { ContentBox, useClipboard, useNotification } from '@strapi/helper-plugin';
 import { Duplicate } from '@strapi/icons';
 import PropTypes from 'prop-types';

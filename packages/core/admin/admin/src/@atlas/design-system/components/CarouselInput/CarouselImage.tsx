@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Box, BoxProps } from '../Box';
 import { Tooltip } from '../Tooltip';
-import { ellipsisStyle } from '../Typography/utils';
+import { ellipsisStyle } from '@atlas/design-system/components/_Typography/utils';
 
 export interface CarouselImageProps extends BoxProps<'img'> {
   alt: string;
@@ -30,5 +30,7 @@ export const CarouselImage = (props: CarouselImageProps) => {
     );
   }
 
-  return <StyledImage as="img" height="100%" maxWidth="100%" {...props} onError={handleImageError} />;
+  return (
+    <StyledImage as="img" height="100%" maxWidth="100%" {...props} onError={handleImageError} />
+  );
 };

@@ -8,7 +8,7 @@ import {
   HeaderLayout,
   Layout,
   Main,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Link, useFetchClient, useNotification, useTracking } from '@strapi/helper-plugin';
 import { ArrowLeft, Check } from '@strapi/icons';
 import isEqual from 'lodash/isEqual';

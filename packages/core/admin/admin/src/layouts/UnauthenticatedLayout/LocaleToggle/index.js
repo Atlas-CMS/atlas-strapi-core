@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { SingleSelect, SingleSelectOption } from '@strapi/design-system';
+import { SingleSelect, SingleSelectOption } from '@atlas/design-system';
 import { useIntl } from 'react-intl';
 
 import { useLocales } from '../../../components/LanguageProvider';

@@ -1,4 +1,11 @@
-import { useCallback, useLayoutEffect, useRef, useState, KeyboardEventHandler, ReactNode } from 'react';
+import {
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+  KeyboardEventHandler,
+  ReactNode,
+} from 'react';
 
 import { useTable } from './RawTableContext';
 import { Box, BoxProps } from '../Box';
@@ -24,7 +31,7 @@ export const RawTd = ({ coords = { col: 0, row: 0 }, as = 'td', ...props }: RawT
   const { rowIndex, colIndex, setTableValues } = useTable();
   const [isActive, setIsActive] = useState(false);
 
-  const handleKeyDown: KeyboardEventHandler<HTMLTableCellElement> = (e) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLTableCellElement> = (e: any) => {
     const focusableNodes = getFocusableNodes(tdRef.current, true);
 
     /**
@@ -46,7 +53,9 @@ export const RawTd = ({ coords = { col: 0, row: 0 }, as = 'td', ...props }: RawT
     }
     if (focusableNodes.length > 1 && !focusableNodes.find((node) => node.tagName !== 'BUTTON')) {
       e.preventDefault();
-      const focussedButtonIndex = focusableNodes.findIndex((node) => node === document.activeElement);
+      const focussedButtonIndex = focusableNodes.findIndex(
+        (node) => node === document.activeElement
+      );
 
       if (e.key === KeyboardKeys.RIGHT) {
         const nextNode = focusableNodes[focussedButtonIndex + 1];
@@ -109,8 +118,10 @@ export const RawTd = ({ coords = { col: 0, row: 0 }, as = 'td', ...props }: RawT
      */
     if (
       focusableNodes.length === 0 ||
-      (focusableNodes.length === 1 && getFocusableNodesWithKeyboardNav(focusableNodes).length !== 0) ||
-      (focusableNodes.length > 1 && Boolean(focusableNodes.find((node) => node.tagName !== 'BUTTON')))
+      (focusableNodes.length === 1 &&
+        getFocusableNodesWithKeyboardNav(focusableNodes).length !== 0) ||
+      (focusableNodes.length > 1 &&
+        Boolean(focusableNodes.find((node) => node.tagName !== 'BUTTON')))
     ) {
       tdRef.current.setAttribute('tabIndex', !isActive && isFocused ? '0' : '-1');
 

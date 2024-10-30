@@ -11,7 +11,7 @@ import {
   FieldInput,
   Flex,
   Button,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   Code,
   Quote,

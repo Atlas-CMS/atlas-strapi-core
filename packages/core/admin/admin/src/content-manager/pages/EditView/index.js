@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Main, ContentLayout, Grid, GridItem, Flex, Box } from '@strapi/design-system';
+import { Main, ContentLayout, Grid, GridItem, Flex, Box } from '@atlas/design-system';
 import {
   CheckPermissions,
   LinkButton,

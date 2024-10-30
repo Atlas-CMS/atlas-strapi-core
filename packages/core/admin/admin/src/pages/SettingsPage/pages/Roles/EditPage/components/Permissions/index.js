@@ -1,6 +1,6 @@
 import React, { forwardRef, memo, useCallback, useImperativeHandle, useReducer } from 'react';
 
-import { Tab, TabGroup, TabPanel, TabPanels, Tabs } from '@strapi/design-system';
+import { Tab, TabGroup, TabPanel, TabPanels, Tabs } from '@atlas/design-system';
 import { difference } from '@strapi/helper-plugin';
 import has from 'lodash/has';
 import isEmpty from 'lodash/isEmpty';

@@ -1,11 +1,13 @@
 import { forwardRef } from 'react';
 
-import { Carousel, CarouselElement, CarouselProps } from './Carousel';
 import { Field, FieldLabel, FieldHint, FieldError, FieldProps, FieldLabelProps } from '../Field';
-import { Flex } from '../Flex';
+import { Carousel, CarouselElement, CarouselProps } from './Carousel';
 import { useId } from '../hooks/useId';
+import { Flex } from '../Flex';
 
-export interface CarouselInputProps extends CarouselProps, Pick<FieldProps, 'hint' | 'error' | 'required'> {
+export interface CarouselInputProps
+  extends CarouselProps,
+    Pick<FieldProps, 'hint' | 'error' | 'required'> {
   actions?: React.ReactNode;
   children: React.ReactNode;
   labelAction?: FieldLabelProps['action'];
@@ -30,7 +32,7 @@ export const CarouselInput = forwardRef<CarouselElement, CarouselInputProps>(
       id,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     const generatedId = useId(id);
 
@@ -58,5 +60,5 @@ export const CarouselInput = forwardRef<CarouselElement, CarouselInputProps>(
         </Flex>
       </Field>
     );
-  },
+  }
 );

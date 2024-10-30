@@ -55,7 +55,11 @@ type ChildrenWithAriaLabel = AriaLabelOnlyProps & ChildrenOnlyProps;
 type IconWithLabel = LabelOnlyProps & IconOnlyProps;
 type IconWithAriaLabel = AriaLabelOnlyProps & IconOnlyProps;
 
-export type IconButtonProps = ChildrenWithLabel | ChildrenWithAriaLabel | IconWithLabel | IconWithAriaLabel;
+export type IconButtonProps =
+  | ChildrenWithLabel
+  | ChildrenWithAriaLabel
+  | IconWithLabel
+  | IconWithAriaLabel;
 
 export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
   (
@@ -73,9 +77,9 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       variant = VARIANTS[0],
       ...restProps
     },
-    ref,
+    ref
   ) => {
-    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e: any) => {
       if (!disabled && onClick) {
         onClick(e);
       }
@@ -103,7 +107,7 @@ export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     );
 
     return label ? <Tooltip label={label}>{component}</Tooltip> : component;
-  },
+  }
 );
 
 const IconButtonWrapper = styled(BaseButton)<Required<Pick<IconButtonProps, 'size' | 'variant'>>>`

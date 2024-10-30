@@ -12,7 +12,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   CheckPagePermissions,
   useAppInfo,

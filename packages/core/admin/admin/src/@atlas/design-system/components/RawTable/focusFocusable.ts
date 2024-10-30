@@ -1,4 +1,4 @@
-export const focusFocusable = (node) => {
+export const focusFocusable = (node: any) => {
   const nextNode = node.querySelector('[tabindex="0"]');
 
   if (nextNode) {

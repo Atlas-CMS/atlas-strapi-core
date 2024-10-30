@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box, IconButton } from '@strapi/design-system';
+import { Box, IconButton } from '@atlas/design-system';
 import { ConfirmDialog, useTracking } from '@strapi/helper-plugin';
 import { Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';

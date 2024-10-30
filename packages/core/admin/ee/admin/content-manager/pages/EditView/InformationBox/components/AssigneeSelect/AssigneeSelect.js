@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Combobox, ComboboxOption, Field, Flex } from '@strapi/design-system';
+import { Combobox, ComboboxOption, Field, Flex } from '@atlas/design-system';
 import {
   useCMEditViewDataManager,
   useAPIErrorHandler,

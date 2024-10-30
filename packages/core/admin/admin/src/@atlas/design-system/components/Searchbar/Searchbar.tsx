@@ -3,7 +3,15 @@ import React, { forwardRef, MouseEventHandler, useRef } from 'react';
 import { Search, Cross } from '@strapi/icons';
 import styled from 'styled-components';
 
-import { Field, FieldLabel, FieldAction, FieldInput, InputWrapper, FieldInputProps, FieldProps } from '../Field';
+import {
+  Field,
+  FieldLabel,
+  FieldAction,
+  FieldInput,
+  InputWrapper,
+  FieldInputProps,
+  FieldProps,
+} from '../Field';
 import { composeRefs } from '../hooks/useComposeRefs';
 import { inputFocusStyle } from '../themes/utils';
 import { VisuallyHidden } from '../VisuallyHidden';
@@ -41,7 +49,9 @@ const SearchbarWrapper = styled.div`
   ${inputFocusStyle(InputWrapper)}
 `;
 
-export interface SearchbarProps extends Omit<FieldInputProps, 'id' | 'name'>, Pick<FieldProps, 'id' | 'name'> {
+export interface SearchbarProps
+  extends Omit<FieldInputProps, 'id' | 'name'>,
+    Pick<FieldProps, 'id' | 'name'> {
   name: string;
   value?: string;
   onClear: MouseEventHandler<any>;
@@ -53,7 +63,7 @@ export const Searchbar = forwardRef<HTMLInputElement, SearchbarProps>(
     const inputRef = useRef<HTMLInputElement>(null!);
     const isCompleting = value.length > 0;
 
-    const handleClear = (e) => {
+    const handleClear = (e: any) => {
       onClear(e);
       inputRef.current.focus();
     };
@@ -84,5 +94,5 @@ export const Searchbar = forwardRef<HTMLInputElement, SearchbarProps>(
         </Field>
       </SearchbarWrapper>
     );
-  },
+  }
 );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Avatar, Tooltip } from '@strapi/design-system';
+import { Avatar, Tooltip } from '@atlas/design-system';
 import { getFileExtension, prefixFileUrlWithBackendUrl } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 

@@ -14,7 +14,7 @@ export interface CheckboxInputProps {
   size: BaseCheckboxSize;
 }
 
-const CheckboxInput = styled.input`
+const CheckboxInput = styled.input<CheckboxInputProps & any>`
   height: ${getCheckboxSize};
   min-width: ${getCheckboxSize};
   margin: 0;
@@ -32,7 +32,11 @@ const CheckboxInput = styled.input`
       content: '';
       display: block;
       position: relative;
-      background: url(${checkmarkIcon}) no-repeat no-repeat center center;
+      background: url(${
+          // @ts-ignore
+          checkmarkIcon
+        })
+        no-repeat no-repeat center center;
       width: 10px;
       height: 10px;
       left: 50%;
@@ -77,7 +81,8 @@ const CheckboxInput = styled.input`
   }
 `;
 
-export interface BaseCheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'> {
+export interface BaseCheckboxProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value'> {
   /**
    * If `true`, display the indeterminate state.
    */
@@ -101,7 +106,10 @@ export interface BaseCheckboxProps extends Omit<React.InputHTMLAttributes<HTMLIn
 export type CheckboxElement = HTMLInputElement;
 
 export const BaseCheckbox = React.forwardRef<CheckboxElement, BaseCheckboxProps>(
-  ({ indeterminate = false, size = 'M', name, value = false, onValueChange, ...inputProps }, forwardedRef) => {
+  (
+    { indeterminate = false, size = 'M', name, value = false, onValueChange, ...inputProps },
+    forwardedRef
+  ) => {
     const checkboxRef = React.useRef<HTMLInputElement>(null!);
 
     const composedRefs = useComposedRefs(checkboxRef, forwardedRef);
@@ -123,6 +131,7 @@ export const BaseCheckbox = React.forwardRef<CheckboxElement, BaseCheckboxProps>
     return (
       <Box>
         <CheckboxInput
+          // @ts-ignore
           size={size}
           checked={value}
           onChange={handleValueChange}
@@ -133,7 +142,7 @@ export const BaseCheckbox = React.forwardRef<CheckboxElement, BaseCheckboxProps>
         />
       </Box>
     );
-  },
+  }
 );
 
 BaseCheckbox.displayName = 'BaseCheckbox';

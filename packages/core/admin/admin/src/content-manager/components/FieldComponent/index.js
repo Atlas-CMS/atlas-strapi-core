@@ -1,7 +1,7 @@
 /* eslint-disable  import/no-cycle */
 import React, { memo, useMemo } from 'react';
 
-import { Box, Flex, IconButton } from '@strapi/design-system';
+import { Box, Flex, IconButton } from '@atlas/design-system';
 import { NotAllowedInput } from '@strapi/helper-plugin';
 import { Trash } from '@strapi/icons';
 import isEqual from 'lodash/isEqual';

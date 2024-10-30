@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { Box, Button, Tag } from '@strapi/design-system';
+import { Box, Button, Tag } from '@atlas/design-system';
 import { Cross, Filter } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

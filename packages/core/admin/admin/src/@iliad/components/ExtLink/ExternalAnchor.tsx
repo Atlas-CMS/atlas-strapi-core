@@ -36,7 +36,7 @@ const ExternalAnchor = ({
   const _props = { href, ...props };
 
   const handleAnchorClick = useCallback(
-    (e) => {
+    (e: any) => {
       e.preventDefault();
 
       console.log({ e }, e.target, modal);
@@ -45,9 +45,9 @@ const ExternalAnchor = ({
         modals.openConfirmModal({
           title: 'Notice: External Site',
           children: (
-            <Text size='sm'>
-              This action is so important that you are required to confirm it
-              with a modal. Please click one of these buttons to proceed.
+            <Text size="sm">
+              This action is so important that you are required to confirm it with a modal. Please
+              click one of these buttons to proceed.
             </Text>
           ),
           labels: { confirm: 'Proceed', cancel: 'Cancel' },
@@ -75,10 +75,11 @@ const ExternalAnchor = ({
   return (
     <a
       className={clsx(className, 'iliad-ExtLink-modal')}
-      onClick={(e) => {
+      onClick={(e: any) => {
         handleAnchorClick(e);
       }}
-      {..._props}>
+      {..._props}
+    >
       {children}
     </a>
   );

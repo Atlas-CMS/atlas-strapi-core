@@ -10,7 +10,7 @@ import {
   Main,
   TextInput,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   Form,
   getYupInnerErrors,

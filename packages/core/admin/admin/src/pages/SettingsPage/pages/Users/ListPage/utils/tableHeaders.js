@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { Status } from '@strapi/helper-plugin';
 

@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import { ModalHeader, ModalLayout } from '@strapi/design-system';
+import { ModalHeader, ModalLayout } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

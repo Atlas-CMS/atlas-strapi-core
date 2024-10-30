@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button } from '@strapi/design-system';
+import { Button } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { useTracking, useTableContext } from '@strapi/helper-plugin';
 import { Check, Trash } from '@strapi/icons';

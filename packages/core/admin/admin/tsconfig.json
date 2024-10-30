@@ -40,6 +40,15 @@
     "src",
     "tests",
     "custom.d.ts",
+
+    // Type Declarations
+    "src/@types/**/*.d.ts",
+    "src/@types/**/*.ts",
+    "src/@types/**/*",
+    "src/@types/*.d.ts",
+    "src/@types/*.ts",
+    "src/@types/*",
+
     // Iliad Types
     "src/@iliad/@types/**/*.d.ts",
     "src/@iliad/@types/**/*.ts",
@@ -47,6 +56,7 @@
     "src/@iliad/@types/*.d.ts",
     "src/@iliad/@types/*.ts",
     "src/@iliad/@types/*",
+
     // Atlas Types
     "src/@atlas/@types/**/*.d.ts",
     "src/@atlas/@types/**/*.ts",

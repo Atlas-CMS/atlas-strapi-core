@@ -9,7 +9,7 @@ import {
   Flex,
   HeaderLayout,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Link } from '@strapi/helper-plugin';
 import { ArrowLeft, Check, ExclamationMarkCircle } from '@strapi/icons';
 import get from 'lodash/get';

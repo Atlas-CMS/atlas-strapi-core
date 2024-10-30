@@ -13,7 +13,7 @@ import {
   Typography,
   Status,
   lightTheme,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   findMatchingPermissions,
   NoPermissions,

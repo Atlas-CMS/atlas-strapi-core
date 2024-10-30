@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@strapi/design-system';
+import { Box } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import { IS_ACTIVE, IS_DONE, IS_NOT_DONE } from '../../constants';

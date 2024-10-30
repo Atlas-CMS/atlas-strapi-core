@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box, Flex, Typography, InputWrapper, Divider } from '@strapi/design-system';
+import { Box, Flex, Typography, InputWrapper, Divider } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { createEditor } from 'slate';

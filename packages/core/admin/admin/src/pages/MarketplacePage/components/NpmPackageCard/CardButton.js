@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Tooltip } from '@strapi/design-system';
+import { Box, Button, Tooltip } from '@atlas/design-system';
 import { Duplicate } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

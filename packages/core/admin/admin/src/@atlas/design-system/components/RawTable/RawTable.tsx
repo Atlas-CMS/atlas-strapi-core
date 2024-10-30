@@ -12,7 +12,15 @@ export interface RawTableProps extends TableHTMLAttributes<HTMLTableElement> {
   rowCount: number;
 }
 
-export const RawTable = ({ colCount, rowCount, jumpStep = 3, initialCol = 0, initialRow = 0, ...props }) => {
+// @ts-ignore
+export const RawTable = ({
+  colCount,
+  rowCount,
+  jumpStep = 3,
+  initialCol = 0,
+  initialRow = 0,
+  ...props
+}: RawTableProps) => {
   const tableRef = useRef(null);
   const mountedRef = useRef(false);
   /**
@@ -21,6 +29,7 @@ export const RawTable = ({ colCount, rowCount, jumpStep = 3, initialCol = 0, ini
   const [rowIndex, setRowIndex] = useState(initialRow);
   const [colIndex, setColIndex] = useState(initialCol);
 
+  // @ts-ignore
   const setTableValues = useCallback(({ colIndex, rowIndex }) => {
     setColIndex(colIndex);
     setRowIndex(rowIndex);
@@ -36,11 +45,13 @@ export const RawTable = ({ colCount, rowCount, jumpStep = 3, initialCol = 0, ini
     }
   }, [colIndex, rowIndex]);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: any) => {
     switch (e.key) {
       case KeyboardKeys.RIGHT: {
         e.preventDefault();
-        setColIndex((prevColIndex) => (prevColIndex < colCount - 1 ? prevColIndex + 1 : prevColIndex));
+        setColIndex((prevColIndex) =>
+          prevColIndex < colCount - 1 ? prevColIndex + 1 : prevColIndex
+        );
 
         break;
       }
@@ -61,7 +72,9 @@ export const RawTable = ({ colCount, rowCount, jumpStep = 3, initialCol = 0, ini
 
       case KeyboardKeys.DOWN: {
         e.preventDefault();
-        setRowIndex((prevRowIndex) => (prevRowIndex < rowCount - 1 ? prevRowIndex + 1 : prevRowIndex));
+        setRowIndex((prevRowIndex) =>
+          prevRowIndex < rowCount - 1 ? prevRowIndex + 1 : prevRowIndex
+        );
 
         break;
       }
@@ -93,7 +106,9 @@ export const RawTable = ({ colCount, rowCount, jumpStep = 3, initialCol = 0, ini
       case KeyboardKeys.PAGE_DOWN: {
         e.preventDefault();
 
-        setRowIndex((prevRowIndex) => (prevRowIndex + jumpStep < rowCount ? prevRowIndex + jumpStep : rowCount - 1));
+        setRowIndex((prevRowIndex) =>
+          prevRowIndex + jumpStep < rowCount ? prevRowIndex + jumpStep : rowCount - 1
+        );
 
         break;
       }
@@ -111,7 +126,10 @@ export const RawTable = ({ colCount, rowCount, jumpStep = 3, initialCol = 0, ini
     }
   };
 
-  const context = useMemo(() => ({ rowIndex, colIndex, setTableValues }), [colIndex, rowIndex, setTableValues]);
+  const context = useMemo(
+    () => ({ rowIndex, colIndex, setTableValues }),
+    [colIndex, rowIndex, setTableValues]
+  );
 
   return (
     <RawTableContext.Provider value={context}>

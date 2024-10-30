@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Popover } from '@strapi/design-system';
+import { Flex, Popover } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';

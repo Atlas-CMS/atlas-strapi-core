@@ -67,7 +67,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
       disabled = false,
       ...props
     },
-    ref,
+    ref
   ) => {
     const generatedId = useId(id);
     const designContext = useDesignSystem('NumberInput');
@@ -87,7 +87,8 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
          *
          * And always give it a string
          */
-        return isNaN(Number(stringifiedValue)) || (stringifiedValue !== currentInputValue && currentInputValue !== '')
+        return isNaN(Number(stringifiedValue)) ||
+          (stringifiedValue !== currentInputValue && currentInputValue !== '')
           ? currentInputValue
           : numberFormaterRef.current.format(Number(value));
       },
@@ -109,7 +110,9 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
       setInputValue(String(value));
     };
 
-    const handelInputChange: React.ChangeEventHandler<HTMLInputElement> = ({ target: { value } }) => {
+    const handelInputChange: React.ChangeEventHandler<HTMLInputElement> = ({
+      target: { value },
+    }) => {
       if (numberParserRef.current.isValidPartialNumber(value)) {
         formatNumberAndSetInput(value);
       }
@@ -143,7 +146,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
       formatNumberAndSetInput(numberFormaterRef.current.format(newValue));
     };
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: any) => {
       if (disabled) return;
 
       switch (e.key) {
@@ -171,7 +174,9 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
     const handleBlur = () => {
       if (inputValue) {
         const parsedValue = numberParserRef.current.parse(inputValue);
-        const formattedValue = isNaN(parsedValue) ? '' : numberFormaterRef.current.format(parsedValue);
+        const formattedValue = isNaN(parsedValue)
+          ? ''
+          : numberFormaterRef.current.format(parsedValue);
         formatNumberAndSetInput(formattedValue);
       }
     };
@@ -223,5 +228,5 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
         </Flex>
       </Field>
     );
-  },
+  }
 );

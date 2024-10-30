@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Dialog, DialogBody, DialogFooter, Flex } from '@strapi/design-system';
+import { Button, Dialog, DialogBody, DialogFooter, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { ExclamationMarkCircle, Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';

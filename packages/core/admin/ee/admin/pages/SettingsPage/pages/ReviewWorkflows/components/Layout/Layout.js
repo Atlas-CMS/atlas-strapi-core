@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { ContentLayout, HeaderLayout, Layout, Main } from '@strapi/design-system';
+import { ContentLayout, HeaderLayout, Layout, Main } from '@atlas/design-system';
 import { Link, SettingsPageTitle } from '@strapi/helper-plugin';
 import { ArrowLeft } from '@strapi/icons';
 import { useIntl } from 'react-intl';

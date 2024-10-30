@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { lightTheme, ThemeProvider } from '@strapi/design-system';
+import { lightTheme, ThemeProvider } from '@atlas/design-system';
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
 import { render } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

@@ -10,7 +10,7 @@ import {
   Portal,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { useAppInfo } from '@strapi/helper-plugin';
 import { Cross, Message, Play, Question } from '@strapi/icons';
 import { useIntl } from 'react-intl';

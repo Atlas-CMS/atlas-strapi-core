@@ -12,7 +12,9 @@ const DownState = {
 
 const UpState = { Keyboard: 'up:keyboard', Mouse: 'up:mouse' } as const;
 
-type AllStates = (typeof DownState)[keyof typeof DownState] | (typeof UpState)[keyof typeof UpState];
+type AllStates =
+  | (typeof DownState)[keyof typeof DownState]
+  | (typeof UpState)[keyof typeof UpState];
 
 export interface SelectListProps {
   labelledBy?: string;
@@ -38,7 +40,7 @@ export const SelectList = ({
 }: SelectListProps) => {
   const listRef = useListRef(expanded);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: any) => {
     switch (e.key) {
       case KeyboardKeys.ESCAPE: {
         e.stopPropagation();
@@ -93,7 +95,7 @@ export const SelectList = ({
         if (currentOption.getAttribute('data-opt-group')) {
           onSelectItem(
             currentOption.getAttribute('data-opt-group-children')!.split(','),
-            currentOption.getAttribute('data-opt-group')!,
+            currentOption.getAttribute('data-opt-group')!
           );
         } else {
           onSelectItem(currentOption.getAttribute('data-strapi-value')!);
@@ -129,12 +131,13 @@ export const SelectList = ({
   );
 };
 
+// @ts-ignore
 const changeDescendant = (list, option) => {
   list.setAttribute('aria-activedescendant', option.getAttribute('id'));
 
   const options = list.querySelectorAll('[role="option"]');
 
-  options.forEach((opt) => opt.classList.remove('is-focused'));
+  options.forEach((opt: any) => opt.classList.remove('is-focused'));
   option.classList.add('is-focused');
 
   const actions = compute(option, {

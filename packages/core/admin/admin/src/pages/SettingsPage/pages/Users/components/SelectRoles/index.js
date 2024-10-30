@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Option, Select } from '@strapi/design-system';
+import { Option, Select } from '@atlas/design-system';
 import { getFetchClient } from '@strapi/helper-plugin';
 import { Loader as LoadingIcon } from '@strapi/icons';
 import PropTypes from 'prop-types';

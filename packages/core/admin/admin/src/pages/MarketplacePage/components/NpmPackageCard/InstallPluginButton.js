@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Icon } from '@strapi/design-system';
+import { Box, Icon } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { useClipboard, useNotification, useTracking } from '@strapi/helper-plugin';
 import { Check } from '@strapi/icons';

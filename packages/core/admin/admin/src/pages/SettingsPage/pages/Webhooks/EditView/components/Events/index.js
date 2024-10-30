@@ -14,7 +14,7 @@ import {
   RawTr as Tr,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { useFormikContext } from 'formik';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

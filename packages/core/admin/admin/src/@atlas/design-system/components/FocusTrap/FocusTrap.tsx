@@ -48,12 +48,12 @@ export const FocusTrap = ({ onEscape, restoreFocus = true, ...props }: FocusTrap
       firstElement.focus();
     } else {
       console.warn(
-        '[FocusTrap]: it seems there are no focusable elements in the focus trap tree. Make sure there s at least one.',
+        '[FocusTrap]: it seems there are no focusable elements in the focus trap tree. Make sure there s at least one.'
       );
     }
   }, []);
 
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e) => {
+  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (e: any) => {
     if (e.key === KeyboardKeys.ESCAPE && onEscape) {
       onEscape();
 

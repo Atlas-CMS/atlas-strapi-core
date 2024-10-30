@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { lightTheme, ThemeProvider } from '@strapi/design-system';
+import { lightTheme, ThemeProvider } from '@atlas/design-system';
 import { getFetchClient } from '@strapi/helper-plugin';
 import { fireEvent, render as renderTL, screen, waitFor } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

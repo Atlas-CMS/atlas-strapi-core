@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Flex, HeaderLayout } from '@strapi/design-system';
+import { Button, Flex, HeaderLayout } from '@atlas/design-system';
 import { Link } from '@strapi/helper-plugin';
 import { ArrowLeft, Check } from '@strapi/icons';
 import PropTypes from 'prop-types';

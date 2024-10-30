@@ -3,7 +3,7 @@ import styles from '../../typography.module.scss';
 import clsx from 'clsx';
 
 // Types
-import type { TypographyProps, TextProps } from '../../Typography';
+import type { TypographyProps } from '../../Typography';
 import { DefaultTheme } from 'styled-components';
 type TypographyPropsSansChildren = Omit<TypographyProps, 'children'>;
 
@@ -12,7 +12,6 @@ const simpleMaps: Record<string, string> = {
   textTransform: 'tt',
   textAlign: 'align', // Check this one...
   fontSize: 'size',
-  as: 'component',
   fontWeight: 'fw',
   lineHeight: 'lh',
 };
@@ -20,8 +19,9 @@ const simpleMaps: Record<string, string> = {
 export default function mapTypographyPropsToMantine(
   { ...props }: TypographyPropsSansChildren,
   theme: DefaultTheme
-): TextProps {
+): TypographyPropsSansChildren {
   let og: Record<string, any> = { ...props };
+  delete og.as;
   const mappedProps: Record<string, any> = Object.entries(og).reduce((acc, [key, value]) => {
     if (simpleMaps[key]) {
       delete og[key];
@@ -29,7 +29,7 @@ export default function mapTypographyPropsToMantine(
     }
 
     return acc;
-  }, {} as TextProps);
+  }, {} as Record<string, any>);
 
   if (og.textColor) {
     const _key: keyof DefaultTheme['colors'] =

@@ -1,4 +1,4 @@
-import { FieldAction, Flex } from '@strapi/design-system';
+import { FieldAction, Flex } from '@atlas/design-system';
 import styled, { keyframes } from 'styled-components';
 
 export const FieldActionWrapper = styled(FieldAction)`

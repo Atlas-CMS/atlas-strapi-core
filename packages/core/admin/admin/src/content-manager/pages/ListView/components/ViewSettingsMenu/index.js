@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, IconButton, Popover } from '@strapi/design-system';
+import { Flex, IconButton, Popover } from '@atlas/design-system';
 import { CheckPermissions, LinkButton } from '@strapi/helper-plugin';
 import { Cog, Layer } from '@strapi/icons';
 import PropTypes from 'prop-types';

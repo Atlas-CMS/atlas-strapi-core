@@ -8,7 +8,7 @@ import {
   Flex,
   IconButton,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Menu, MenuItem } from '@strapi/design-system/v2';
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
 import { Drag, More, Trash } from '@strapi/icons';

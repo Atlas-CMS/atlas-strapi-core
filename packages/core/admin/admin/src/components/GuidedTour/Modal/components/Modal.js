@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Flex, FocusTrap, IconButton, Portal } from '@strapi/design-system';
+import { Box, Button, Flex, FocusTrap, IconButton, Portal } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { Cross } from '@strapi/icons';
 import PropTypes from 'prop-types';

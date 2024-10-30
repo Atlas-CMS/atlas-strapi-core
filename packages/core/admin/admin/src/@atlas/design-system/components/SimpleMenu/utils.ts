@@ -1,4 +1,4 @@
-export const getOptionStyle = ({ theme }) => `
+export const getOptionStyle = ({ theme }: { theme: any }) => `
     text-align: left;
     width: 100%;
     color: ${theme.colors.neutral800};

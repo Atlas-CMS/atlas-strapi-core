@@ -1,4 +1,4 @@
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import styled from 'styled-components';
 
 const CollapseLabel = styled(Flex)`

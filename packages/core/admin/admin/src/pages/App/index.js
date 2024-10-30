@@ -6,7 +6,7 @@
 
 import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 
-import { SkipToContent } from '@strapi/design-system';
+import { SkipToContent } from '@atlas/design-system';
 import {
   auth,
   LoadingIndicatorPage,

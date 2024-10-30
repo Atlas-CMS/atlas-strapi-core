@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Grid, GridItem, Loader } from '@strapi/design-system';
+import { Flex, Grid, GridItem, Loader } from '@atlas/design-system';
 import { AnErrorOccurred } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

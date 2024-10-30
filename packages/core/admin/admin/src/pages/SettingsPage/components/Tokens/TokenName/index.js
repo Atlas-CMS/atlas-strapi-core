@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TextInput } from '@strapi/design-system';
+import { TextInput } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

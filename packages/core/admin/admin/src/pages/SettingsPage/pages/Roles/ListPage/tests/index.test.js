@@ -7,7 +7,7 @@
 import React from 'react';
 
 import { fixtures } from '@strapi/admin-test-utils';
-import { ThemeProvider, lightTheme } from '@strapi/design-system';
+import { ThemeProvider, lightTheme } from '@atlas/design-system';
 import { useRBAC } from '@strapi/helper-plugin';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';

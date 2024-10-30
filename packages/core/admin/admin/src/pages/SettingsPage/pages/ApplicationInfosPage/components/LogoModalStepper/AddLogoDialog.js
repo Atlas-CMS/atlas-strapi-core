@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Divider, Tab, TabGroup, TabPanel, TabPanels, Tabs } from '@strapi/design-system';
+import { Box, Divider, Tab, TabGroup, TabPanel, TabPanels, Tabs } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

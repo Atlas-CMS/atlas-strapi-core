@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, Grid, GridItem, Option, Select } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem, Option, Select } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import upperFirst from 'lodash/upperFirst';
 import PropTypes from 'prop-types';

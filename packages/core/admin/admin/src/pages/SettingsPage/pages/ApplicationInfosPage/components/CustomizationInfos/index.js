@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useReducer } from 'react';
 
-import { Box, Grid, GridItem } from '@strapi/design-system';
+import { Box, Grid, GridItem } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { useTracking } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';

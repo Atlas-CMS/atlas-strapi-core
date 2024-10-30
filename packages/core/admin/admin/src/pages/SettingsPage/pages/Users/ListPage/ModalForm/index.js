@@ -11,7 +11,7 @@ import {
   ModalHeader,
   ModalLayout,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Breadcrumbs, Crumb } from '@strapi/design-system/v2';
 import {
   Form,

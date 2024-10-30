@@ -26,6 +26,7 @@ const transientProps = {
 };
 
 const LinkWrapper = styled(NavLink).withConfig<PaginationLinkProps>({
+  // @ts-ignore
   shouldForwardProp: (prop, defPropValFN) => !transientProps[prop] && defPropValFN(prop),
 })`
   padding: ${({ theme }) => theme.spaces[3]};
@@ -116,7 +117,12 @@ export const PageLink = ({ number, children, ...props }: PaginationPageLinkProps
   return (
     <PageLinkWrapper {...props} active={isActive}>
       <VisuallyHidden>{children}</VisuallyHidden>
-      <Typography aria-hidden fontWeight={isActive ? 'bold' : undefined} lineHeight="revert" variant="pi">
+      <Typography
+        aria-hidden
+        fontWeight={isActive ? 'bold' : undefined}
+        lineHeight="revert"
+        variant="pi"
+      >
         {number}
       </Typography>
     </PageLinkWrapper>

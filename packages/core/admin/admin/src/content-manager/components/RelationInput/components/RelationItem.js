@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { Box, Flex, IconButton } from '@strapi/design-system';
+import { Box, Flex, IconButton } from '@atlas/design-system';
 import { Drag } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { getEmptyImage } from 'react-dnd-html5-backend';

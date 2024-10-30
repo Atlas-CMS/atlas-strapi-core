@@ -34,7 +34,10 @@ export interface ComboboxInputProps
       | 'isPrintableCharacter'
     >,
     Pick<FieldProps, 'error' | 'id'>,
-    Omit<ComboboxPrimitive.TextInputProps, 'required' | 'disabled' | 'value' | 'onChange' | 'size'> {
+    Omit<
+      ComboboxPrimitive.TextInputProps,
+      'required' | 'disabled' | 'value' | 'onChange' | 'size'
+    > {
   children: React.ReactNode;
   className?: string;
   clearLabel?: string;
@@ -103,7 +106,7 @@ export const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInpu
       value,
       ...restProps
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     const [internalIsOpen, setInternalIsOpen] = useControllableState({
       prop: open,
@@ -131,8 +134,9 @@ export const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInpu
 
     const clearRef = React.useRef(null);
 
-    const handleClearClick: React.MouseEventHandler<HTMLButtonElement> & React.MouseEventHandler<HTMLDivElement> = (
-      e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement>,
+    const handleClearClick: React.MouseEventHandler<HTMLButtonElement> &
+      React.MouseEventHandler<HTMLDivElement> = (
+      e: React.MouseEvent<HTMLButtonElement> | React.MouseEvent<HTMLDivElement>
     ) => {
       if (onClear && !disabled) {
         setInternalTextValue('');
@@ -150,11 +154,13 @@ export const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInpu
       setInternalTextValue(textValue);
     };
 
-    const handleFilterValueChange: ComboboxPrimitive.RootProps['onFilterValueChange'] = (filterValue) => {
+    const handleFilterValueChange: ComboboxPrimitive.RootProps['onFilterValueChange'] = (
+      filterValue
+    ) => {
       setInternalFilterValue(filterValue);
     };
 
-    const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e: any) => {
       if (onInputChange) {
         onInputChange(e);
       }
@@ -281,7 +287,7 @@ export const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInpu
         </ComboboxPrimitive.Portal>
       </ComboboxPrimitive.Root>
     );
-  },
+  }
 );
 
 /* -------------------------------------------------------------------------------------------------
@@ -304,13 +310,19 @@ export const Combobox = React.forwardRef<ComboboxInputElement, ComboboxProps>(
       <Field hint={hint} error={error} id={generatedId} required={required}>
         <Flex direction="column" alignItems="stretch" gap={1}>
           {label ? <FieldLabel action={labelAction}>{label}</FieldLabel> : null}
-          <ComboboxInput ref={forwardedRef} id={generatedId} error={error} required={required} {...restProps} />
+          <ComboboxInput
+            ref={forwardedRef}
+            id={generatedId}
+            error={error}
+            required={required}
+            {...restProps}
+          />
           <FieldHint />
           <FieldError />
         </Flex>
       </Field>
     );
-  },
+  }
 );
 
 /* -------------------------------------------------------------------------------------------------
@@ -324,7 +336,9 @@ export type CreatableComboboxProps =
   | (CreatableComboboxPropsWithoutLabel & { label: string; 'aria-label'?: never })
   | (CreatableComboboxPropsWithoutLabel & { label?: never; 'aria-label': string });
 
-export const CreatableCombobox = (props: CreatableComboboxProps) => <Combobox {...props} creatable />;
+export const CreatableCombobox = (props: CreatableComboboxProps) => (
+  <Combobox {...props} creatable />
+);
 
 const IconBox = styled(Box)`
   border: none;
@@ -346,7 +360,8 @@ interface TriggerProps {
 
 const Trigger = styled(ComboboxPrimitive.Trigger)<TriggerProps>`
   position: relative;
-  border: 1px solid ${({ theme, $hasError }) => ($hasError ? theme.colors.danger600 : theme.colors.neutral200)};
+  border: 1px solid
+    ${({ theme, $hasError }) => ($hasError ? theme.colors.danger600 : theme.colors.neutral200)};
   padding-right: ${({ theme }) => theme.spaces[3]};
   padding-left: ${({ theme }) => theme.spaces[3]};
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -429,7 +444,12 @@ export interface ComboboxOptionProps extends ComboboxPrimitive.ItemProps {
 export const Option = React.forwardRef<HTMLDivElement, ComboboxOptionProps>(
   ({ children, value, disabled, textValue, ...props }, ref) => {
     return (
-      <ComboboxPrimitive.ComboboxItem asChild value={value} disabled={disabled} textValue={textValue}>
+      <ComboboxPrimitive.ComboboxItem
+        asChild
+        value={value}
+        disabled={disabled}
+        textValue={textValue}
+      >
         <OptionBox ref={ref} {...props}>
           <ComboboxPrimitive.ItemText asChild>
             <Typography>{children}</Typography>
@@ -437,7 +457,7 @@ export const Option = React.forwardRef<HTMLDivElement, ComboboxOptionProps>(
         </OptionBox>
       </ComboboxPrimitive.ComboboxItem>
     );
-  },
+  }
 );
 
 export const OptionBox = styled.div<{ $hasHover?: boolean }>`
@@ -462,7 +482,8 @@ export const OptionBox = styled.div<{ $hasHover?: boolean }>`
   &:hover,
   &[data-highlighted] {
     outline: none;
-    background-color: ${({ theme, $hasHover = true }) => ($hasHover ? theme.colors.primary100 : theme.colors.neutral0)};
+    background-color: ${({ theme, $hasHover = true }) =>
+      $hasHover ? theme.colors.primary100 : theme.colors.neutral0};
   }
 
   &[data-highlighted] {

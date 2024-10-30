@@ -10,7 +10,7 @@ import {
   Grid,
   GridItem,
   IconButton,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { useCMEditViewDataManager } from '@strapi/helper-plugin';
 import { Drag, Trash } from '@strapi/icons';
 import get from 'lodash/get';

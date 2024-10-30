@@ -75,11 +75,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       ...props
     },
-    ref,
+    ref
   ) => {
     const isDisabled = disabled || loading;
 
-    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e: any) => {
       if (!isDisabled && onClick) {
         onClick(e);
       }
@@ -105,16 +105,22 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         width={fullWidth ? '100%' : undefined}
         {...props}
       >
-        {(startIcon || loading) && <Box aria-hidden>{loading ? <LoaderAnimated /> : startIcon}</Box>}
+        {(startIcon || loading) && (
+          <Box aria-hidden>{loading ? <LoaderAnimated /> : startIcon}</Box>
+        )}
 
-        <Typography variant={size === 'S' ? 'pi' : undefined} fontWeight="bold" textColor="buttonNeutral0">
+        <Typography
+          variant={size === 'S' ? 'pi' : undefined}
+          fontWeight="bold"
+          textColor="buttonNeutral0"
+        >
           {children}
         </Typography>
 
         {endIcon && <Flex aria-hidden>{endIcon}</Flex>}
       </ButtonWrapper>
     );
-  },
+  }
 );
 
 Button.displayName = 'Button';

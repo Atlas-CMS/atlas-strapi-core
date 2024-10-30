@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AvatarGroup } from '@strapi/design-system';
+import { AvatarGroup } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import Media from './Media';

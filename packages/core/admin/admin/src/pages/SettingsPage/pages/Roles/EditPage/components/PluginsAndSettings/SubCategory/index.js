@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 
-import { Box, Checkbox, Flex, Grid, GridItem } from '@strapi/design-system';
+import { Box, Checkbox, Flex, Grid, GridItem } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';

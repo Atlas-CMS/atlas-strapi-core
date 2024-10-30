@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 
-import { BaseCheckbox, Box, Flex } from '@strapi/design-system';
+import { BaseCheckbox, Box, Flex } from '@atlas/design-system';
 import { ChevronDown, ChevronUp } from '@strapi/icons';
 import get from 'lodash/get';
 import omit from 'lodash/omit';

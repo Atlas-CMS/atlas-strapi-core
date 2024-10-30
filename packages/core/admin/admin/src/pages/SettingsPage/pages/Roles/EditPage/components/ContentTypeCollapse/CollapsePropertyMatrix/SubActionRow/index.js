@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useState } from 'react';
 
-import { BaseCheckbox, Box, Flex } from '@strapi/design-system';
+import { BaseCheckbox, Box, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import get from 'lodash/get';
 import upperFirst from 'lodash/upperFirst';

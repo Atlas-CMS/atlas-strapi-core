@@ -1,5 +1,5 @@
 import { normalizeStyles } from '@atlas/design-system';
-import { Box } from '@strapi/design-system';
+import { Box } from '@atlas/design-system';
 
 import styled from 'styled-components';
 

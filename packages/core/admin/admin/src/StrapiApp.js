@@ -9,7 +9,7 @@ import pick from 'lodash/pick';
 
 // Components
 import { LANGUAGE_LOCAL_STORAGE_KEY } from '@components/LanguageProvider';
-import { darkTheme, lightTheme } from '@strapi/design-system';
+import { darkTheme, lightTheme } from '@atlas/design-system';
 import Providers from '@components/Providers';
 import { Helmet } from 'react-helmet';
 import App from './pages/App';

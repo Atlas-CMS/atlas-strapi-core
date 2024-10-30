@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Grid } from '@strapi/design-system';
+import { Grid } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import RowItemsLayout from './RowItemsLayout';

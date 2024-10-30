@@ -26,7 +26,7 @@ function useControllableState<TProp>({
   onChange = () => {},
 }: UseControllableStateParams<TProp>): [
   TProp | undefined,
-  (nextState: TProp | undefined | SetStateFn<TProp | undefined>) => void,
+  (nextState: TProp | undefined | SetStateFn<TProp | undefined>) => void
 ] {
   const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({ defaultProp, onChange });
   const isControlled = prop !== undefined;
@@ -35,7 +35,7 @@ function useControllableState<TProp>({
   const handleChange = useCallbackRef(onChange);
 
   const setValue = React.useCallback(
-    (nextValue) => {
+    (nextValue: any) => {
       if (isControlled) {
         const setter = nextValue;
         const value = typeof nextValue === 'function' ? setter(propValue) : nextValue;
@@ -48,13 +48,16 @@ function useControllableState<TProp>({
         setUncontrolledProp(nextValue);
       }
     },
-    [isControlled, propValue, setUncontrolledProp, handleChange],
+    [isControlled, propValue, setUncontrolledProp, handleChange]
   );
 
   return [value, setValue];
 }
 
-function useUncontrolledState<TProp>({ defaultProp, onChange }: Omit<UseControllableStateParams<TProp>, 'prop'>) {
+function useUncontrolledState<TProp>({
+  defaultProp,
+  onChange,
+}: Omit<UseControllableStateParams<TProp>, 'prop'>) {
   const uncontrolledState = React.useState(defaultProp);
   const [value] = uncontrolledState;
   const prevValueRef = React.useRef(value);

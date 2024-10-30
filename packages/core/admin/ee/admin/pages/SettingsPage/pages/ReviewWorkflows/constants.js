@@ -1,4 +1,4 @@
-import { lightTheme } from '@strapi/design-system';
+import { lightTheme } from '@atlas/design-system';
 
 export const REDUX_NAMESPACE = 'settings_review-workflows';
 

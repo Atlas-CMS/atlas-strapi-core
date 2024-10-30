@@ -9,7 +9,7 @@ import {
   Select,
   ToggleInput,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { useCollator } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

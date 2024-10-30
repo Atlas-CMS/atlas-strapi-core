@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@atlas/design-system';
 import { useIntl } from 'react-intl';
 import { createGlobalStyle } from 'styled-components';
 

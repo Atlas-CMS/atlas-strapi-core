@@ -1,6 +1,11 @@
 import * as React from 'react';
 
-import { CalendarDateTime, parseAbsoluteToLocal, toCalendarDateTime, getLocalTimeZone } from '@internationalized/date';
+import {
+  CalendarDateTime,
+  parseAbsoluteToLocal,
+  toCalendarDateTime,
+  getLocalTimeZone,
+} from '@internationalized/date';
 import styled from 'styled-components';
 
 import { DatePickerInput, DatePickerInputProps, DatePickerElement } from '../DatePicker/DatePicker';
@@ -76,7 +81,7 @@ export const DateTimePicker = React.forwardRef<DatePickerElement, DateTimePicker
       initialDate,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     const DatePickerElement = React.useRef<HTMLInputElement>(null!);
 
@@ -138,7 +143,7 @@ export const DateTimePicker = React.forwardRef<DatePickerElement, DateTimePicker
       setDateValue(dateToSet);
     };
 
-    const handleDateClear: DatePickerInputProps['onClear'] = (e) => {
+    const handleDateClear: DatePickerInputProps['onClear'] = (e: any) => {
       setDateValue(undefined);
       // setTimeTextValue('');
 
@@ -148,7 +153,9 @@ export const DateTimePicker = React.forwardRef<DatePickerElement, DateTimePicker
     };
 
     const handleTimeClear = () => {
-      const newDate = dateValue ? dateValue.set({ hour: 0, minute: 0 }) : convertUTCDateToCalendarDateTime(new Date());
+      const newDate = dateValue
+        ? dateValue.set({ hour: 0, minute: 0 })
+        : convertUTCDateToCalendarDateTime(new Date());
 
       setDateValue(newDate);
       // setTimeTextValue('');
@@ -212,7 +219,11 @@ export const DateTimePicker = React.forwardRef<DatePickerElement, DateTimePicker
               error={typeof error === 'string'}
               value={timeValue}
               onChange={handleTimeChange}
-              onClear={onClear && timeValue !== undefined && timeValue !== '00:00' ? handleTimeClear : undefined}
+              onClear={
+                onClear && timeValue !== undefined && timeValue !== '00:00'
+                  ? handleTimeClear
+                  : undefined
+              }
               clearLabel={`${clearLabel} time`}
               required={required}
               disabled={disabled}
@@ -226,18 +237,21 @@ export const DateTimePicker = React.forwardRef<DatePickerElement, DateTimePicker
         </Flex>
       </Field>
     );
-  },
+  }
 );
 
 const warnOnce = once(console.warn);
 
-export const convertUTCDateToCalendarDateTime = (date: Date | string, resetTime = true): CalendarDateTime => {
+export const convertUTCDateToCalendarDateTime = (
+  date: Date | string,
+  resetTime = true
+): CalendarDateTime => {
   /**
    * TODO: remove this in V2, it's a deprecated API
    */
   if (typeof date === 'string') {
     warnOnce(
-      "It looks like you're passing a string as representation of a Date to the DatePicker. This is deprecated, look to passing a Date instead.",
+      "It looks like you're passing a string as representation of a Date to the DatePicker. This is deprecated, look to passing a Date instead."
     );
     const timestamp = Date.parse(date);
 

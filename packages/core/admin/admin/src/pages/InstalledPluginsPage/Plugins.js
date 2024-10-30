@@ -13,7 +13,7 @@ import {
   Tr,
   Typography,
   useNotifyAT,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { LoadingIndicatorPage, useFocusWhenNavigate } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
 

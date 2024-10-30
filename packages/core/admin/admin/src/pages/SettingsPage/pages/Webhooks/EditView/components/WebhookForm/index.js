@@ -9,7 +9,7 @@ import {
   GridItem,
   HeaderLayout,
   TextInput,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Form, Link } from '@strapi/helper-plugin';
 import { ArrowLeft, Check, Play as Publish } from '@strapi/icons';
 import { Field, FormikProvider, useFormik } from 'formik';

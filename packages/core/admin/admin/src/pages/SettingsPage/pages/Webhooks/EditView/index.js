@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Main } from '@strapi/design-system';
+import { Main } from '@atlas/design-system';
 import {
   LoadingIndicatorPage,
   SettingsPageTitle,

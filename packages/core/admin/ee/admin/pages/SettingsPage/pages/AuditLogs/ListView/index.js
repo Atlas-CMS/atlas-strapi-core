@@ -1,13 +1,6 @@
 import React from 'react';
 
-import {
-  ActionLayout,
-  Box,
-  ContentLayout,
-  HeaderLayout,
-  Layout,
-  Main,
-} from '@strapi/design-system';
+import { ActionLayout, Box, ContentLayout, HeaderLayout, Layout, Main } from '@atlas/design-system';
 import {
   AnErrorOccurred,
   DynamicTable,

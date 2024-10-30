@@ -3,7 +3,15 @@ import * as React from 'react';
 
 import styled from 'styled-components';
 
-import { Field, FieldHint, FieldError, FieldLabel, type FieldProps, useField, FieldLabelProps } from '../Field';
+import {
+  Field,
+  FieldHint,
+  FieldError,
+  FieldLabel,
+  type FieldProps,
+  useField,
+  FieldLabelProps,
+} from '../Field';
 import { Flex } from '../Flex';
 import { useControllableState } from '../hooks/useControllableState';
 import { useId } from '../hooks/useId';
@@ -13,7 +21,10 @@ import type { InputSizes } from '../themes/sizes';
 import { Typography } from '../Typography';
 
 interface ToggleInputInputProps
-  extends Omit<React.ComponentPropsWithoutRef<'input'>, 'name' | 'children' | 'required' | 'id' | 'size' | 'checked'> {
+  extends Omit<
+    React.ComponentPropsWithoutRef<'input'>,
+    'name' | 'children' | 'required' | 'id' | 'size' | 'checked'
+  > {
   onLabel: string;
   offLabel: string;
   checked?: boolean | null;
@@ -27,7 +38,10 @@ type ToggleInputInputElement = HTMLInputElement;
  * as seen – https://www.w3.org/WAI/ARIA/apg/patterns/switch/examples/switch-button/
  */
 const ToggleInputInput = React.forwardRef<ToggleInputInputElement, ToggleInputInputProps>(
-  ({ offLabel, onLabel, disabled, checked: checkedProp, onChange, size = 'M', ...props }, forwardedRef) => {
+  (
+    { offLabel, onLabel, disabled, checked: checkedProp, onChange, size = 'M', ...props },
+    forwardedRef
+  ) => {
     const [checked = false, setChecked] = useControllableState<boolean | null>({
       prop: checkedProp,
     });
@@ -60,7 +74,13 @@ const ToggleInputInput = React.forwardRef<ToggleInputInputElement, ToggleInputIn
           paddingLeft={3}
           paddingRight={3}
           justifyContent="center"
-          background={disabled && isFalseyChecked ? 'neutral200' : isFalseyChecked ? 'neutral0' : 'transparent'}
+          background={
+            disabled && isFalseyChecked
+              ? 'neutral200'
+              : isFalseyChecked
+              ? 'neutral0'
+              : 'transparent'
+          }
           borderColor={
             disabled && isFalseyChecked
               ? 'neutral300'
@@ -89,7 +109,13 @@ const ToggleInputInput = React.forwardRef<ToggleInputInputElement, ToggleInputIn
           justifyContent="center"
           background={disabled && checked ? 'neutral200' : checked ? 'neutral0' : 'transparent'}
           borderColor={
-            disabled && checked ? 'neutral300' : checked ? 'neutral200' : disabled ? 'neutral150' : 'neutral100'
+            disabled && checked
+              ? 'neutral300'
+              : checked
+              ? 'neutral200'
+              : disabled
+              ? 'neutral150'
+              : 'neutral100'
           }
           size={size}
         >
@@ -105,7 +131,7 @@ const ToggleInputInput = React.forwardRef<ToggleInputInputElement, ToggleInputIn
         <Input
           {...props}
           ref={forwardedRef}
-          onChange={(e) => {
+          onChange={(e: any) => {
             setChecked(e.currentTarget.checked);
             onChange?.(e);
           }}
@@ -120,7 +146,7 @@ const ToggleInputInput = React.forwardRef<ToggleInputInputElement, ToggleInputIn
         />
       </ToggleWrapper>
     );
-  },
+  }
 );
 
 const ToggleWrapper = styled(Flex)`
@@ -175,12 +201,19 @@ const ToggleInput = React.forwardRef<ToggleInputInputElement, ToggleInputProps>(
       checked,
       ...props
     },
-    forwardedRef,
+    forwardedRef
   ) => {
     const generatedId = useId(id);
 
     return (
-      <Field name={name} hint={hint} error={error} id={generatedId} required={required} maxWidth="320px">
+      <Field
+        name={name}
+        hint={hint}
+        error={error}
+        id={generatedId}
+        required={required}
+        maxWidth="320px"
+      >
         <Flex direction="column" alignItems="stretch" gap={1}>
           <Flex>
             {label ? <FieldLabel action={labelAction}>{label}</FieldLabel> : null}
@@ -194,7 +227,7 @@ const ToggleInput = React.forwardRef<ToggleInputInputElement, ToggleInputProps>(
         </Flex>
       </Field>
     );
-  },
+  }
 );
 
 const ClearButton = styled(TextButton)`

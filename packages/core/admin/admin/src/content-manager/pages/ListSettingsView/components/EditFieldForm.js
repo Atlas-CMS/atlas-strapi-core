@@ -12,7 +12,7 @@ import {
   TextInput,
   ToggleInput,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import upperFirst from 'lodash/upperFirst';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

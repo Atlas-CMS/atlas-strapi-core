@@ -60,18 +60,18 @@ export const SubNavHeader = ({
     setSearchOpen((isOpen) => !isOpen);
   };
 
-  const handleClear = (e) => {
+  const handleClear = (e: any) => {
     onClear(e);
     searchRef.current.focus();
   };
 
-  const handleBlur = (e) => {
+  const handleBlur = (e: any) => {
     if (e.relatedTarget?.id !== clearButtonId) {
       setSearchOpen(false);
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: any) => {
     if (e.key === KeyboardKeys.ESCAPE) {
       setSearchOpen(false);
     }
@@ -111,7 +111,12 @@ export const SubNavHeader = ({
           {label}
         </Typography>
         {searchable && (
-          <IconButton ref={searchButtonRef} onClick={toggleSearch} label={searchLabel} icon={<Search />} />
+          <IconButton
+            ref={searchButtonRef}
+            onClick={toggleSearch}
+            label={searchLabel}
+            icon={<Search />}
+          />
         )}
       </Flex>
       <Box paddingTop={4}>

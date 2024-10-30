@@ -46,7 +46,7 @@ function useRipple(rippleClassName = '') {
       const button = rippleRef.current;
 
       //add an event listener to the button
-      button.addEventListener('click', (e) => clickHandler(e, button), {
+      button.addEventListener('click', (e: any) => clickHandler(e, button), {
         signal: controller.signal,
       });
 
@@ -78,7 +78,7 @@ function useRipple(rippleClassName = '') {
       <span
         key={i}
         style={style}
-        data-ripple='true'
+        data-ripple="true"
         className={clsx(rippleClassName, defaultStyles.ripple)}
       />
     );
@@ -143,13 +143,9 @@ function useRipples(rippleClassName = '') {
 
     for (let [key, element] of Object.entries(ripplesRefByKey.current)) {
       let controller = new AbortController();
-      element.addEventListener(
-        'click',
-        (e) => clickHandler(e, [key, element]),
-        {
-          signal: controller.signal,
-        }
-      );
+      element.addEventListener('click', (e: any) => clickHandler(e, [key, element]), {
+        signal: controller.signal,
+      });
       controllers.push(controller);
     }
 
@@ -175,7 +171,7 @@ function useRipples(rippleClassName = '') {
         <span
           key={i}
           style={style}
-          data-ripple='true'
+          data-ripple="true"
           className={clsx(rippleClassName, defaultStyles.ripple)}
         />
       );

@@ -11,7 +11,7 @@ import {
   Tooltip,
   VisuallyHidden,
   Combobox,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { useFocusInputField } from '@strapi/helper-plugin';
 import { Cross, Refresh } from '@strapi/icons';
 import PropTypes from 'prop-types';

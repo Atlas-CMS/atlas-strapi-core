@@ -7,13 +7,14 @@ import { Flex } from '../Flex';
 import { once } from '../helpers/deprecations';
 import { Typography, TypographyProps } from '../Typography';
 
-export interface FieldLabelProps extends TypographyProps<'label'> {
+export interface FieldLabelProps extends TypographyProps {
   action?: ReactNode;
   /**
    * @preserve
    * @deprecated "required" should be given to Field component to share the value across components
    */
   required?: boolean;
+  children: ReactNode;
 }
 
 const warnOnce = once(console.warn);
@@ -25,7 +26,7 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(
 
     if (requiredDeprecatedProp !== undefined) {
       warnOnce(
-        'Deprecation warning: Usage of "required" prop in FieldLabel component is deprecated. This is discouraged and will be removed in the next major release. Please use the Field component to share the required prop.',
+        'Deprecation warning: Usage of "required" prop in FieldLabel component is deprecated. This is discouraged and will be removed in the next major release. Please use the Field component to share the required prop.'
       );
     }
 
@@ -44,7 +45,7 @@ export const FieldLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(
         {action && <Action marginLeft={1}>{action}</Action>}
       </TypographyFlex>
     );
-  },
+  }
 );
 
 /**

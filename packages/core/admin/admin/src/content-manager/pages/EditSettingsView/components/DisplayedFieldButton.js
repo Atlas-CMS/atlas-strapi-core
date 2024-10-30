@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Box, Flex, GridItem } from '@strapi/design-system';
+import { Box, Flex, GridItem } from '@atlas/design-system';
 import { Drag } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useDrag, useDrop } from 'react-dnd';

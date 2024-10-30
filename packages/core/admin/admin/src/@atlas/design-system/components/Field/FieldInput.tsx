@@ -35,7 +35,7 @@ export const FieldInput = forwardRef<HTMLInputElement, FieldInputProps>(
 
     const hasError = Boolean(error);
 
-    const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const handleChange: ChangeEventHandler<HTMLInputElement> = (e: any) => {
       if (!disabled && onChange) {
         onChange(e);
       }
@@ -71,7 +71,7 @@ export const FieldInput = forwardRef<HTMLInputElement, FieldInputProps>(
         ) : null}
       </InputWrapper>
     );
-  },
+  }
 );
 
 interface InputProps {
@@ -113,7 +113,8 @@ const Input = styled.input<InputProps>`
 `;
 
 export const InputWrapper = styled(Flex)<{ disabled: boolean; hasError: boolean }>`
-  border: 1px solid ${({ theme, hasError }) => (hasError ? theme.colors.danger600 : theme.colors.neutral200)};
+  border: 1px solid
+    ${({ theme, hasError }) => (hasError ? theme.colors.danger600 : theme.colors.neutral200)};
   border-radius: ${({ theme }) => theme.borderRadius};
   background: ${({ theme }) => theme.colors.neutral0};
   ${inputFocusStyle()}

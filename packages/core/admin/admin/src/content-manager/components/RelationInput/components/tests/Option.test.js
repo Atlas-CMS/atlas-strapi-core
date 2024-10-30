@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThemeProvider, lightTheme, Combobox } from '@strapi/design-system';
+import { ThemeProvider, lightTheme, Combobox } from '@atlas/design-system';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from 'react-intl';

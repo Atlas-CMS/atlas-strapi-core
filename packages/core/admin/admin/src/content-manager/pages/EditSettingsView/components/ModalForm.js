@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 
-import { GridItem, Option, Select } from '@strapi/design-system';
+import { GridItem, Option, Select } from '@atlas/design-system';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

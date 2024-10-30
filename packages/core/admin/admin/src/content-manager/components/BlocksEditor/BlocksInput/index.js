@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Box } from '@strapi/design-system';
+import { Box } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { Editable, useSlate } from 'slate-react';
 import { useTheme } from 'styled-components';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Flex, TextInput } from '@strapi/design-system';
+import { Flex, TextInput } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import {
   useAPIErrorHandler,

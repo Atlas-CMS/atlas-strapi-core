@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 
-import { Box, Flex, VisuallyHidden } from '@strapi/design-system';
+import { Box, Flex, VisuallyHidden } from '@atlas/design-system';
 import { NotAllowedInput, useCMEditViewDataManager, useNotification } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

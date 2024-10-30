@@ -1,14 +1,6 @@
 import React from 'react';
 
-import {
-  Box,
-  FieldLabel,
-  Flex,
-  Grid,
-  GridItem,
-  TextButton,
-  TextInput,
-} from '@strapi/design-system';
+import { Box, FieldLabel, Flex, Grid, GridItem, TextButton, TextInput } from '@atlas/design-system';
 import { RemoveRoundedButton } from '@strapi/helper-plugin';
 import { Plus } from '@strapi/icons';
 import { Field, FieldArray, useFormikContext } from 'formik';

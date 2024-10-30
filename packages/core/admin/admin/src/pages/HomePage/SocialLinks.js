@@ -5,7 +5,7 @@
 
 import React from 'react';
 
-import { Box, Flex, Grid, GridItem } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { Link, LinkButton } from '@strapi/design-system/v2';
 import { useAppInfo } from '@strapi/helper-plugin';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Flex, Loader } from '@strapi/design-system';
+import { Button, Flex, Loader } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import {
   ConfirmDialog,

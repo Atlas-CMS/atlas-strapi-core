@@ -12,7 +12,7 @@ import {
   Textarea,
   TextInput,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   CheckPagePermissions,
   Form,

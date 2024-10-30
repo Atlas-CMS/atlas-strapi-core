@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, GridItem, Icon, Tooltip } from '@strapi/design-system';
+import { Flex, GridItem, Icon, Tooltip } from '@atlas/design-system';
 import { ExclamationMarkCircle, ExternalLink } from '@strapi/icons';
 import { pxToRem, useRBAC } from '@strapi/helper-plugin';
 import { Typography } from '@atlas/design-system';

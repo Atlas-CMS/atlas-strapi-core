@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tooltip } from '@strapi/design-system';
+import { Tooltip } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';

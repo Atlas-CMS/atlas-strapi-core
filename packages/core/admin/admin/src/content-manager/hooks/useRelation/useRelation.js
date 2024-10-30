@@ -36,7 +36,7 @@ export const useRelation = (cacheKey, { relation, search }) => {
       /**
        * @type {(lastPage:
        * | { data: null }
-       * | { results: any[],
+       * | { results[],
        *     pagination: {
        *      page: number,
        *      pageCount: number,
@@ -141,7 +141,7 @@ export const useRelation = (cacheKey, { relation, search }) => {
       /**
        * @type {(lastPage:
        * | { data: null }
-       * | { results: any[],
+       * | { results[],
        *     pagination: {
        *      page: number,
        *      pageCount: number,

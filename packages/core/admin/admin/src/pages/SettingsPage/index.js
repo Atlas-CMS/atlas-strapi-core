@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Layout } from '@strapi/design-system';
+import { Layout } from '@atlas/design-system';
 import { LoadingIndicatorPage, useStrapiApp } from '@strapi/helper-plugin';
 import { Helmet } from 'react-helmet';
 import { useIntl } from 'react-intl';

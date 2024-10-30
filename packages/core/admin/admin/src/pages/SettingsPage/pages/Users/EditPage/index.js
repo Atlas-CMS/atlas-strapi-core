@@ -10,7 +10,7 @@ import {
   HeaderLayout,
   Main,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   auth,
   Form,

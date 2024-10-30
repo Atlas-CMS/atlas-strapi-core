@@ -9,7 +9,7 @@ import {
   Flex,
   Status,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   useTracking,
   useFetchClient,

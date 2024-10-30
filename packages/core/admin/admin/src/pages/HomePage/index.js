@@ -5,7 +5,7 @@
 
 import React, { useMemo } from 'react';
 
-import { Box, Grid, GridItem, Layout, Main } from '@strapi/design-system';
+import { Box, Grid, GridItem, Layout, Main } from '@atlas/design-system';
 import { LoadingIndicatorPage, useGuidedTour } from '@strapi/helper-plugin';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';

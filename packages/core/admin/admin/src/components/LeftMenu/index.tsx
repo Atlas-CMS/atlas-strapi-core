@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import clsx from 'clsx';
 
 // Components
-import { Box, Divider, Flex, FocusTrap } from '@strapi/design-system';
+import { Box, Divider, Flex, FocusTrap } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { LinkUserWrapper, LinkUser } from './components';
 
@@ -89,7 +89,7 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
     history.push('/auth/login');
   };
 
-  const handleBlur: React.FocusEventHandler = (e) => {
+  const handleBlur: React.FocusEventHandler = (e: any) => {
     if (
       !e.currentTarget.contains(e.relatedTarget) &&
       e.relatedTarget?.parentElement?.id !== 'main-nav-user-button'

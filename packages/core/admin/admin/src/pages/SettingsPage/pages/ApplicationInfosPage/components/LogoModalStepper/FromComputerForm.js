@@ -10,7 +10,7 @@ import {
   Icon,
   ModalFooter,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { PicturePlus } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

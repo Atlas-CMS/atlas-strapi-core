@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { Box, Flex } from '@strapi/design-system';
+import { Box, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';

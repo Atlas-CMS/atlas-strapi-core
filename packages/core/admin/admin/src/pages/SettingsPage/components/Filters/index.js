@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { Box, Button } from '@strapi/design-system';
+import { Box, Button } from '@atlas/design-system';
 import { FilterListURLQuery, FilterPopoverURLQuery } from '@strapi/helper-plugin';
 import { Filter } from '@strapi/icons';
 import PropTypes from 'prop-types';

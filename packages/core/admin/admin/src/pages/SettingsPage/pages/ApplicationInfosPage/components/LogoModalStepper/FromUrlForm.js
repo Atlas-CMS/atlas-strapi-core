@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Box, Button, ModalFooter, TextInput } from '@strapi/design-system';
+import { Box, Button, ModalFooter, TextInput } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

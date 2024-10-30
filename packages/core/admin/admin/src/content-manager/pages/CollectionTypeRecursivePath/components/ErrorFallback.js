@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box } from '@strapi/design-system';
+import { Box } from '@atlas/design-system';
 import { AnErrorOccurred } from '@strapi/helper-plugin';
 
 const ErrorFallback = () => {

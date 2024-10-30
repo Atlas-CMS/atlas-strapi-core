@@ -129,7 +129,7 @@ export const Accordion = ({
 
   const context = React.useMemo(
     () => ({ expanded, onToggle, toggle, id: generatedId, size, variant, disabled }),
-    [disabled, expanded, generatedId, onToggle, size, toggle, variant],
+    [disabled, expanded, generatedId, onToggle, size, toggle, variant]
   );
 
   return (
@@ -139,6 +139,7 @@ export const Accordion = ({
         disabled={disabled}
         aria-disabled={disabled}
         expanded={expanded}
+        // @ts-ignore
         hasRadius
         variant={variant}
         error={error}
@@ -147,6 +148,7 @@ export const Accordion = ({
         {children}
       </AccordionWrapper>
       {error && hasErrorMessage && (
+        // @ts-ignore
         <Box paddingTop={1}>
           <Typography variant="pi" textColor="danger600">
             {error}

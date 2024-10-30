@@ -8,7 +8,7 @@ import {
   MultiSelectOption,
   TextInput,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { useCollator } from '@strapi/helper-plugin';
 import { useField } from 'formik';
 import PropTypes from 'prop-types';

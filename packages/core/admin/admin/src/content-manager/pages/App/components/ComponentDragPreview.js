@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, IconButton } from '@strapi/design-system';
+import { Flex, IconButton } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { CarretDown, Drag, Trash } from '@strapi/icons';

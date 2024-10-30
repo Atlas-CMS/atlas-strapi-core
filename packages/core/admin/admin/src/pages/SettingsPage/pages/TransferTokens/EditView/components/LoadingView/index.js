@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, ContentLayout, HeaderLayout, Main } from '@strapi/design-system';
+import { Button, ContentLayout, HeaderLayout, Main } from '@atlas/design-system';
 import {
   LoadingIndicatorPage,
   SettingsPageTitle,

@@ -8,7 +8,7 @@ import {
   HeaderLayout,
   Main,
   useNotifyAT,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   auth,
   Form,

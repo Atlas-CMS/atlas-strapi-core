@@ -3,7 +3,7 @@
 
 import React, { useMemo } from 'react';
 
-import { Box, Flex, Grid, GridItem } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import { useContentTypeLayout } from '../../hooks';

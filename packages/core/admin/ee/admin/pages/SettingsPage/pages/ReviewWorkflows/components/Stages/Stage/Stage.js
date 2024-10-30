@@ -17,7 +17,7 @@ import {
   TextInput,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Menu, MenuItem } from '@strapi/design-system/v2';
 import {
   ConfirmDialog,

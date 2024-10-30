@@ -24,11 +24,14 @@ interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
   small?: boolean;
 }
 
-export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(({ children, small = false, ...props }, ref) => {
-  return (
-    <div role="alert" aria-live="assertive" ref={ref} {...props}>
-      <VisuallyHidden>{children}</VisuallyHidden>
-      <LoaderImg src={loaderSvg} aria-hidden small={small} />
-    </div>
-  );
-});
+export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>(
+  ({ children, small = false, ...props }, ref) => {
+    return (
+      <div role="alert" aria-live="assertive" ref={ref} {...props}>
+        <VisuallyHidden>{children}</VisuallyHidden>
+        {/* @ts-ignore */}
+        <LoaderImg src={loaderSvg} aria-hidden small={small} />
+      </div>
+    );
+  }
+);

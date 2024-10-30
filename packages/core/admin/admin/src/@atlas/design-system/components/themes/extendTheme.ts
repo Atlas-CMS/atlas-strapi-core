@@ -22,7 +22,7 @@ const myCustomTheme = extendTheme(lightTheme, {
 export const extendTheme = (theme: DefaultTheme | null, overrides: object | null) => {
   if (!isObject(theme)) {
     const error = generateError(
-      'The first argument should be an object and corresponds to the theme you want to extend.',
+      'The first argument should be an object and corresponds to the theme you want to extend.'
     );
 
     throw new Error(error);
@@ -30,12 +30,13 @@ export const extendTheme = (theme: DefaultTheme | null, overrides: object | null
 
   if (!isObject(overrides)) {
     const error = generateError(
-      'The second argument should be an object and corresponds to the keys of the theme you want to override.',
+      'The second argument should be an object and corresponds to the keys of the theme you want to override.'
     );
 
     throw new Error(error);
   }
 
+  // @ts-ignore
   function customizer(objValue, srcValue) {
     if (Array.isArray(objValue)) {
       return srcValue;

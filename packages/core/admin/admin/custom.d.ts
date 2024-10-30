@@ -1,6 +1,6 @@
 export {};
 
-import { StrapiTheme } from '@strapi/design-system';
+import { StrapiTheme } from '@atlas/design-system';
 
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -10,6 +10,11 @@ declare module 'styled-components' {
 declare module '*.module.scss' {
   const classes: { [key: string]: string };
   export = classes;
+}
+
+declare module '*.svg' {
+  const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  export default content;
 }
 
 declare module '*.scss';

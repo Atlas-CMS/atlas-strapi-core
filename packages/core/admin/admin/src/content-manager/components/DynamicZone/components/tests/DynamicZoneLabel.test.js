@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { lightTheme, ThemeProvider, Tooltip } from '@strapi/design-system';
+import { lightTheme, ThemeProvider, Tooltip } from '@atlas/design-system';
 import { Earth } from '@strapi/icons';
 import { render as renderRTL } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

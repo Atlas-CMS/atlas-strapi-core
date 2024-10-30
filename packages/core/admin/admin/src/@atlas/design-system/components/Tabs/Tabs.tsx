@@ -9,6 +9,7 @@ import type { FlexProps } from '../Flex';
 import { KeyboardKeys } from '../helpers/keyboardKeys';
 import { Typography } from '../Typography';
 
+// @ts-ignore
 const useTabsFocus = (selectedTabIndex, onTabChange) => {
   const tabsRef = useRef<HTMLDivElement>(null);
   const mountedRef = useRef(false);
@@ -59,10 +60,10 @@ export const Tabs = ({ children, ...props }: TabsProps) => {
       selectedTabIndex,
       onTabClick: () => selectTabIndex(index),
       variant,
-    }),
+    })
   );
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: any) => {
     const hasAllChildrenDisabled = childrenArray.every((node) => node.props.disabled);
 
     if (hasAllChildrenDisabled) {
@@ -72,6 +73,7 @@ export const Tabs = ({ children, ...props }: TabsProps) => {
     switch (e.key) {
       case KeyboardKeys.RIGHT: {
         const nextWantedIndex = selectedTabIndex + 1;
+        // @ts-ignore
         const findNextIndex = (ref) => {
           const isDisabled = childrenArray[ref].props.disabled;
 
@@ -86,7 +88,9 @@ export const Tabs = ({ children, ...props }: TabsProps) => {
           return findNextIndex(ref + 1);
         };
 
-        const nextIndex = findNextIndex(nextWantedIndex >= childrenArray.length ? 0 : nextWantedIndex);
+        const nextIndex = findNextIndex(
+          nextWantedIndex >= childrenArray.length ? 0 : nextWantedIndex
+        );
 
         selectTabIndex(nextIndex);
 
@@ -95,6 +99,7 @@ export const Tabs = ({ children, ...props }: TabsProps) => {
 
       case KeyboardKeys.LEFT: {
         const nextWantedIndex = selectedTabIndex - 1;
+        // @ts-ignore
         const findNextIndex = (ref) => {
           const isDisabled = childrenArray[ref].props.disabled;
 
@@ -108,7 +113,9 @@ export const Tabs = ({ children, ...props }: TabsProps) => {
 
           return findNextIndex(ref - 1);
         };
-        const nextIndex = findNextIndex(nextWantedIndex < 0 ? childrenArray.length - 1 : nextWantedIndex);
+        const nextIndex = findNextIndex(
+          nextWantedIndex < 0 ? childrenArray.length - 1 : nextWantedIndex
+        );
 
         selectTabIndex(nextIndex);
 
@@ -124,8 +131,13 @@ export const Tabs = ({ children, ...props }: TabsProps) => {
       }
 
       case KeyboardKeys.END: {
-        const arrayOfChildrenProps = childrenArray.map((node, index) => ({ isDisabled: node.props.disabled, index }));
-        const firstNonDisabledChildren = arrayOfChildrenProps.reverse().find(({ isDisabled }) => !isDisabled);
+        const arrayOfChildrenProps = childrenArray.map((node, index) => ({
+          isDisabled: node.props.disabled,
+          index,
+        }));
+        const firstNonDisabledChildren = arrayOfChildrenProps
+          .reverse()
+          .find(({ isDisabled }) => !isDisabled);
 
         if (firstNonDisabledChildren) {
           selectTabIndex(firstNonDisabledChildren.index);
@@ -225,6 +237,7 @@ export const Tab = ({
         {...props}
       >
         <SimpleTabBox padding={4} selected={selected} hasError={hasError}>
+          {/* @ts-ignore */}
           <Typography variant="sigma" textColor={textColor}>
             {children}
           </Typography>
@@ -252,7 +265,11 @@ export const Tab = ({
       showRightBorder={Boolean(showRightBorder)}
       {...props}
     >
-      <DefaultTabBox padding={selected ? 4 : 3} background={selected ? 'neutral0' : 'neutral100'} selected={selected}>
+      <DefaultTabBox
+        padding={selected ? 4 : 3}
+        background={selected ? 'neutral0' : 'neutral100'}
+        selected={selected}
+      >
         <Typography fontWeight="bold" textColor={selected ? 'primary700' : 'neutral600'}>
           {children}
         </Typography>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { fixtures } from '@strapi/admin-test-utils';
-import { lightTheme, ThemeProvider } from '@strapi/design-system';
+import { lightTheme, ThemeProvider } from '@atlas/design-system';
 import { TrackingProvider, useRBAC } from '@strapi/helper-plugin';
 import { render, waitFor } from '@testing-library/react';
 import { createMemoryHistory } from 'history';

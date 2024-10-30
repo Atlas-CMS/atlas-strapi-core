@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { lightTheme, ThemeProvider } from '@strapi/design-system';
+import { lightTheme, ThemeProvider } from '@atlas/design-system';
 import { useCMEditViewDataManager, useNotification } from '@strapi/helper-plugin';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { Accordion, AccordionContent, AccordionToggle, Box } from '@strapi/design-system';
+import { Accordion, AccordionContent, AccordionToggle, Box } from '@atlas/design-system';
 import upperFirst from 'lodash/upperFirst';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

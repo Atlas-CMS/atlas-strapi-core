@@ -44,17 +44,28 @@ export type CarouselElement = HTMLDivElement;
 
 export const Carousel = React.forwardRef<CarouselElement, CarouselProps>(
   (
-    { actions, children, label, nextLabel, onNext, onPrevious, previousLabel, secondaryLabel, selectedSlide, ...props },
-    forwardedRef,
+    {
+      actions,
+      children,
+      label,
+      nextLabel,
+      onNext,
+      onPrevious,
+      previousLabel,
+      secondaryLabel,
+      selectedSlide,
+      ...props
+    },
+    forwardedRef
   ) => {
     const prevActionRef = React.useRef<HTMLButtonElement>(null);
     const nextActionRef = React.useRef<HTMLButtonElement>(null);
 
     const childrenArray = React.Children.map(children, (node, index) =>
-      React.cloneElement(node as React.ReactElement, { selected: index === selectedSlide }),
+      React.cloneElement(node as React.ReactElement, { selected: index === selectedSlide })
     );
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: any) => {
       switch (event.key) {
         case KeyboardKeys.RIGHT: {
           event.preventDefault();
@@ -115,12 +126,24 @@ export const Carousel = React.forwardRef<CarouselElement, CarouselProps>(
                   aria-label={nextLabel}
                   type="button"
                 >
-                  <Icon as={ChevronRight} aria-hidden width="6px" height="10px" color="neutral600" />
+                  <Icon
+                    as={ChevronRight}
+                    aria-hidden
+                    width="6px"
+                    height="10px"
+                    color="neutral600"
+                  />
                 </CarouselAction>
               </>
             )}
 
-            <CarouselSlides aria-live="polite" paddingLeft={2} paddingRight={2} width="100%" overflow="hidden">
+            <CarouselSlides
+              aria-live="polite"
+              paddingLeft={2}
+              paddingRight={2}
+              width="100%"
+              overflow="hidden"
+            >
               {childrenArray}
             </CarouselSlides>
             {actions}
@@ -140,5 +163,5 @@ export const Carousel = React.forwardRef<CarouselElement, CarouselProps>(
         </Box>
       </Box>
     );
-  },
+  }
 );

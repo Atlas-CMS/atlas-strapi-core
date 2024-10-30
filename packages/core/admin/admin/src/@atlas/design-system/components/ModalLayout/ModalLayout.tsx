@@ -24,13 +24,19 @@ export const ModalLayout = ({ onClose, labelledBy, ...props }: ModalLayoutProps)
   return (
     <Portal>
       <ModalContext.Provider value={onClose}>
-        <ModalWrapper justifyContent="center" paddingLeft={8} paddingRight={8} position="fixed" zIndex={4}>
+        <ModalWrapper
+          justifyContent="center"
+          paddingLeft={8}
+          paddingRight={8}
+          position="fixed"
+          zIndex={4}
+        >
           <FocusTrap>
             <DismissibleLayer onEscapeKeyDown={onClose} onPointerDownOutside={onClose}>
               <Box
                 aria-labelledby={labelledBy}
                 aria-modal
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: any) => e.stopPropagation()}
                 background="neutral0"
                 hasRadius
                 role="dialog"

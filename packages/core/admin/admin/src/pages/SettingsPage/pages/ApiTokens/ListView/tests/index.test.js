@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { fixtures } from '@strapi/admin-test-utils';
-import { darkTheme, lightTheme } from '@strapi/design-system';
+import { darkTheme, lightTheme } from '@atlas/design-system';
 import { TrackingProvider, useRBAC } from '@strapi/helper-plugin';
 import { render, waitFor } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

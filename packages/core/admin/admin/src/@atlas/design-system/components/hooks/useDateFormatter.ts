@@ -56,6 +56,7 @@ function isEqual(a: DateFormatterOptions, b: DateFormatterOptions) {
 
   // eslint-disable-next-line no-restricted-syntax
   for (let key of aKeys) {
+    // @ts-ignore
     if (b[key] !== a[key]) {
       return false;
     }

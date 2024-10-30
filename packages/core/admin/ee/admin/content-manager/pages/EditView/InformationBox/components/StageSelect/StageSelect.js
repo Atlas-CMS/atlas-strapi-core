@@ -9,7 +9,7 @@ import {
   Flex,
   Loader,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   useCMEditViewDataManager,
   useAPIErrorHandler,

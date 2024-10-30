@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, Layout, Main } from '@strapi/design-system';
+import { Box, Flex, Layout, Main } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';

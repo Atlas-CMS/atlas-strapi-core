@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@strapi/design-system';
+import { Button } from '@atlas/design-system';
 import { FilterListURLQuery, FilterPopoverURLQuery, useTracking } from '@strapi/helper-plugin';
 import { Filter as FilterIcon } from '@strapi/icons';
 import PropTypes from 'prop-types';

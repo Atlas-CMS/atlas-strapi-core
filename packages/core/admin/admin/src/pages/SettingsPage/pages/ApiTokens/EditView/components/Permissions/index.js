@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { Flex, Grid, GridItem } from '@strapi/design-system';
+import { Flex, Grid, GridItem } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
 import { useIntl } from 'react-intl';
 

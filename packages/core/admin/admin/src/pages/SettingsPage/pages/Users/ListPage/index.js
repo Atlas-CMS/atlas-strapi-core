@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { ActionLayout, ContentLayout, HeaderLayout, Main } from '@strapi/design-system';
+import { ActionLayout, ContentLayout, HeaderLayout, Main } from '@atlas/design-system';
 import {
   DynamicTable,
   NoPermissions,
