@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Button, Flex, Typography } from '@strapi/design-system';
+import { Box, Button, Flex } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { LinkButton, pxToRem } from '@strapi/helper-plugin';
 import { ArrowRight } from '@strapi/icons';
 import PropTypes from 'prop-types';

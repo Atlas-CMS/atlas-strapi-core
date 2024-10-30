@@ -1,11 +1,13 @@
 import * as React from 'react';
 
 import { ConfigurationContext, ConfigurationContextValue } from '../contexts/configuration';
+import AtlasConfig from '@atlas/AtlasConfig';
 
 export interface ConfigurationProviderProps {
   children: React.ReactNode;
   authLogo: string;
   menuLogo: string;
+  atlasConfig: AtlasConfig | null;
   showReleaseNotification?: boolean;
   showTutorials?: boolean;
 }
@@ -16,6 +18,7 @@ const ConfigurationProvider = ({
   children,
   authLogo: defaultAuthLogo,
   menuLogo: defaultMenuLogo,
+  atlasConfig,
   showReleaseNotification = false,
   showTutorials = false,
 }: ConfigurationProviderProps) => {
@@ -46,6 +49,7 @@ const ConfigurationProvider = ({
       updateProjectSettings,
       showReleaseNotification,
       showTutorials,
+      atlasConfig,
     };
   }, [
     menuLogo,

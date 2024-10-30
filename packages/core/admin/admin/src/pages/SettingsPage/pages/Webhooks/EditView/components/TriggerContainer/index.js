@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { Check, Cross, Loader } from '@strapi/icons';
 import PropTypes from 'prop-types';

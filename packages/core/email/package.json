@@ -65,8 +65,8 @@
     "yup": "0.32.9"
   },
   "devDependencies": {
-    "@strapi/pack-up": "workspace:*",
-    "@strapi/types": "workspace:*",
+    "@strapi/pack-up": "4.14.5",
+    "@strapi/types": "4.14.5",
     "@testing-library/react": "14.0.0",
     "@types/koa": "2.13.4",
     "@types/lodash": "^4.14.191",
@@ -94,5 +94,6 @@
     "description": "Configure your application to send emails.",
     "required": true,
     "kind": "plugin"
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

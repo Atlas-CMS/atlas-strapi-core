@@ -91,5 +91,6 @@
     "description": "Color picker custom field",
     "kind": "plugin",
     "displayName": "Color Picker"
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

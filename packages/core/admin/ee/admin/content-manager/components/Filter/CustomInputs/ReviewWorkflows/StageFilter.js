@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Flex, Loader, SingleSelect, SingleSelectOption, Typography } from '@strapi/design-system';
+import { Flex, Loader, SingleSelect, SingleSelectOption } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

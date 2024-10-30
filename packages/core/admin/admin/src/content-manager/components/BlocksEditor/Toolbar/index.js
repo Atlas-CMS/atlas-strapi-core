@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import * as Toolbar from '@radix-ui/react-toolbar';
-import { Flex, Icon, Tooltip, Select, Option, Box, Typography } from '@strapi/design-system';
+import { Flex, Icon, Tooltip, Select, Option, Box } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { pxToRem, prefixFileUrlWithBackendUrl, useLibrary } from '@strapi/helper-plugin';
 import { Link } from '@strapi/icons';
 import PropTypes from 'prop-types';

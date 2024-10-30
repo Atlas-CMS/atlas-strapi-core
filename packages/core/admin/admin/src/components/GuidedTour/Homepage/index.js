@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Button, Flex, Typography } from '@strapi/design-system';
+import { Box, Button, Flex } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { LinkButton, useGuidedTour, useTracking } from '@strapi/helper-plugin';
 import { ArrowRight } from '@strapi/icons';
 import { useIntl } from 'react-intl';

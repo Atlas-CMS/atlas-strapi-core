@@ -17,10 +17,10 @@ This is a forked version of Strapi `v4.14.5`. To start the development panel, na
 - @atlas/
 
   - atlas-strapi-core\* - Contains this repo
+  - atlas-design-system - Contains the patched version of @strapi/design-system (ick) (TBD)
   - atlas-strapi-plugins - Contains all of the atlas feature plugins, as well as any core plugins.
   - patched-strapi-plugins - Contains any open source Strapi plugins whose dependencies have been patched.
   - atlas-instance-manager - Contains the instance manager server (TBD)
-  - atlas-design-system - Contains the patched version of @strapi/design-system (ick) (TBD)
   - atlas-electron-client - Contains the Electron client wrapper for Atlas.
 
 - @iliad/

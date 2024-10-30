@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Flex, BaseCheckbox, TextButton, Typography } from '@strapi/design-system';
+import { Flex, BaseCheckbox, TextButton } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { useCollator, useTracking } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

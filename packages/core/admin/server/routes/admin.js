@@ -43,6 +43,12 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/atlas-config',
+    handler: 'admin.getAtlasConfig',
+    config: { auth: false },
+  },
+  {
+    method: 'GET',
     path: '/information',
     handler: 'admin.information',
     config: {

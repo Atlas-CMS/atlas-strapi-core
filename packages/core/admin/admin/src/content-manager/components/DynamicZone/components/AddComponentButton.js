@@ -6,7 +6,8 @@
 
 import React from 'react';
 
-import { BaseButton, Flex, Typography } from '@strapi/design-system';
+import { BaseButton, Flex } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { PlusCircle } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';

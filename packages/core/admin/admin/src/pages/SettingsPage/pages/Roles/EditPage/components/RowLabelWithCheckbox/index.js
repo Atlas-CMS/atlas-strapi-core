@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
-import { BaseCheckbox, Box, Flex, Typography } from '@strapi/design-system';
+import { BaseCheckbox, Box, Flex } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import upperFirst from 'lodash/upperFirst';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

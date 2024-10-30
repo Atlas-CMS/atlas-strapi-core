@@ -33,17 +33,25 @@ module.exports = ({
 
   const envVariables = getClientEnvironment({ ...options, env });
 
-  const webpackPlugins = isProduction
-    ? [
-        new MiniCssExtractPlugin({
-          filename: '[name].[chunkhash].css',
-          chunkFilename: '[name].[chunkhash].chunkhash.css',
-          ignoreOrder: true,
-        }),
-        new WebpackBar(),
-      ]
-    : [];
+  const webpackPlugins = [
+    new MiniCssExtractPlugin({
+      filename: '[name].[chunkhash].css',
+      chunkFilename: '[name].[chunkhash].chunkhash.css',
+      ignoreOrder: true,
+    }),
+    new WebpackBar(),
+  ];
 
+  // const webpackPlugins = isProduction
+  // ? [
+  //     new MiniCssExtractPlugin({
+  //       filename: '[name].[chunkhash].css',
+  //       chunkFilename: '[name].[chunkhash].chunkhash.css',
+  //       ignoreOrder: true,
+  //     }),
+  //     new WebpackBar(),
+  //   ]
+  // : [];
   const nodeModulePluginPaths = Object.values(plugins)
     .filter((plugin) => plugin.info?.packageName || plugin.info?.required)
     .map((plugin) => plugin.pathToPlugin);
@@ -120,7 +128,37 @@ module.exports = ({
         },
         {
           test: /\.css$/i,
-          use: ['style-loader', 'css-loader'],
+          use: ['style-loader', 'css-loader', 'postcss-loader'],
+        },
+        {
+          test: /\.module\.(scss|sass)$/,
+          include: path.resolve(__dirname, 'src'),
+          use: [
+            // Don't muck with the order of these loaders
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            {
+              loader: 'typings-for-css-modules-loader',
+              options: {
+                sass: true,
+                namedExport: true,
+                camelCase: true,
+                modules: true,
+              },
+            },
+            'postcss-loader',
+            'sass-loader',
+          ],
+        },
+        {
+          test: /\.(scss|sass)$/,
+          exclude: /\.module\.(scss|sass)$/,
+          use: [
+            // Don't muck with the order of these loaders
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
         },
         {
           test: /\.(svg|eot|otf|ttf|woff|woff2)$/,
@@ -156,6 +194,9 @@ module.exports = ({
       extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
     },
     plugins: [
+      // new TsconfigPathsPlugin({
+      //   configFile: tsConfigFilePath,
+      // }),
       new HtmlWebpackPlugin({
         inject: true,
         template: path.resolve(__dirname, 'index.html'),

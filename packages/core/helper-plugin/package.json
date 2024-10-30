@@ -72,7 +72,7 @@
     "@strapi/admin-test-utils": "^4.14.5",
     "@strapi/design-system": "1.12.2",
     "@strapi/icons": "1.12.2",
-    "@strapi/pack-up": "workspace:*",
+    "@strapi/pack-up": "4.14.5",
     "@strapi/types": "^4.14.5",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
@@ -115,5 +115,6 @@
         ]
       }
     }
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

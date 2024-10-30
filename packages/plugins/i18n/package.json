@@ -69,5 +69,6 @@
     "description": "This plugin enables to create, to read and to update content in different languages, both from the Admin Panel and from the API.",
     "required": false,
     "kind": "plugin"
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

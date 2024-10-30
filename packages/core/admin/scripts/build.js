@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { isObject } = require('lodash');
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
@@ -23,10 +24,10 @@ const buildAdmin = async () => {
    */
   const plugins = getPlugins([
     '@strapi/plugin-content-type-builder',
-    '@strapi/plugin-email',
-    '@strapi/plugin-upload',
-    '@strapi/plugin-i18n',
     '@strapi/plugin-users-permissions',
+    '@strapi/plugin-upload',
+    '@strapi/plugin-email',
+    '@strapi/plugin-i18n',
   ]);
 
   await createPluginFile(plugins, path.join(__dirname, '..'));

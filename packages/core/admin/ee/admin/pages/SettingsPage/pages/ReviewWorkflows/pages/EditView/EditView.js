@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Button, Flex, Loader, Typography } from '@strapi/design-system';
+import { Button, Flex, Loader } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import {
   ConfirmDialog,
   useAPIErrorHandler,

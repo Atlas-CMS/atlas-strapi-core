@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Flex, GridItem, Typography } from '@strapi/design-system';
+import { Flex, GridItem } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { useIntl } from 'react-intl';
 
 import { useApiTokenPermissionsContext } from '../../../../../../../contexts/ApiTokenPermissions';

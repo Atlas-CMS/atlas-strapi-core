@@ -78,5 +78,6 @@
     "description": "Media file management.",
     "required": true,
     "kind": "plugin"
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

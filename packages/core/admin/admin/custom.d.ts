@@ -7,6 +7,13 @@ declare module 'styled-components' {
   export interface DefaultTheme extends StrapiTheme {}
 }
 
+declare module '*.module.scss' {
+  const classes: { [key: string]: string };
+  export = classes;
+}
+
+declare module '*.scss';
+
 declare global {
   interface Window {
     strapi: {

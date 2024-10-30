@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Button, Divider, Flex, Loader, Main, Typography } from '@strapi/design-system';
+import { Box, Button, Divider, Flex, Loader, Main } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Link } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
 import { Redirect, useHistory } from 'react-router-dom';

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Divider, Flex, Icon, Typography } from '@strapi/design-system';
+import { Divider, Flex, Icon } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { Download, Github, Star } from '@strapi/icons';
 import PropTypes from 'prop-types';

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import { Box, Button, Checkbox, Flex, Main, TextInput, Typography } from '@strapi/design-system';
+import { Box, Button, Checkbox, Flex, Main, TextInput } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Form, Link } from '@strapi/helper-plugin';
 import { Eye, EyeStriked } from '@strapi/icons';
 import { Formik } from 'formik';

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { Box, Flex } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Cross, Drag, Pencil } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useDrag, useDrop } from 'react-dnd';

@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Button, Flex, Dialog, DialogBody, DialogFooter, Typography } from '@strapi/design-system';
+import { Button, Flex, Dialog, DialogBody, DialogFooter } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import {
   useTableContext,
   useFetchClient,

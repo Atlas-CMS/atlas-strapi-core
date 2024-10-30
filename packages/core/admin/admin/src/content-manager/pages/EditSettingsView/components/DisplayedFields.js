@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { Box, Flex } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Menu } from '@strapi/design-system/v2';
 import { Plus } from '@strapi/icons';
 import PropTypes from 'prop-types';

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Flex, IconButton, Tbody, Td, Tr, Typography } from '@strapi/design-system';
+import { Flex, IconButton, Tbody, Td, Tr } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { onRowClick, stopPropagation } from '@strapi/helper-plugin';
 import { Eye } from '@strapi/icons';
 import PropTypes from 'prop-types';

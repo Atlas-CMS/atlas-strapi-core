@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Flex, Icon, Typography } from '@strapi/design-system';
+import { Flex, Icon } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { Check } from '@strapi/icons';
 import PropTypes from 'prop-types';

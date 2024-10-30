@@ -35,6 +35,14 @@ module.exports = {
     }
   },
 
+  async getAtlasConfig() {
+    const atlasConfig = strapi.config.get('atlas');
+    console.log(`[Iliad] Retrieved atlas config: `);
+    console.log(atlasConfig);
+
+    return atlasConfig;
+  },
+
   async init() {
     let uuid = strapi.config.get('uuid', false);
     const hasAdmin = await getService('user').exists();

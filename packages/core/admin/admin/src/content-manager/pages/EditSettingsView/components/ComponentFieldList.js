@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Link } from '@strapi/helper-plugin';
 import { Cog } from '@strapi/icons';
 import get from 'lodash/get';

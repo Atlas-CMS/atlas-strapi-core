@@ -15,6 +15,7 @@
     "**/*.test.js",
     "**/*.test.api.js",
     "**/examples/getstarted/*",
+    "**/examples/getstarted2/*",
     "**/examples/kitchensink/*"
   ]
 }

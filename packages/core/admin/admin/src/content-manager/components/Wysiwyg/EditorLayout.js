@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { BaseButton, Box, Flex, FocusTrap, Portal, Typography } from '@strapi/design-system';
+import { BaseButton, Box, Flex, FocusTrap, Portal } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { pxToRem, useLockScroll } from '@strapi/helper-plugin';
 import { Collapse } from '@strapi/icons';
 import PropTypes from 'prop-types';

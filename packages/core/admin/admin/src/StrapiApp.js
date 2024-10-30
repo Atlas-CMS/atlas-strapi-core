@@ -1,66 +1,91 @@
 import React from 'react';
-
-import { darkTheme, lightTheme } from '@strapi/design-system';
-import invariant from 'invariant';
-import isFunction from 'lodash/isFunction';
-import merge from 'lodash/merge';
-import pick from 'lodash/pick';
-import { Helmet } from 'react-helmet';
 import { BrowserRouter } from 'react-router-dom';
 
-import Logo from './assets/images/logo-strapi-2022.svg';
-import { LANGUAGE_LOCAL_STORAGE_KEY } from './components/LanguageProvider';
-import Providers from './components/Providers';
-import { customFields, Plugin } from './core/apis';
+// Utils
+import isFunction from 'lodash/isFunction';
+import invariant from 'invariant';
+import merge from 'lodash/merge';
+import pick from 'lodash/pick';
+
+// Components
+import { LANGUAGE_LOCAL_STORAGE_KEY } from '@components/LanguageProvider';
+import { darkTheme, lightTheme } from '@strapi/design-system';
+import Providers from '@components/Providers';
+import { Helmet } from 'react-helmet';
+import App from './pages/App';
+
+// Assets
+import Logo from './assets/images/logo-iliad-atlas.svg';
+import favicon from './favicon.png';
+
+// Data & Configuration
+import languageNativeNames from './translations/languageNativeNames';
 import configureStore from './core/store/configureStore';
 import { basename, createHook } from './core/utils';
-import {
-  INJECT_COLUMN_IN_TABLE,
-  MUTATE_COLLECTION_TYPES_LINKS,
-  MUTATE_EDIT_VIEW_LAYOUT,
-  MUTATE_SINGLE_TYPES_LINKS,
-} from './exposedHooks';
-import favicon from './favicon.png';
+import { customFields, Plugin } from './core/apis';
 import injectionZones from './injectionZones';
-import App from './pages/App';
-import languageNativeNames from './translations/languageNativeNames';
+import {
+  MUTATE_COLLECTION_TYPES_LINKS,
+  MUTATE_SINGLE_TYPES_LINKS,
+  MUTATE_EDIT_VIEW_LAYOUT,
+  INJECT_COLUMN_IN_TABLE,
+} from './exposedHooks';
+
+// Mantine - Styles
+import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
+import '@mantine/dropzone/styles.css';
+import '@mantine/code-highlight/styles.css';
+
+// Mantine - Components
+import { MantineProvider } from '@mantine/core';
+
+// Atlas - Styles
+import '@iliad/styles/mantine/_mantine.scss';
+import '@iliad/styles/coreStyles.scss';
+import '@atlas/styles/variables.scss';
+import '@atlas/styles/mantine.scss';
+import '@atlas/styles/global.scss';
+
+// Atlas
+import mantineConfig from '@atlas/config/mantineConfig';
 
 class StrapiApp {
-  constructor({ adminConfig, appPlugins, library, middlewares, reducers }) {
-    this.customConfigurations = adminConfig.config;
+  constructor({ adminConfig, appPlugins, atlasConfig, library, middlewares, reducers }) {
     this.customBootstrapConfiguration = adminConfig.bootstrap;
-    this.configurations = {
-      authLogo: Logo,
-      head: { favicon },
-      locales: ['en'],
-      menuLogo: Logo,
-      notifications: { releases: true },
-      themes: { light: lightTheme, dark: darkTheme },
-      translations: {},
-      tutorials: true,
-    };
+    this.customConfigurations = adminConfig.config;
     this.appPlugins = appPlugins || {};
-    this.library = library;
+    this.customFields = customFields;
     this.middlewares = middlewares;
-    this.plugins = {};
+    this.atlasConfig = atlasConfig;
     this.reducers = reducers;
     this.translations = {};
+    this.library = library;
     this.hooksDict = {};
-    this.admin = {
-      injectionZones,
-    };
-    this.customFields = customFields;
-
+    this.plugins = {};
     this.menu = [];
+    this.configurations = {
+      themes: { light: lightTheme, dark: darkTheme },
+      notifications: { releases: true },
+      head: { favicon },
+      translations: {},
+      locales: ['en'],
+      tutorials: true,
+      authLogo: Logo,
+      menuLogo: Logo,
+    };
     this.settings = {
       global: {
         id: 'global',
         intlLabel: {
-          id: 'Settings.global',
           defaultMessage: 'Global Settings',
+          id: 'Settings.global',
         },
         links: [],
       },
+    };
+    this.admin = {
+      injectionZones,
     };
   }
 
@@ -170,28 +195,28 @@ class StrapiApp {
 
       if (bootstrap) {
         bootstrap({
-          addSettingsLink: this.addSettingsLink,
-          addSettingsLinks: this.addSettingsLinks,
-          getPlugin: this.getPlugin,
           injectContentManagerComponent: this.injectContentManagerComponent,
           injectAdminComponent: this.injectAdminComponent,
+          addSettingsLinks: this.addSettingsLinks,
+          addSettingsLink: this.addSettingsLink,
           registerHook: this.registerHook,
+          getPlugin: this.getPlugin,
         });
       }
     });
 
     if (isFunction(this.customBootstrapConfiguration)) {
       this.customBootstrapConfiguration({
-        addComponents: this.addComponents,
-        addFields: this.addFields,
-        addMenuLink: this.addMenuLink,
-        addReducers: this.addReducers,
-        addSettingsLink: this.addSettingsLink,
-        addSettingsLinks: this.addSettingsLinks,
-        getPlugin: this.getPlugin,
         injectContentManagerComponent: this.injectContentManagerComponent,
         injectAdminComponent: this.injectAdminComponent,
+        addSettingsLinks: this.addSettingsLinks,
+        addSettingsLink: this.addSettingsLink,
+        addComponents: this.addComponents,
         registerHook: this.registerHook,
+        addReducers: this.addReducers,
+        addMenuLink: this.addMenuLink,
+        addFields: this.addFields,
+        getPlugin: this.getPlugin,
       });
     }
   }
@@ -199,10 +224,10 @@ class StrapiApp {
   bootstrapAdmin = async () => {
     await this.createCustomConfigurations();
 
-    this.createHook(INJECT_COLUMN_IN_TABLE);
     this.createHook(MUTATE_COLLECTION_TYPES_LINKS);
     this.createHook(MUTATE_SINGLE_TYPES_LINKS);
     this.createHook(MUTATE_EDIT_VIEW_LAYOUT);
+    this.createHook(INJECT_COLUMN_IN_TABLE);
 
     return Promise.resolve();
   };
@@ -333,6 +358,7 @@ class StrapiApp {
           return { data: null, locale };
         });
     });
+
     const adminLocales = await Promise.all(arrayOfPromises);
 
     const translations = adminLocales.reduce((acc, current) => {
@@ -422,8 +448,8 @@ class StrapiApp {
   runHookParallel = (name) => this.hooksDict[name].runParallel();
 
   render() {
-    const store = this.createStore();
     const localeNames = pick(languageNativeNames, this.configurations.locales || []);
+    const store = this.createStore();
 
     const {
       components: { components },
@@ -431,46 +457,51 @@ class StrapiApp {
     } = this.library;
 
     return (
-      <Providers
-        authLogo={this.configurations.authLogo}
-        components={components}
-        fields={fields}
-        customFields={this.customFields}
-        localeNames={localeNames}
-        getAdminInjectedComponents={this.getAdminInjectedComponents}
-        getPlugin={this.getPlugin}
-        messages={this.configurations.translations}
-        menu={this.menu}
-        menuLogo={this.configurations.menuLogo}
-        plugins={this.plugins}
-        runHookParallel={this.runHookParallel}
-        runHookWaterfall={(name, initialValue, async = false) => {
-          return this.runHookWaterfall(name, initialValue, async, store);
-        }}
-        runHookSeries={this.runHookSeries}
-        themes={this.configurations.themes}
-        settings={this.settings}
-        showTutorials={this.configurations.tutorials}
-        showReleaseNotification={this.configurations.notifications.releases}
-        store={store}
-      >
-        <Helmet
-          link={[
-            {
-              rel: 'icon',
-              type: 'image/png',
-              href: this.configurations.head.favicon,
-            },
-          ]}
-          htmlAttributes={{ lang: localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) || 'en' }}
-        />
-        <BrowserRouter basename={basename}>
-          <App store={store} />
-        </BrowserRouter>
-      </Providers>
+      <MantineProvider {...mantineConfig}>
+        <Providers
+          showReleaseNotification={this.configurations.notifications.releases}
+          getAdminInjectedComponents={this.getAdminInjectedComponents}
+          showTutorials={this.configurations.tutorials}
+          messages={this.configurations.translations}
+          authLogo={this.configurations.authLogo}
+          menuLogo={this.configurations.menuLogo}
+          runHookParallel={this.runHookParallel}
+          themes={this.configurations.themes}
+          runHookSeries={this.runHookSeries}
+          customFields={this.customFields}
+          atlasConfig={this.atlasConfig}
+          getPlugin={this.getPlugin}
+          localeNames={localeNames}
+          settings={this.settings}
+          components={components}
+          plugins={this.plugins}
+          menu={this.menu}
+          fields={fields}
+          store={store}
+          runHookWaterfall={(name, initialValue, async = false) => {
+            return this.runHookWaterfall(name, initialValue, async, store);
+          }}
+        >
+          <Helmet
+            link={[
+              {
+                href: this.configurations.head.favicon,
+                type: 'image/png',
+                rel: 'icon',
+              },
+            ]}
+            htmlAttributes={{ lang: localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) || 'en' }}
+          />
+          <BrowserRouter basename={basename}>
+            <App store={store} />
+          </BrowserRouter>
+        </Providers>
+      </MantineProvider>
     );
   }
 }
 
-export default ({ adminConfig = {}, appPlugins, library, middlewares, reducers }) =>
-  new StrapiApp({ adminConfig, appPlugins, library, middlewares, reducers });
+// Unsure why we can't just export the class directly
+export default ({ adminConfig = {}, appPlugins, atlasConfig, library, middlewares, reducers }) => {
+  return new StrapiApp({ adminConfig, appPlugins, atlasConfig, library, middlewares, reducers });
+};

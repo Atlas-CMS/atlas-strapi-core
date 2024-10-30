@@ -2,10 +2,58 @@
   "extends": "tsconfig/client.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "allowJs": true,
     "paths": {
-      "@tests/*": ["./tests/*"]
+      "@tests/*": ["./tests/*"],
+      // Components
+      "@components/*": ["./src/components/*"],
+      "@forms/*": ["./src/components/forms/*"],
+      "@modals/*": ["./src/components/modals/*"],
+      "@layouts/*": ["./src/components/layouts/*"],
+      "@containers/*": ["./src/components/containers/*"],
+      // Utilities
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@scripts/*": ["./src/utils/scripts*"],
+      "@functions/*": ["./src/utils/functions/*"],
+      "@classes/*": ["./src/utils/classes/*"],
+      "hermes": ["./src/utils/functions/hermes/hermes.ts"],
+      // Styles
+      "@styles/*": ["./src/styles/*"],
+      // Server
+      "@middleware/*": ["./src/middleware/*"],
+      // Context
+      "@contexts/*": ["./src/contexts/*"],
+      // Instances
+      "@strapi/server": ["./src/utils/instances/strapi/server.ts"],
+      // Types
+      "@types/*": ["./src/types/*"],
+      // Iliad
+      "@iliad/*": ["./src/@iliad/*"],
+      "@iliad/hooks/*": ["./src/@iliad/utils/hooks/*"],
+      "@iliad/functions/*": ["./src/@iliad/functions/hooks/*"],
+      // Atlas
+      "@atlas/*": ["./src/@atlas/*"]
     }
   },
-  "include": ["src", "tests", "custom.d.ts"],
+  "include": [
+    "src",
+    "tests",
+    "custom.d.ts",
+    // Iliad Types
+    "src/@iliad/@types/**/*.d.ts",
+    "src/@iliad/@types/**/*.ts",
+    "src/@iliad/@types/**/*",
+    "src/@iliad/@types/*.d.ts",
+    "src/@iliad/@types/*.ts",
+    "src/@iliad/@types/*",
+    // Atlas Types
+    "src/@atlas/@types/**/*.d.ts",
+    "src/@atlas/@types/**/*.ts",
+    "src/@atlas/@types/**/*",
+    "src/@atlas/@types/*.d.ts",
+    "src/@atlas/@types/*.ts",
+    "src/@atlas/@types/*"
+  ],
   "exclude": ["node_modules"]
 }

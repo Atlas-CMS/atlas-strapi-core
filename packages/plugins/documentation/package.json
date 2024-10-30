@@ -73,5 +73,6 @@
     "name": "documentation",
     "description": "Create an OpenAPI Document and visualize your API with SWAGGER UI.",
     "kind": "plugin"
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

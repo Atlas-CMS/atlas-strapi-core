@@ -57,7 +57,7 @@
     "node-schedule": "2.1.0"
   },
   "devDependencies": {
-    "@strapi/pack-up": "workspace:*",
+    "@strapi/pack-up": "4.14.5",
     "@strapi/ts-zen": "^0.2.0",
     "@types/jest": "29.5.2",
     "@types/koa": "2.13.4",
@@ -70,5 +70,6 @@
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0"
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

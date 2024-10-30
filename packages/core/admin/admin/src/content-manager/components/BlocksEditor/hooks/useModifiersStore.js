@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Typography } from '@strapi/design-system';
+import {} from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Bold, Italic, Underline, StrikeThrough, Code } from '@strapi/icons';
 import { Editor } from 'slate';
 import { useSlate } from 'slate-react';

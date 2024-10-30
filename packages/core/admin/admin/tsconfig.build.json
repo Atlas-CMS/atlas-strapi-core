@@ -1,4 +1,28 @@
 {
+  "exclude": ["tests", "**/*.test.*"],
   "extends": "./tsconfig.json",
-  "exclude": ["tests", "**/*.test.*"]
+  "include": [
+    "./custom.d.ts",
+    // Custom Types
+    "./src//@types/**/*.d.ts",
+    "./src/@types/**/*.ts",
+    "./src/@types/**/*",
+    "./src/@types/*.d.ts",
+    "./src/@types/*.ts",
+    "./src/@types/*",
+    // Iliad Types
+    "./src/@iliad/@types/**/*.d.ts",
+    "./src/@iliad/@types/**/*.ts",
+    "./src/@iliad/@types/**/*",
+    "./src/@iliad/@types/*.d.ts",
+    "./src/@iliad/@types/*.ts",
+    "./src/@iliad/@types/*",
+    // Atlas Types
+    "./src/@atlas/@types/**/*.d.ts",
+    "./src/@atlas/@types/**/*.ts",
+    "./src/@atlas/@types/**/*",
+    "./src/@atlas/@types/*.d.ts",
+    "./src/@atlas/@types/*.ts",
+    "./src/@atlas/@types/*"
+  ]
 }

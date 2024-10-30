@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Box, KeyboardNavigable, Typography } from '@strapi/design-system';
+import { Box, KeyboardNavigable } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';

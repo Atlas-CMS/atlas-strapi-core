@@ -5,7 +5,8 @@
 
 import React from 'react';
 
-import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Link, LinkButton } from '@strapi/design-system/v2';
 import { useAppInfo } from '@strapi/helper-plugin';
 import { Discord, Discourse, ExternalLink, Github, Reddit, Strapi, Twitter } from '@strapi/icons';

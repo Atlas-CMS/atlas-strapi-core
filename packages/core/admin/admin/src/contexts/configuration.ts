@@ -1,3 +1,4 @@
+import AtlasConfig from '@atlas/AtlasConfig';
 import { createContext } from 'react';
 
 export interface ConfigurationContextValue {
@@ -5,6 +6,7 @@ export interface ConfigurationContextValue {
     auth: { custom?: string | null; default: string };
     menu: { custom?: string | null; default: string };
   };
+  atlasConfig: AtlasConfig | null;
   showTutorials: boolean;
   showReleaseNotification: boolean;
   updateProjectSettings: (settings: { authLogo?: string; menuLogo?: string }) => void;
@@ -15,6 +17,7 @@ const ConfigurationContext = createContext<ConfigurationContextValue>({
     auth: { default: '' },
     menu: { default: '' },
   },
+  atlasConfig: null,
   showTutorials: false,
   showReleaseNotification: false,
   updateProjectSettings: () => {

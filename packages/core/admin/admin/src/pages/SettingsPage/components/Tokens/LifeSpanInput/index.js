@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Option, Select, Typography } from '@strapi/design-system';
+import { Option, Select } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

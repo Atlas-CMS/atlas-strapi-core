@@ -44,12 +44,13 @@
     "sift": "16.0.1"
   },
   "devDependencies": {
-    "@strapi/pack-up": "workspace:*",
+    "@strapi/pack-up": "4.14.5",
     "eslint-config-custom": "^4.14.5",
     "tsconfig": "^4.14.5"
   },
   "engines": {
     "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0"
-  }
+  },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
 }

@@ -10,6 +10,7 @@ const command: StrapiCommand = ({ command }) => {
     .alias('dev')
     .option('--no-build', 'Disable build')
     .option('--watch-admin', 'Enable watch', false)
+    .option('--watch-atlas', 'Enable watch from sibling repository', false)
     .option('--polling', 'Watch for file changes in network directories', false)
     .option('--browser <name>', 'Open the browser', true)
     .description('Start your Strapi application in development mode')

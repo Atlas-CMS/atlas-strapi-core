@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { Box, Flex, Icon, IconButton, Status, Typography } from '@strapi/design-system';
+import { Box, Flex, Icon, IconButton, Status } from '@strapi/design-system';
+import { Typography } from '@atlas/design-system';
 import { Cross, Drag } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

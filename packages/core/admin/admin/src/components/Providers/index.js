@@ -41,6 +41,7 @@ const Providers = ({
   messages,
   plugins,
   runHookParallel,
+  atlasConfig,
   runHookSeries,
   runHookWaterfall,
   settings,
@@ -59,6 +60,7 @@ const Providers = ({
                 <ConfigurationProvider
                   authLogo={authLogo}
                   menuLogo={menuLogo}
+                  atlasConfig={atlasConfig}
                   showReleaseNotification={showReleaseNotification}
                   showTutorials={showTutorials}
                 >
