@@ -40,7 +40,6 @@
     "lint": "nx run-many --target=lint --nx-ignore-cycles && yarn lint:other",
     "lint:fix": "nx run-many --target=lint --nx-ignore-cycles -- --fix",
     "lint:other": "npm run prettier:other -- --check",
-    "prepare": "husky install",
     "prettier:code": "prettier --cache --cache-strategy content \"**/*.{js,ts}\"",
     "prettier:other": "prettier --cache --cache-strategy content \"**/*.{md,css,scss,yaml,yml}\"",
     "setup": "yarn && yarn clean && yarn build",
@@ -51,6 +50,7 @@
     "@types/koa": "2.13.4"
   },
   "dependencies": {
+    "@strapi/design-system": "1.13.0-typescript.1",
     "@types/node-sass": "4.11.8",
     "css-loader": "^6.8.1",
     "mini-css-extract-plugin": "2.7.2",

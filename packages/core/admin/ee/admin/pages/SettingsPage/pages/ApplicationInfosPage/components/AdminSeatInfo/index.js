@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Typography } from '@atlas/design-system';
 import { Flex, GridItem, Icon, Tooltip } from '@strapi/design-system';
-import { Link } from '@strapi/design-system/v2';
-import { pxToRem, useRBAC } from '@strapi/helper-plugin';
 import { ExclamationMarkCircle, ExternalLink } from '@strapi/icons';
-import { useIntl } from 'react-intl';
+import { pxToRem, useRBAC } from '@strapi/helper-plugin';
+import { Typography } from '@atlas/design-system';
+import { Link } from '@strapi/design-system/v2';
 import { useSelector } from 'react-redux';
+import { useIntl } from 'react-intl';
 
 import { selectAdminPermissions } from '../../../../../../../../admin/src/pages/App/selectors';
 import { useLicenseLimits } from '../../../../../../hooks/useLicenseLimits';
