@@ -20,7 +20,7 @@ import { Flex } from '../Flex';
 import { KeyboardKeys } from '../helpers/keyboardKeys';
 import { useControllableState } from '../hooks/useControllableState';
 import { useId } from '../hooks/useId';
-import { Icon } from '../Icon';
+import { Icon } from '../_Icon';
 
 const ArrowButton = styled.button<{ reverse?: boolean }>`
   display: flex;

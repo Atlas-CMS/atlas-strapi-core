@@ -8167,6 +8167,7 @@ __metadata:
     "@tiptap/pm": 2.9.1
     "@tiptap/react": 2.9.1
     "@tiptap/starter-kit": 2.9.1
+    "@types/node-sass": 4.11.8
     axios: 1.5.0
     bcryptjs: 2.4.3
     browserslist: ^4.22.1
@@ -8245,6 +8246,8 @@ __metadata:
     reselect: 4.1.7
     rimraf: 3.0.2
     sanitize-html: 2.11.0
+    sass: 1.80.4
+    sass-loader: 16.0.2
     semver: 7.5.4
     sift: 16.0.1
     slate: 0.94.1

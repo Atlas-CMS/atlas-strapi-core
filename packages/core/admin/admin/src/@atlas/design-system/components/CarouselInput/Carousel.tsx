@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Box, BoxProps } from '../Box';
 import { Flex } from '../Flex';
 import { KeyboardKeys } from '../helpers/keyboardKeys';
-import { Icon } from '../Icon';
+import { Icon } from '../_Icon';
 import { Tooltip } from '../Tooltip';
 import { Typography } from '../Typography';
 

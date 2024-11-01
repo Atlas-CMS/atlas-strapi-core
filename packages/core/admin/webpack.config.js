@@ -90,22 +90,24 @@ module.exports = ({
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          loader: require.resolve('esbuild-loader'),
-          exclude: excludeRegex,
-          options: {
-            target: buildTarget,
-            jsx: 'automatic',
-            loader: 'tsx',
+          // exclude: excludeRegex, // -- I'm disabling this because if I don't everything gets fricked up.
+          use: {
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'tsx',
+              target: buildTarget,
+              jsx: 'automatic',
+            },
           },
         },
         {
           test: /\.(js|jsx|mjs)$/,
-          exclude: excludeRegex,
+          // exclude: excludeRegex, // -- I'm disabling this because if I don't everything gets fricked up.
           use: {
-            loader: require.resolve('esbuild-loader'),
+            loader: 'esbuild-loader',
             options: {
-              target: buildTarget,
               loader: 'jsx',
+              target: buildTarget,
             },
           },
         },
@@ -128,49 +130,6 @@ module.exports = ({
         },
         {
           test: /\.module\.(scss|sass)$/,
-          // include: [path.resolve(__dirname, 'admin/src'), path.resolve(__dirname, 'src')],
-          // use: [
-          //   isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-          //   {
-          //     loader: 'css-loader',
-          //     options: {
-          //       modules: true,
-          //       sass: true,
-          //     },
-          //   },
-          //   // {
-          //   //   loader: 'typings-for-css-modules-loader',
-          //   //   options: {
-          //   //     namedExport: true,
-          //   //     camelCase: true,
-          //   //     modules: true,
-          //   //     sass: true,
-          //   //   },
-          //   // },
-          //   'postcss-loader',
-          //   // 'sass-loader',
-          //   // // Don't muck with the order of these loaders
-          //   // isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-          //   // {
-          //   //   loader: 'css-loader',
-          //   //   options: {
-          //   //     exportOnlyLocals: true,
-          //   //     modules: true,
-          //   //   },
-          //   // },
-          //   // {
-          //   //   loader: 'typings-for-css-modules-loader',
-          //   //   options: {
-          //   //     namedExport: true,
-          //   //     camelCase: true,
-          //   //     modules: true,
-          //   //     sass: true,
-          //   //   },
-          //   // },
-          //   // 'postcss-loader',
-          //   // 'sass-loader',
-          // ],
-
           use: [
             // Configuration sourced from https://www.npmjs.com/package/css-loader#examples
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
@@ -234,7 +193,18 @@ module.exports = ({
     },
     resolve: {
       alias,
-      extensions: ['.js', '.jsx', '.react.js', '.ts', '.tsx'],
+      extensions: [
+        '.js',
+        '.jsx',
+        '.react.js',
+        '.ts',
+        '.tsx',
+        '.json',
+        '.scss',
+        '.css',
+        '.sass',
+        '.svg',
+      ],
     },
     plugins: [
       // new TsconfigPathsPlugin({

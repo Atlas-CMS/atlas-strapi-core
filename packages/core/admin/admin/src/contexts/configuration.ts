@@ -21,7 +21,7 @@ const ConfigurationContext = createContext<ConfigurationContextValue>({
   showTutorials: false,
   showReleaseNotification: false,
   updateProjectSettings: () => {
-    throw new Error('updateProjectSettings was not implemented');
+    console.warn('updateProjectSettings not implemented');
   },
 });
 

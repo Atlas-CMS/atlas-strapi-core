@@ -51,7 +51,7 @@ const buildAdmin = async () => {
        * we can make sure developers can actually test this functionality.
        */
 
-      telemetryDisabled: process.env.STRAPI_TELEMETRY_DISABLED === 'true' ?? false,
+      telemetryDisabled: true,
     },
     tsConfigFilePath,
     enforceSourceMaps: process.env.STRAPI_ENFORCE_SOURCEMAPS === 'true' ?? false,

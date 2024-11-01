@@ -4,7 +4,9 @@ const findRoot = require('find-root');
 const path = require('path');
 const fs = require('fs');
 
-let tsconfigFile = fs.readFileSync(`${__dirname}/admin/tsconfig.json`, 'utf8');
+const tsConfigPath = path.resolve(__dirname, 'admin', 'tsconfig.json');
+const tsconfigFile = fs.readFileSync(tsConfigPath, 'utf8');
+console.log(`[Iliad] (/admin) Found tsconfig.json at ${tsConfigPath}`);
 
 // Remove comments from tsconfig
 

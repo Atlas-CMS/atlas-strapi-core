@@ -7,7 +7,7 @@ import { AccordionSize, AccordionTypography } from './Accordion';
 import { useAccordion } from './AccordionContext';
 import { getBackground } from './utils';
 import { Flex } from '../Flex';
-import { Icon } from '../Icon';
+import { Icon } from '../_Icon';
 import { TextButton } from '../TextButton';
 import { Typography } from '../Typography';
 
@@ -24,7 +24,8 @@ const ToggleButton = styled(TextButton)<{ expanded: boolean }>`
     height: ${14 / 16}rem;
 
     path {
-      fill: ${({ theme, expanded }) => (expanded ? theme.colors.primary600 : theme.colors.neutral500)};
+      fill: ${({ theme, expanded }) =>
+        expanded ? theme.colors.primary600 : theme.colors.neutral500};
     }
   }
 `;
@@ -99,7 +100,7 @@ export const AccordionToggle = ({
     if (!disabled) {
       if (toggle && !onToggle) {
         console.warn(
-          'Deprecation warning: Usage of "toggle" prop in Accordion component is deprecated. This is discouraged and will be removed in the next major release. Please use "onToggle" instead',
+          'Deprecation warning: Usage of "toggle" prop in Accordion component is deprecated. This is discouraged and will be removed in the next major release. Please use "onToggle" instead'
         );
         toggle();
       } else if (onToggle) {

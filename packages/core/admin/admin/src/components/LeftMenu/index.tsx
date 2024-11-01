@@ -6,30 +6,20 @@ import styled from 'styled-components';
 import clsx from 'clsx';
 
 // Components
-import { Box, Divider, Flex, FocusTrap } from '@atlas/design-system';
-import { Typography } from '@atlas/design-system';
-import { LinkUserWrapper, LinkUser } from './components';
-import { AtlasNavSection, CastAtlasNavSection } from './components/AtlasNavSection';
+import { Flex, FocusTrap, TextOverflowContainer } from '@atlas/design-system';
+import { CastAtlasNavSection } from './components/AtlasNavSection';
 import { AtlasNavBrand } from './components/AtlasNavBrand';
+import { LinkUserWrapper, LinkUser } from './components';
+import { Typography } from '@atlas/design-system';
 
-import {
-  MainNav,
-  NavLink,
-  NavUser,
-  NavBrand,
-  NavFooter,
-  NavSection,
-  NavSections,
-  NavCondense,
-} from '@atlas/design-system/v2';
+import { MainNav, NavUser, NavFooter, NavSections, NavCondense } from '@atlas/design-system/v2';
 import DarkTheme from '@components/DarkTheme';
 
 // Icons
-import { Plausible } from '@atlas/design-system/icons';
 import { Exit, Write, House } from '@strapi/icons';
 
 // Utils
-import { NavLink as RouterNavLink, useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { initialsFromName } from '@utils/initialsFromName';
 import { sortMenuItems } from './utils/functions';
 import { useIntl } from 'react-intl';
@@ -151,61 +141,6 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
           <div className={styles.navFooter}>
             <CastAtlasNavSection className={styles.bottom} navLinks={floatingBottom} />
           </div>
-
-          {/* {pluginsSectionLinks.length > 0 ? (
-            <AtlasNavSection
-              label={formatMessage({
-                id: 'app.components.LeftMenu.plugins',
-                defaultMessage: 'Plugins',
-              })}
-            >
-              {pluginsSectionLinks.map((link) => {
-                const Icon = link.icon;
-
-                return (
-                  <NavLink
-                    as={RouterNavLink}
-                    // @ts-expect-error the props from the passed as prop are not inferred // joined together
-                    to={link.to}
-                    key={link.to}
-                    icon={<Icon />}
-                  >
-                    {formatMessage(link.intlLabel)}
-                  </NavLink>
-                );
-              })}
-            </AtlasNavSection>
-          ) : null}
-
-          {generalSectionLinks.length > 0 ? (
-            <NavSection
-              label={formatMessage({
-                id: 'app.components.LeftMenu.general',
-                defaultMessage: 'General',
-              })}
-            >
-              {generalSectionLinks.map((link) => {
-                const LinkIcon = link.icon;
-
-                return (
-                  <NavLink
-                    as={RouterNavLink}
-                    badgeContent={
-                      link.notificationsCount && link.notificationsCount > 0
-                        ? link.notificationsCount.toString()
-                        : undefined
-                    }
-                    // @ts-expect-error the props from the passed as prop are not inferred // joined together
-                    to={link.to}
-                    key={link.to}
-                    icon={<LinkIcon />}
-                  >
-                    {formatMessage(link.intlLabel)}
-                  </NavLink>
-                );
-              })}
-            </NavSection>
-          ) : null} */}
         </AtlasNavSections>
 
         <NavFooter>
@@ -228,12 +163,14 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
               <FocusTrap onEscape={handleToggleUserLinks}>
                 <Flex direction="column" alignItems="stretch" gap={0}>
                   <LinkUser tabIndex={0} onClick={handleToggleUserLinks} to="/me">
-                    <Typography>
-                      {formatMessage({
-                        id: 'global.profile',
-                        defaultMessage: 'Profile',
-                      })}
-                    </Typography>
+                    <TextOverflowContainer>
+                      <Typography>
+                        {formatMessage({
+                          id: 'global.profile',
+                          defaultMessage: 'Profile',
+                        })}
+                      </Typography>
+                    </TextOverflowContainer>
                   </LinkUser>
                   <LinkUser tabIndex={0} onClick={handleLogout} to="/auth/login">
                     <Typography textColor="danger600">
@@ -248,7 +185,6 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
               </FocusTrap>
             </LinkUserWrapper>
           )}
-
           <NavCondense onClick={() => setCondensed((s) => !s)}>
             {condensed
               ? formatMessage({

@@ -4,7 +4,7 @@ import { ChevronRight, ChevronLeft } from '@strapi/icons';
 import styled from 'styled-components';
 
 import { useMainNav } from './MainNavContext';
-import { Icon } from '../Icon';
+import { Icon } from '../_Icon';
 import { VisuallyHidden } from '../VisuallyHidden';
 
 export interface NavCondenseWrapperProps {

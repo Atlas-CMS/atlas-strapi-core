@@ -4,7 +4,7 @@
   "include": [
     "./custom.d.ts",
     // Type Declarations
-    "./src//@types/**/*.d.ts",
+    "./src/@types/**/*.d.ts",
     "./src/@types/**/*.ts",
     "./src/@types/**/*",
     "./src/@types/*.d.ts",

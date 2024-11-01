@@ -21,7 +21,7 @@ window.strapi = {
    */
   backendURL: process.env.STRAPI_ADMIN_BACKEND_URL || window.location.origin,
   isEE: false,
-  telemetryDisabled: (process.env.STRAPI_TELEMETRY_DISABLED ?? false) as boolean,
+  telemetryDisabled: process.env.STRAPI_TELEMETRY_DISABLED ?? false,
   // @ts-ignore
   features: {
     REVIEW_WORKFLOWS: 'review-workflows',
@@ -47,11 +47,11 @@ const MOUNT_NODE = document.getElementById('app');
 
 const run = async () => {
   const { get } = getFetchClient();
-  let atlasConfig: AtlasConfig;
+  let atlasConfig;
 
   try {
     const { data: atlasConfigData } = await get('/admin/atlas-config');
-    atlasConfig = new AtlasConfig(atlasConfigData as AtlasConfigData);
+    atlasConfig = new AtlasConfig(atlasConfigData);
     console.log('atlasConfig', atlasConfig);
   } catch (err) {
     console.error(err);
@@ -69,7 +69,7 @@ const run = async () => {
     window.strapi.flags = flags;
     window.strapi.features = {
       ...window.strapi.features,
-      isEnabled: (featureName) => features.some((feature: any) => feature.name === featureName),
+      isEnabled: (featureName) => features.some((feature) => feature.name === featureName),
     };
     window.strapi.projectType = isEE ? 'Enterprise' : 'Community';
   } catch (err) {

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { useMainNav } from './MainNavContext';
 import { Flex, FlexProps } from '../../Flex';
-import { Icon } from '../../Icon';
+import { Icon } from '../../_Icon';
 import { VisuallyHidden } from '../../VisuallyHidden';
 
 const NavCondenseWrapper = styled(Flex).attrs<FlexProps<'button'>>((props) => ({

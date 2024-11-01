@@ -6,7 +6,6 @@
 
 import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 
-import { SkipToContent } from '@atlas/design-system';
 import {
   auth,
   LoadingIndicatorPage,
@@ -116,45 +115,12 @@ function App() {
           authLogo: prefixFileUrlWithBackendUrl(authLogo),
         });
 
-        if (uuid) {
-          const {
-            data: { data: properties },
-          } = await get(`/admin/telemetry-properties`, {
-            // NOTE: needed because the interceptors of the fetchClient redirect to /login when receive a 401 and it would end up in an infinite loop when the user doesn't have a session.
-            validateStatus: (status) => status < 500,
-          });
-
-          setTelemetryProperties(properties);
-
-          try {
-            const event = 'didInitializeAdministration';
-            await post(
-              'https://analytics.strapi.io/api/v2/track',
-              {
-                // This event is anonymous
-                event,
-                userId: '',
-                deviceId,
-                eventPropeties: {},
-                userProperties: { environment: appInfo.currentEnvironment },
-                groupProperties: { ...properties, projectId: uuid },
-              },
-              {
-                headers: {
-                  'X-Strapi-Event': event,
-                },
-              }
-            );
-          } catch (e) {
-            // Silent.
-          }
-        }
-
         setState({ isLoading: false, hasAdmin, uuid, deviceId });
       } catch (err) {
+        console.error(err);
         toggleNotification({
-          type: 'warning',
           message: { id: 'app.containers.App.notification.error.init' },
+          type: 'warning',
         });
       }
     };
@@ -180,9 +146,6 @@ function App() {
 
   return (
     <Suspense fallback={<LoadingIndicatorPage />}>
-      <SkipToContent>
-        {formatMessage({ id: 'skipToContent', defaultMessage: 'Skip to content' })}
-      </SkipToContent>
       <TrackingProvider value={trackingInfo}>
         <Switch>
           {authRoutes}

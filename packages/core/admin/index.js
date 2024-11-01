@@ -38,16 +38,19 @@ async function build({ appDir, buildDestDir, env, forceBuild, optimize, options,
     ? path.join(appDir, 'src', 'admin', 'tsconfig.json')
     : path.resolve(entry, 'tsconfig.json');
 
+  // if useTypeScript path is  process.cwd()/src/admin/tsconfig.json
+  // else path is process.cwd()/.cache/admin/src/tsconfig.json
+
   const config = getCustomWebpackConfig(appDir, {
-    appDir,
-    dest,
     enforceSourceMaps,
-    entry,
-    env,
+    tsConfigFilePath,
     optimize,
     options,
     plugins,
-    tsConfigFilePath,
+    appDir,
+    entry,
+    dest,
+    env,
   });
 
   const compiler = webpack(config);
@@ -70,9 +73,8 @@ async function build({ appDir, buildDestDir, env, forceBuild, optimize, options,
       }
 
       return resolve({
-        stats,
-
         warnings: info.warnings,
+        stats,
       });
     });
   });
@@ -113,15 +115,6 @@ async function watchAdmin({ appDir, browser, buildDestDir, host, options, plugin
     options,
     plugins,
     devServer: {
-      port,
-      client: {
-        logging: 'none',
-        overlay: {
-          errors: true,
-          warnings: false,
-        },
-      },
-      open: browser === 'true' ? true : browser,
       devMiddleware: {
         publicPath: options.adminPath,
       },
@@ -129,8 +122,17 @@ async function watchAdmin({ appDir, browser, buildDestDir, host, options, plugin
         index: options.adminPath,
         disableDotRule: true,
       },
+      client: {
+        logging: 'none',
+        overlay: {
+          warnings: false,
+          errors: true,
+        },
+      },
     },
+    open: browser === 'true' ? true : browser,
     tsConfigFilePath,
+    port,
   };
 
   const webpackConfig = getCustomWebpackConfig(appDir, args);
@@ -145,9 +147,13 @@ async function watchAdmin({ appDir, browser, buildDestDir, host, options, plugin
   const server = new WebpackDevServer(devServerArgs, compiler);
 
   const runServer = async () => {
-    console.log(chalk.green('Starting the development server...'));
+    const name = chalk.rgb(73, 69, 255)(`[ ${chalk.bold(ATLAS_NAME)} ]`); // Atlas
+    console.log(name, chalk.green('Starting the development server...'));
     console.log();
-    console.log(chalk.green(`Admin development at http://${host}:${port}${options.adminPath}`));
+    console.log(
+      name,
+      chalk.green(`Admin development at http://${host}:${port}${options.adminPath}`)
+    );
 
     await server.start();
   };
@@ -158,7 +164,7 @@ async function watchAdmin({ appDir, browser, buildDestDir, host, options, plugin
 }
 
 module.exports = {
+  watchAdmin,
   clean,
   build,
-  watchAdmin,
 };

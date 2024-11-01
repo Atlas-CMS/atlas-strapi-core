@@ -1,0 +1,16 @@
+.textOverflowContainer {
+  overflow: hidden;
+  max-width: 100%;
+  flex-grow: 1;
+
+  mask-image: linear-gradient(270deg, transparent, #32324d 1.5rem);
+  mask-mode: alpha;
+
+  .textOverflow {
+    > * {
+      // Ensure the text never tries to wrap
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+}
