@@ -1,7 +1,14 @@
 /* -------------------------------------------------------------------------------------------------
  * Components
  * -----------------------------------------------------------------------------------------------*/
+// New Atlas design system components
 export * from './TextOverflowContainer';
+export * from './AvatarWithContext';
+
+// Transformed Atlas design system components
+export * from './Typography';
+
+// Default Strapi design system components
 export * from './Accordion';
 export * from './Alert';
 export * from './Avatar';
@@ -65,6 +72,5 @@ export * from './TimePicker';
 export * from './ToggleCheckbox';
 export * from './ToggleInput';
 export * from './Tooltip';
-export * from './Typography';
 export * from './VisuallyHidden';
 export * from './themes';

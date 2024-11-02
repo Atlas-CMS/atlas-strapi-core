@@ -21,9 +21,9 @@ export type TypographyProps = Partial<ComponentBaseProps & StrapiTypographyProps
 // Strapi Typography props into commensurate Mantine Text props.
 const __Typography = forwardRef(({ children, ...props }: TypographyProps, ref) => {
   const theme = useTheme();
-  console.log({ children, theme, props });
+  // console.log({ children, theme, props });
   let { className, ...text_props } = mapTypographyPropsToMantine(props, theme);
-  console.log({ className, text_props });
+  // console.log({ className, text_props });
   return (
     <Text ref={ref} className={clsx('atlas-Typography-sds', className)} {...text_props}>
       {children}

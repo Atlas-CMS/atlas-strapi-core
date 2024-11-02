@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect } from 'react';
 
 // Styles
 import styles from './left-menu.module.scss';
@@ -6,31 +6,20 @@ import styled from 'styled-components';
 import clsx from 'clsx';
 
 // Components
-import { Flex, FocusTrap, TextOverflowContainer } from '@atlas/design-system';
-import { CastAtlasNavSection } from './components/AtlasNavSection';
-import { AtlasNavBrand } from './components/AtlasNavBrand';
-import { LinkUserWrapper, LinkUser } from './components';
-import { Typography } from '@atlas/design-system';
-
-import { MainNav, NavUser, NavFooter, NavSections, NavCondense } from '@atlas/design-system/v2';
+import { MainNav, NavFooter, NavSections, NavCondense } from '@atlas/design-system/v2';
+import { CastAtlasNavSection, AtlasNavBrand, UserMenu } from './components';
 import DarkTheme from '@components/DarkTheme';
 
 // Icons
-import { Exit, Write, House } from '@strapi/icons';
+import { Exit, Write, House, User } from '@strapi/icons';
+import { Atlas } from '@atlas/icons';
 
 // Utils
-import { useHistory, useLocation } from 'react-router-dom';
-import { initialsFromName } from '@utils/initialsFromName';
+import { useWindowEvent, useDebouncedCallback } from '@mantine/hooks';
 import { sortMenuItems } from './utils/functions';
-import { useIntl } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 
-import {
-  auth,
-  useAppInfo,
-  useTracking,
-  getFetchClient,
-  usePersistentState,
-} from '@strapi/helper-plugin';
+import { auth, getFetchClient, usePersistentState } from '@strapi/helper-plugin';
 import { useConfiguration } from '@hooks/useConfiguration';
 import { useAtlasConfig } from '@hooks/useAtlasConfig';
 import { Menu } from '@hooks/useMenu';
@@ -45,25 +34,17 @@ interface LeftMenuProps extends Pick<Menu, 'generalSectionLinks' | 'pluginsSecti
 const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) => {
   // Initial State
   const { dashboard, client, sideMenu } = useAtlasConfig();
-  const { userDisplayName } = useAppInfo();
+
   const { logos } = useConfiguration();
-  const { pathname } = useLocation();
   const history = useHistory();
 
   // Utilities
-  const { trackUsage } = useTracking();
-  const { formatMessage } = useIntl();
   const { post } = getFetchClient();
-
-  // Refs
-  const navUserRef = React.useRef<HTMLDivElement>(null!);
 
   // Internal State
   const [condensed, setCondensed] = usePersistentState('navbar-condensed', false);
-  const [userLinksVisible, setUserLinksVisible] = React.useState(false);
 
   // Derived State
-  const initials = initialsFromName(userDisplayName);
   const allLinks = [
     {
       to: '/',
@@ -94,28 +75,53 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
     sideMenu
   );
 
-  React.useEffect(() => {
-    console.log({ floatingTop, mySite, plugins, floatingBottom }, allLinks, sideMenu);
-  }, [floatingTop, mySite, plugins, floatingBottom, allLinks, sideMenu]);
+  const userMenuLinks: Array<
+    Optional<MainMenuItem, 'permissions'> & { onClick?: () => Promise<void> }
+  > = [
+    {
+      to: '/me',
+      intlLabel: {
+        id: 'global.profile',
+        defaultMessage: 'Profile',
+      },
+      icon: User,
+    },
+    {
+      to: null,
+      intlLabel: {
+        id: 'atlas.electron.multiInstance.changeInstance',
+        defaultMessage: 'Switch Organization',
+      },
+      icon: Atlas,
+      onClick: async () => {},
+    },
+    {
+      to: '/auth/login',
+      intlLabel: {
+        id: 'app.components.LeftMenu.logout',
+        defaultMessage: 'Logout',
+      },
+      onClick: handleLogout,
+      icon: Exit,
+    },
+  ];
 
-  // Event Handlers
-  const handleToggleUserLinks = () => setUserLinksVisible((prev) => !prev);
+  const handleEscapeKey = useDebouncedCallback((event) => {
+    if (event.code === 'Escape') {
+      event.preventDefault();
+      setCondensed((s) => !s);
+    }
+  }, 40);
 
-  const handleLogout = async () => {
+  // Listen for escape key press to toggle condensed state
+  useWindowEvent('keydown', handleEscapeKey);
+
+  async function handleLogout() {
     await post('/admin/logout');
     auth.clearAppStorage();
-    handleToggleUserLinks();
+    // handleToggleUserLinks();
     history.push('/auth/login');
-  };
-
-  const handleBlur: React.FocusEventHandler = (e: any) => {
-    if (
-      !e.currentTarget.contains(e.relatedTarget) &&
-      e.relatedTarget?.parentElement?.id !== 'main-nav-user-button'
-    ) {
-      setUserLinksVisible(false);
-    }
-  };
+  }
 
   return (
     <DarkTheme>
@@ -144,58 +150,8 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
         </AtlasNavSections>
 
         <NavFooter>
-          <NavUser
-            id="main-nav-user-button"
-            ref={navUserRef}
-            onClick={handleToggleUserLinks}
-            initials={initials}
-          >
-            {userDisplayName}
-          </NavUser>
-          {userLinksVisible && (
-            <LinkUserWrapper
-              onBlur={handleBlur}
-              padding={1}
-              shadow="tableShadow"
-              background="neutral0"
-              hasRadius
-            >
-              <FocusTrap onEscape={handleToggleUserLinks}>
-                <Flex direction="column" alignItems="stretch" gap={0}>
-                  <LinkUser tabIndex={0} onClick={handleToggleUserLinks} to="/me">
-                    <TextOverflowContainer>
-                      <Typography>
-                        {formatMessage({
-                          id: 'global.profile',
-                          defaultMessage: 'Profile',
-                        })}
-                      </Typography>
-                    </TextOverflowContainer>
-                  </LinkUser>
-                  <LinkUser tabIndex={0} onClick={handleLogout} to="/auth/login">
-                    <Typography textColor="danger600">
-                      {formatMessage({
-                        id: 'app.components.LeftMenu.logout',
-                        defaultMessage: 'Logout',
-                      })}
-                    </Typography>
-                    <Exit />
-                  </LinkUser>
-                </Flex>
-              </FocusTrap>
-            </LinkUserWrapper>
-          )}
-          <NavCondense onClick={() => setCondensed((s) => !s)}>
-            {condensed
-              ? formatMessage({
-                  id: 'app.components.LeftMenu.expand',
-                  defaultMessage: 'Expand the navbar',
-                })
-              : formatMessage({
-                  id: 'app.components.LeftMenu.collapse',
-                  defaultMessage: 'Collapse the navbar',
-                })}
-          </NavCondense>
+          <UserMenu nestedLinks={userMenuLinks} />
+          <NavCondense onClick={() => setCondensed((s) => !s)} />
         </NavFooter>
       </MainNav>
     </DarkTheme>

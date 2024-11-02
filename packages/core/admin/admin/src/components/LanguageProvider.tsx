@@ -22,7 +22,7 @@ interface LocalesContextValue {
 
 const LocalesContext = React.createContext<LocalesContextValue>({
   changeLocale: () => {
-    throw new Error('LocalesContext: changeLocale() is not implemented');
+    console.warn('LocalesContext: changeLocale() is not implemented');
   },
   localeNames: {},
 });

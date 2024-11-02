@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
 
-import { AdminContext } from '../../contexts/admin';
+import { AdminContextProvider } from '../../contexts/admin';
 import { ConfigurationProvider } from '../ConfigurationProvider';
 import GuidedTour from '../GuidedTour';
 import { LanguageProvider } from '../LanguageProvider';
@@ -56,7 +56,7 @@ const Providers = ({
         <Theme>
           <QueryClientProvider client={queryClient}>
             <Provider store={store}>
-              <AdminContext.Provider value={{ getAdminInjectedComponents }}>
+              <AdminContextProvider {...{ getAdminInjectedComponents }}>
                 <ConfigurationProvider
                   authLogo={authLogo}
                   menuLogo={menuLogo}
@@ -86,7 +86,7 @@ const Providers = ({
                     </LibraryProvider>
                   </StrapiAppProvider>
                 </ConfigurationProvider>
-              </AdminContext.Provider>
+              </AdminContextProvider>
             </Provider>
           </QueryClientProvider>
         </Theme>

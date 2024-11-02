@@ -13,4 +13,16 @@
       overflow: hidden;
     }
   }
+
+  &.defaultHidden {
+    .textOverflow {
+      transition: opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+    &[data-hidden='true'] .textOverflow {
+      opacity: 0;
+    }
+    &[data-hidden='false'] .textOverflow {
+      opacity: 1;
+    }
+  }
 }

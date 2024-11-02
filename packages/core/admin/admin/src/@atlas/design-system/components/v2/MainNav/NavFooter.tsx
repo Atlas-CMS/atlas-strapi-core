@@ -7,5 +7,9 @@ export interface NavFooterProps {
 }
 
 export const NavFooter = ({ children }: NavFooterProps) => {
-  return <Box position="relative">{children}</Box>;
+  return (
+    <Box className="atlas-NavFooter-sds" position="relative">
+      {children}
+    </Box>
+  );
 };

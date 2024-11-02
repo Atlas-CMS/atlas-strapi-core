@@ -48,7 +48,7 @@
 
   &:not([data-variant]) {
     // Default style
-    line-height: st.lineHeights('default') !important;
-    font-size: st.fontSizes('default') !important;
+    line-height: st.lineHeights('default');
+    font-size: st.fontSizes('default');
   }
 }

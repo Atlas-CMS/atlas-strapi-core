@@ -16,9 +16,14 @@ export interface NavSectionsProps extends FlexProps<'ul'> {
   horizontal?: boolean;
 }
 
-export const NavSections = ({ children, spacing = 4, horizontal = false, ...props }: NavSectionsProps) => {
+export const NavSections = ({
+  children,
+  spacing = 4,
+  horizontal = false,
+  ...props
+}: NavSectionsProps) => {
   return (
-    <BoxGrow paddingLeft={3} paddingRight={2} paddingTop={3} paddingBottom={8}>
+    <BoxGrow paddingLeft={3} paddingRight={2} paddingTop={0} paddingBottom={8}>
       <Flex
         as="ul"
         gap={spacing}

@@ -40,8 +40,6 @@ const AtlasNavSection = ({
 }: AtlasNavSectionProps) => {
   const condensed = useMainNav();
 
-  console.log({ label });
-
   return (
     <Flex
       className={clsx(styles.navSection, 'atlas-MainNavSection-ii', className)}
@@ -88,7 +86,7 @@ type CastAtlasNavSectionProps = AtlasNavSectionProps & {
   navLinks: Array<_MenuItem>;
 };
 
-type _MenuItem = Optional<MenuItem, 'permissions' | 'Component' | 'notificationsCount'>;
+type _MenuItem = Optional<MainMenuItem, 'permissions' | 'Component' | 'notificationsCount'>;
 
 const CastAtlasNavSection = ({ navLinks, ...props }: CastAtlasNavSectionProps) => {
   const { formatMessage } = useIntl();

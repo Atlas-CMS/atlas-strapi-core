@@ -64,11 +64,11 @@ class StrapiApp {
     this.menu = [];
     this.configurations = {
       themes: { light: lightTheme, dark: darkTheme },
-      notifications: { releases: true },
+      notifications: { releases: false },
       head: { favicon },
       translations: {},
       locales: ['en'],
-      tutorials: true,
+      tutorials: false,
       authLogo: Logo,
       menuLogo: Logo,
     };

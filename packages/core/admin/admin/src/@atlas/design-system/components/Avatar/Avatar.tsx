@@ -50,6 +50,7 @@ export const Avatar = ({ src, alt, preview }: AvatarProps) => {
       {isHovering ? (
         <PreviewContainer
           aria-hidden
+          // @ts-ignore
           alt=""
           width={`${previewSize}px`}
           height={`${previewSize}px`}
@@ -76,6 +77,7 @@ export const Avatar = ({ src, alt, preview }: AvatarProps) => {
             zIndex={1}
           />
         ) : null}
+        {/* @ts-ignore */}
         <AvatarImg src={src} alt={alt} width={`${avatarSize}px`} height={`${avatarSize}px`} />
       </Box>
     </span>
@@ -93,7 +95,11 @@ export type InitialsProps = Pick<FlexProps, 'background'> &
     children: React.ReactNode;
   };
 
-export const Initials = ({ children, background = 'primary600', textColor = 'buttonNeutral0' }: InitialsProps) => {
+export const Initials = ({
+  children,
+  background = 'primary600',
+  textColor = 'buttonNeutral0',
+}: InitialsProps) => {
   return (
     <InitialsWrapper
       background={background}

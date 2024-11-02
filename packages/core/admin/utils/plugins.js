@@ -216,8 +216,8 @@ const createPluginsExcludePath = (pluginsPath = []) => {
 };
 
 module.exports = {
-  getPlugins,
   filterPluginsByAdminEntry,
-  createPluginFile,
   createPluginsExcludePath,
+  createPluginFile,
+  getPlugins,
 };
