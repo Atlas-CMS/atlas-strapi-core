@@ -19,9 +19,6 @@
       "url": "https://strapi.io"
     }
   ],
-  "imports": {
-    "@atlas*": "./admin/src/@atlas*"
-  },
   "scripts": {
     "lint": "run -T eslint .",
     "test:front": "run -T cross-env IS_EE=true jest --config ./jest.config.front.js",

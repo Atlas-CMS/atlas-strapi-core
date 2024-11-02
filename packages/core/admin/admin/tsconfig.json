@@ -44,9 +44,9 @@
       // Iliad
       "@iliad/*": ["./src/@iliad/*"],
       "@iliad/hooks/*": ["./src/@iliad/utils/hooks/*"],
-      "@iliad/functions/*": ["./src/@iliad/functions/hooks/*"],
+      "@iliad/functions/*": ["./src/@iliad/functions/hooks/*"]
       // Atlas
-      "@atlas/*": ["./src/@atlas/*"]
+      // "@atlas/*": ["@atlas/*"]
     }
   },
   "include": [
@@ -71,12 +71,12 @@
     "src/@iliad/@types/*",
 
     // Atlas Types
-    "src/@atlas/design-system/@types/**/*.d.ts",
-    "src/@atlas/design-system/@types/**/*.ts",
-    "src/@atlas/design-system/@types/**/*",
-    "src/@atlas/design-system/@types/*.d.ts",
-    "src/@atlas/design-system/@types/*.ts",
-    "src/@atlas/design-system/@types/*"
+    "@atlas/design-system/@types/**/*.d.ts",
+    "@atlas/design-system/@types/**/*.ts",
+    "@atlas/design-system/@types/**/*",
+    "@atlas/design-system/@types/*.d.ts",
+    "@atlas/design-system/@types/*.ts",
+    "@atlas/design-system/@types/*"
   ],
   "exclude": ["node_modules"]
 }

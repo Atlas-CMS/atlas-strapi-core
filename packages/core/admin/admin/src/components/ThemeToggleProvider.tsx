@@ -44,6 +44,7 @@ const ThemeToggleProvider = ({ children, themes }: ThemeToggleProviderProps) => 
     };
   }, [currentTheme, handleChangeTheme, themes]);
 
+  // @ts-ignore
   return <ThemeToggleContext.Provider value={themeValues}>{children}</ThemeToggleContext.Provider>;
 };
 

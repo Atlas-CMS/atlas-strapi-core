@@ -4,6 +4,7 @@ import { MantineProvider } from '@mantine/core';
 
 // Atlas
 import mantineConfig from '@atlas/design-system/config/mantineConfig';
+import { CommonMantineProvider } from '@atlas/design-system/context';
 
 // Types
 import Providers from './Providers';
