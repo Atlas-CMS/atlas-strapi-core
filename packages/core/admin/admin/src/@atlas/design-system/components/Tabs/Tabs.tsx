@@ -225,6 +225,7 @@ export const Tab = ({
     }
 
     return (
+      // @ts-ignore
       <TabButton
         id={tabId}
         role="tab"
@@ -253,6 +254,7 @@ export const Tab = ({
   const showRightBorder = selectedTabIndex && selectedTabIndex - 1 === index;
 
   return (
+    // @ts-ignore
     <DefaultTabButton
       id={tabId}
       role="tab"

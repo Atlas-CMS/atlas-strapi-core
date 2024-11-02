@@ -27,7 +27,10 @@ const ArrowButton = styled.button<{ reverse?: boolean }>`
   height: 1rem;
   align-items: ${({ reverse }) => (reverse ? 'flex-end' : 'flex-start')};
   transform: translateY(${({ reverse }) => (reverse ? `-2px` : `2px`)});
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : undefined)};
+  cursor: ${({
+    // @ts-ignore
+    disabled,
+  }) => (disabled ? 'not-allowed' : undefined)};
   svg {
     display: block;
     height: ${4 / 16}rem;
@@ -198,6 +201,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
             size={size}
             endAction={
               <>
+                {/* @ts-ignore */}
                 <ArrowButton
                   disabled={disabled}
                   aria-hidden
@@ -209,6 +213,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>(
                 >
                   <Icon as={CarretDown} color="neutral500" />
                 </ArrowButton>
+                {/* @ts-ignore */}
                 <ArrowButton
                   disabled={disabled}
                   aria-hidden

@@ -61,6 +61,7 @@ export const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
         {...props}
       >
         {loading ? (
+          // @ts-ignore
           <LoadingWrapper aria-hidden>
             <Loader />
           </LoadingWrapper>
@@ -75,7 +76,7 @@ export const TextButton = React.forwardRef<HTMLButtonElement, TextButtonProps>(
         {endIcon}
       </TextButtonWrapper>
     );
-  },
+  }
 );
 
 TextButton.displayName = 'TextButton';

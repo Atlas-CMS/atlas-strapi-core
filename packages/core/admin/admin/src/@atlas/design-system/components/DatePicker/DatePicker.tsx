@@ -583,6 +583,7 @@ const DatePickerTextInput = React.forwardRef<DatePickerTextInputElement, TextInp
         pattern={inputPattern}
         placeholder={placeholder ?? dateFormatPlaceholder.join(separator)}
         {...props}
+        // @ts-ignore
         value={textValue ?? ''}
         onBlur={composeEventHandlers(props.onBlur, () => {
           if (!context.textValue) {

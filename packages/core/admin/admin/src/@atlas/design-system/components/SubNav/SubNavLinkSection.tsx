@@ -49,7 +49,13 @@ export const SubNavLinkSection = ({ label, children, id }: SubNavLinkSectionProp
     <Box>
       <SubNavLinkSectionWrapper paddingLeft={7} paddingTop={2} paddingBottom={2} paddingRight={4}>
         <Flex justifyContent="space-between">
-          <SubNavLinkSectionButton onClick={handleClick} aria-expanded={isOpen} aria-controls={listId}>
+          {/* @ts-ignore */}
+          <SubNavLinkSectionButton
+            onClick={handleClick}
+            aria-expanded={isOpen}
+            aria-controls={listId}
+          >
+            {/* @ts-ignore */}
             <DropDownIconWrapper rotated={isOpen}>
               <CarretDown aria-hidden />
             </DropDownIconWrapper>

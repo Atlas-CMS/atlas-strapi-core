@@ -106,6 +106,7 @@ export const BaseHeaderLayout = React.forwardRef<HTMLDivElement, BaseHeaderLayou
 
     return (
       <Box
+        // @ts-ignore
         ref={ref}
         paddingLeft={10}
         paddingRight={10}

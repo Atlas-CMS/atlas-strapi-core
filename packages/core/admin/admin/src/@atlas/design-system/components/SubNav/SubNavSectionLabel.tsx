@@ -49,6 +49,7 @@ export const SubNavSectionLabel = ({
           </Typography>
         </Box>
         {collapsable && (
+          // @ts-ignore
           <DropDownIconWrapper rotated={ariaExpanded}>
             <CarretDown aria-hidden />
           </DropDownIconWrapper>

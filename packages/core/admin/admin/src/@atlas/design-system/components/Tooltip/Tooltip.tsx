@@ -59,6 +59,7 @@ export const Tooltip = ({
           position="absolute"
           {...props}
         >
+          {/* @ts-ignore */}
           {visible && <VisuallyHidden id={descriptionId}>{description}</VisuallyHidden>}
           <Typography as="p" variant="pi" fontWeight="bold" textColor="neutral0">
             {label || description}

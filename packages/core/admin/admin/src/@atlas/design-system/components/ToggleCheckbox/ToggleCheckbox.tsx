@@ -185,6 +185,7 @@ export const ToggleCheckbox = React.forwardRef<HTMLInputElement, ToggleCheckboxP
             ref={ref}
             aria-required={required}
             {...props}
+            // @ts-ignore
             checked={!(checked === null || !checked)}
           />
         </ToggleCheckboxWrapper>

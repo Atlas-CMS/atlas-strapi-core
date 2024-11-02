@@ -51,6 +51,7 @@ export const FieldInput = forwardRef<HTMLInputElement, FieldInputProps>(
         <Input
           id={id}
           name={name}
+          // @ts-ignore
           ref={ref}
           aria-describedby={ariaDescription}
           aria-invalid={hasError}
@@ -87,7 +88,9 @@ const Input = styled.input<InputProps>`
   padding-left: ${({ theme, hasLeftAction }) => (hasLeftAction ? 0 : theme.spaces[4])};
   padding-right: ${({ theme, hasRightAction }) => (hasRightAction ? 0 : theme.spaces[4])};
   padding-top: ${({ $size }) => `${PADDING_Y[$size] / 16}rem`};
-  cursor: ${(props) => (props['aria-disabled'] ? 'not-allowed' : undefined)};
+  cursor: ${(props) =>
+    // @ts-ignore
+    props['aria-disabled'] ? 'not-allowed' : undefined};
 
   color: ${({ theme }) => theme.colors.neutral800};
   font-weight: 400;

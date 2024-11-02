@@ -37,6 +37,7 @@ export const NavBrand = ({ workplace, title, icon, to = '/' }: NavBrandProps) =>
   if (condensed) {
     return (
       <Box paddingLeft={3} paddingRight={3} paddingTop={4} paddingBottom={4}>
+        {/* @ts-ignore */}
         <BrandIconWrapper condensed>
           <NavLink to={to}>
             {icon}

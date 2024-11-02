@@ -130,6 +130,7 @@ const ToggleInputInput = React.forwardRef<ToggleInputInputElement, ToggleInputIn
         </ToggleOption>
         <Input
           {...props}
+          // @ts-ignore
           ref={forwardedRef}
           onChange={(e: any) => {
             setChecked(e.currentTarget.checked);

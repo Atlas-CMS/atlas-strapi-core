@@ -65,8 +65,20 @@ export interface SwitchProps
 }
 
 export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
-  ({ label, onChange, onLabel = 'On', offLabel = 'Off', selected, visibleLabels = false, ...props }, ref) => {
+  (
+    {
+      label,
+      onChange,
+      onLabel = 'On',
+      offLabel = 'Off',
+      selected,
+      visibleLabels = false,
+      ...props
+    },
+    ref
+  ) => {
     return (
+      // @ts-ignore
       <SwitchButton
         ref={ref}
         role="switch"
@@ -78,18 +90,24 @@ export const Switch = React.forwardRef<HTMLButtonElement, SwitchProps>(
         {...props}
       >
         <Flex>
+          {/* @ts-ignore */}
           <SwitchContent>
             <span>{onLabel}</span>
             <span>{offLabel}</span>
           </SwitchContent>
 
           {visibleLabels && (
-            <Box as="span" aria-hidden paddingLeft={2} color={selected ? 'success600' : 'danger600'}>
+            <Box
+              as="span"
+              aria-hidden
+              paddingLeft={2}
+              color={selected ? 'success600' : 'danger600'}
+            >
               {selected ? onLabel : offLabel}
             </Box>
           )}
         </Flex>
       </SwitchButton>
     );
-  },
+  }
 );

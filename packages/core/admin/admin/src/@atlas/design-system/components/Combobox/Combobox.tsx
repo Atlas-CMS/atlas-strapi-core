@@ -264,6 +264,7 @@ export const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInpu
                   onClick={handleCreateItemClick}
                   asChild
                 >
+                  {/* @ts-ignore */}
                   <OptionBox>
                     <Typography>{createMessage(internalTextValue ?? '')}</Typography>
                   </OptionBox>
@@ -271,6 +272,7 @@ export const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInpu
               ) : null}
               {!creatable && !loading ? (
                 <ComboboxPrimitive.NoValueFound asChild>
+                  {/* @ts-ignore */}
                   <OptionBox $hasHover={false}>
                     <Typography>{noOptionsMessage(internalTextValue ?? '')}</Typography>
                   </OptionBox>
@@ -450,6 +452,7 @@ export const Option = React.forwardRef<HTMLDivElement, ComboboxOptionProps>(
         disabled={disabled}
         textValue={textValue}
       >
+        {/* @ts-ignore */}
         <OptionBox ref={ref} {...props}>
           <ComboboxPrimitive.ItemText asChild>
             <Typography>{children}</Typography>

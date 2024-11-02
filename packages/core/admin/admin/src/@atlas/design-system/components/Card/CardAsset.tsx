@@ -25,8 +25,11 @@ const CardAssetWrapper = styled.div<{ size: CardAssetSizes }>`
   justify-content: center;
   height: ${({ size }) => sizes[size] / 16}rem;
   width: 100%;
-  background: repeating-conic-gradient(${({ theme }) => theme.colors.neutral100} 0% 25%, transparent 0% 50%) 50% / 20px
-    20px;
+  background: repeating-conic-gradient(
+      ${({ theme }) => theme.colors.neutral100} 0% 25%,
+      transparent 0% 50%
+    )
+    50% / 20px 20px;
   border-top-left-radius: ${({ theme }) => theme.borderRadius};
   border-top-right-radius: ${({ theme }) => theme.borderRadius};
 `;
@@ -40,6 +43,7 @@ export interface CardAssetProps extends React.ImgHTMLAttributes<HTMLImageElement
 
 export const CardAsset = ({ size = 'M', children, ...props }: CardAssetProps) => {
   return (
+    // @ts-ignore
     <CardAssetWrapper size={size}>
       {children ? <Flex>{children}</Flex> : <CardAssetImg {...props} aria-hidden />}
     </CardAssetWrapper>
