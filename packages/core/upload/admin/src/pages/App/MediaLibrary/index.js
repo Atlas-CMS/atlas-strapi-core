@@ -13,7 +13,7 @@ import {
   Main,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   AnErrorOccurred,
   CheckPermissions,

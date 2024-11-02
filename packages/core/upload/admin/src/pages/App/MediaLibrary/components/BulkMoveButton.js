@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button } from '@strapi/design-system';
+import { Button } from '@atlas/design-system';
 import { Folder } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

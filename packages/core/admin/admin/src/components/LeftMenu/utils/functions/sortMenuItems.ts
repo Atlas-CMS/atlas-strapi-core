@@ -1,5 +1,5 @@
 import { StrapiAppContextValue } from '@strapi/helper-plugin';
-import AtlasConfig from '@atlas/AtlasConfig';
+import AtlasConfig from '@atlas/design-system/utils/AtlasConfig';
 type IntlLabel = StrapiAppContextValue['menu'][number]['intlLabel'];
 type MenuItem = StrapiAppContextValue['menu'][number];
 

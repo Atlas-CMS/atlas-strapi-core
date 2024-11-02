@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 
-import { Main } from '@strapi/design-system';
+import { Main } from '@atlas/design-system';
 import { LoadingIndicatorPage, useFocusWhenNavigate, useQueryParams } from '@strapi/helper-plugin';
 import { Helmet } from 'react-helmet';
 import { useIntl } from 'react-intl';

@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
 
-import { CarouselInput, CarouselSlide } from '@strapi/design-system';
+import { CarouselInput, CarouselSlide } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

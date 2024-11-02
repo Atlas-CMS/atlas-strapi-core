@@ -2,7 +2,7 @@
 // import clsx from 'clsx';
 
 // // Components
-// import { Box as StrapiBox } from '@strapi/design-system';
+// import { Box as StrapiBox } from '@atlas/design-system';
 // import { BoxComponentProps, Box as MantineBox } from '@mantine/core';
 // type BoxProps = ComponentBaseProps & BoxComponentProps;
 

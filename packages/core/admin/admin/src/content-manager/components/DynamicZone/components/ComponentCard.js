@@ -19,7 +19,10 @@ const ComponentBox = styled(Box)`
   height: ${pxToRem(84)};
   border: 1px solid ${({ theme }) => theme.colors.neutral200};
   background: ${({ theme }) => theme.colors.neutral100};
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => {
+    // theme.borderRadius
+    return pxToRem(12);
+  }};
   display: flex;
   justify-content: center;
   align-items: center;

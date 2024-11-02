@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, Icon, LinkButton, Typography } from '@strapi/design-system';
+import { Box, Flex, Icon, LinkButton, Typography } from '@atlas/design-system';
 import { EmptyDocuments, Plus } from '@strapi/icons';
 import qs from 'qs';
 import { useIntl } from 'react-intl';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, Grid, GridItem, KeyboardNavigable } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem, KeyboardNavigable } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import AttributeOption from '../AttributeOption';

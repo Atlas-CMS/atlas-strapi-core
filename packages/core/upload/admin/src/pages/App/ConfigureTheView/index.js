@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from 'react';
 
-import { Button, ContentLayout, HeaderLayout, Layout, Main } from '@strapi/design-system';
+import { Button, ContentLayout, HeaderLayout, Layout, Main } from '@atlas/design-system';
 import {
   ConfirmDialog,
   Link,

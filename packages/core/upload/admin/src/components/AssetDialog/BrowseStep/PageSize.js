@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { Box, Flex, Option, Select, Typography } from '@strapi/design-system';
+import { Box, Flex, Option, Select, Typography } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

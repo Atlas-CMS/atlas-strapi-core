@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 
-import { Box, Checkbox, Flex, NumberInput, TextInput } from '@strapi/design-system';
+import { Box, Checkbox, Flex, NumberInput, TextInput } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

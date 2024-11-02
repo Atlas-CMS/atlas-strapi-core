@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 
-import { IconButton, Searchbar, SearchForm } from '@strapi/design-system';
+import { IconButton, Searchbar, SearchForm } from '@atlas/design-system';
 import { useTracking } from '@strapi/helper-plugin';
 import { Search } from '@strapi/icons';
 import PropTypes from 'prop-types';

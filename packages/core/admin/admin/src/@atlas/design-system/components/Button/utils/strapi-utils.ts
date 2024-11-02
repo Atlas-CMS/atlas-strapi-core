@@ -1,21 +1,22 @@
+import { Typography } from '@atlas/design-system';
 import { DefaultTheme } from 'styled-components';
-
 import {
   LIGHT_VARIANTS,
-  VARIANTS,
+  SUCCESS_LIGHT,
+  DANGER_LIGHT,
   SECONDARY,
+  VARIANTS,
   TERTIARY,
   DEFAULT,
-  GHOST,
-  DANGER,
   SUCCESS,
-  DANGER_LIGHT,
-  SUCCESS_LIGHT,
+  DANGER,
+  GHOST,
   Variant,
-} from './constants';
-import { Typography } from '../Typography';
+} from '../constants';
 
-export const getVariantColorName = (variant: Variant): 'success' | 'danger' | 'neutral' | 'primary' => {
+export const getVariantColorName = (
+  variant: Variant
+): 'success' | 'danger' | 'neutral' | 'primary' => {
   if (variant === SUCCESS_LIGHT || variant === DANGER_LIGHT) {
     return `${variant.substring(0, variant.lastIndexOf('-'))}` as 'success' | 'danger';
   }

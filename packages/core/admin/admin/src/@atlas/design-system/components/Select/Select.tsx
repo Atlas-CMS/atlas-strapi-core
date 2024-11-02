@@ -15,12 +15,12 @@ export const useSelectContext = () => React.useContext(SelectContext);
  * @preserve
  * @deprecated You should import the specific type of select you want to render
  *
- * e.g. `import { MultiSelect } from '@strapi/design-system';`
+ * e.g. `import { MultiSelect } from '@atlas/design-system';`
  */
 export const Select = (props: SelectProps) => {
   const contextValue = React.useMemo(
     () => ({ multi: Boolean(props.multi || props.withTags) }),
-    [props.multi, props.withTags],
+    [props.multi, props.withTags]
   );
 
   return (

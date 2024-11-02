@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CarouselActions, IconButton } from '@strapi/design-system';
+import { CarouselActions, IconButton } from '@atlas/design-system';
 import { prefixFileUrlWithBackendUrl } from '@strapi/helper-plugin';
 import { Pencil, Plus, Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';

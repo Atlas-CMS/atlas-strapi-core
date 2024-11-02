@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, ProgressBar, Typography } from '@strapi/design-system';
+import { Flex, ProgressBar, Typography } from '@atlas/design-system';
 import { Cross } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

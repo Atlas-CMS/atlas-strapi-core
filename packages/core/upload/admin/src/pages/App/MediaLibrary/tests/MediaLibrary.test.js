@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DesignSystemProvider } from '@strapi/design-system';
+import { DesignSystemProvider } from '@atlas/design-system';
 import { usePersistentState, useQueryParams, useSelectionState } from '@strapi/helper-plugin';
 import { render as renderRTL, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';

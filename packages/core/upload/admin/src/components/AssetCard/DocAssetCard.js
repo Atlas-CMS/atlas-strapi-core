@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { File, FilePdf } from '@strapi/icons';
 import PropTypes from 'prop-types';

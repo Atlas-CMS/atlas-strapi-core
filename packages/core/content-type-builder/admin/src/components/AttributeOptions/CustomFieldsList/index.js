@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex, Grid, GridItem, KeyboardNavigable, Link } from '@strapi/design-system';
+import { Box, Flex, Grid, GridItem, KeyboardNavigable, Link } from '@atlas/design-system';
 import { useCustomFields } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
 

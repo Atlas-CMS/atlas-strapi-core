@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IconButton } from '@strapi/design-system';
+import { IconButton } from '@atlas/design-system';
 import { useClipboard, useNotification } from '@strapi/helper-plugin';
 import { Link as LinkIcon } from '@strapi/icons';
 import PropTypes from 'prop-types';

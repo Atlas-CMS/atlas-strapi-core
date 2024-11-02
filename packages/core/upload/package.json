@@ -15,6 +15,9 @@
       "url": "https://strapi.io"
     }
   ],
+  "imports": {
+    "@atlas*": "./admin/src/@atlas*"
+  },
   "scripts": {
     "lint": "run -T eslint .",
     "test:front": "run -T cross-env IS_EE=true jest --config ./jest.config.front.js",
@@ -72,12 +75,12 @@
     "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
+  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff",
   "strapi": {
     "displayName": "Media Library",
     "name": "upload",
     "description": "Media file management.",
     "required": true,
     "kind": "plugin"
-  },
-  "gitHead": "c3aa2ddcaf0f11a9548d52bcaf32ad32397bfeff"
+  }
 }

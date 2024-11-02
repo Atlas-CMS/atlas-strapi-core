@@ -12,7 +12,7 @@ import DarkTheme from '@components/DarkTheme';
 
 // Icons
 import { Exit, Write, House, User } from '@strapi/icons';
-import { Atlas } from '@atlas/icons';
+import { Atlas } from '@atlas/design-system/icons';
 
 // Utils
 import { useWindowEvent, useDebouncedCallback } from '@mantine/hooks';

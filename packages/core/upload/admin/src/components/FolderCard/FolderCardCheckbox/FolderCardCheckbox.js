@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BaseCheckbox, Box } from '@strapi/design-system';
+import { BaseCheckbox, Box } from '@atlas/design-system';
 
 import { useFolderCard } from '../contexts/FolderCard';
 

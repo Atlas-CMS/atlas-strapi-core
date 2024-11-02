@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, KeyboardNavigable, Typography } from '@strapi/design-system';
+import { Flex, KeyboardNavigable, Typography } from '@atlas/design-system';
 import {
   ManyToMany,
   ManyToOne,

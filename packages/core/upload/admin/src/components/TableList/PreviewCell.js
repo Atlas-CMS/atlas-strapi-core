@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Avatar, Box, Icon, Initials } from '@strapi/design-system';
+import { Avatar, Box, Icon, Initials } from '@atlas/design-system';
 import { getFileExtension, prefixFileUrlWithBackendUrl, pxToRem } from '@strapi/helper-plugin';
 import { Folder } from '@strapi/icons';
 import PropTypes from 'prop-types';

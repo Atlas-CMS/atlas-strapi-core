@@ -10,7 +10,7 @@ import {
   IconButton,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { usePersistentState } from '@strapi/helper-plugin';
 import { Grid, List, Pencil, Plus } from '@strapi/icons';
 import PropTypes from 'prop-types';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { Loader } from '@strapi/design-system';
-import { CrumbSimpleMenu, MenuItem } from '@strapi/design-system/v2';
+import { Loader } from '@atlas/design-system';
+import { CrumbSimpleMenu, MenuItem } from '@atlas/design-system/v2';
 import { useQueryParams } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { Box, Flex, IconButton, Typography } from '@strapi/design-system';
+import { Box, Flex, IconButton, Typography } from '@atlas/design-system';
 import { onRowClick, pxToRem, stopPropagation } from '@strapi/helper-plugin';
 import { Lock, Pencil, Trash } from '@strapi/icons';
 import get from 'lodash/get';

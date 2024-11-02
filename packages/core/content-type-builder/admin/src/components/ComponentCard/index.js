@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { Box, Flex, Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { Cross } from '@strapi/icons';
 import get from 'lodash/get';

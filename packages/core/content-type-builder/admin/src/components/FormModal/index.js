@@ -14,7 +14,7 @@ import {
   TabPanels,
   Tabs,
   Alert,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import {
   getYupInnerErrors,
   useCustomFields,

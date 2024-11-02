@@ -1,4 +1,4 @@
-import AtlasConfig from '@atlas/AtlasConfig';
+import AtlasConfig from '@atlas/design-system/utils/AtlasConfig';
 
 // Extend window object with custom properties
 declare global {

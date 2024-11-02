@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import getRelationType from '../../utils/getRelationType';

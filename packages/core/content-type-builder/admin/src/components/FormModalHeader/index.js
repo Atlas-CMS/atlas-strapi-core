@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { Box, Flex, ModalHeader, Typography } from '@strapi/design-system';
+import { Box, Flex, ModalHeader, Typography } from '@atlas/design-system';
 import { Breadcrumbs, Crumb } from '@strapi/design-system/v2';
 import { Link } from '@strapi/helper-plugin';
 import { ArrowLeft } from '@strapi/icons';

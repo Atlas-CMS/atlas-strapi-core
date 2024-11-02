@@ -12,7 +12,7 @@ import {
   ModalHeader,
   ModalLayout,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Form, normalizeAPIError } from '@strapi/helper-plugin';
 import { Formik } from 'formik';
 import isEmpty from 'lodash/isEmpty';

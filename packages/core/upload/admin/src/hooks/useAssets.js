@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { useNotifyAT } from '@strapi/design-system';
+import { useNotifyAT } from '@atlas/design-system';
 import { useFetchClient, useNotification } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';

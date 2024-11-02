@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 
-import { ComboboxOption, CreatableCombobox } from '@strapi/design-system';
+import { ComboboxOption, CreatableCombobox } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

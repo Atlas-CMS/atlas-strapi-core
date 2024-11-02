@@ -13,7 +13,7 @@ import {
   Tooltip,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Search, Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

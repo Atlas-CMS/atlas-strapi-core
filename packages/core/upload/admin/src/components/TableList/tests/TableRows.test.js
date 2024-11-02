@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RawTable } from '@strapi/design-system';
+import { RawTable } from '@atlas/design-system';
 import { render, fireEvent } from '@tests/utils';
 
 import { TableRows } from '../TableRows';

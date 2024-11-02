@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Grid, GridItem, Option, Select } from '@strapi/design-system';
+import { Box, Grid, GridItem, Option, Select } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

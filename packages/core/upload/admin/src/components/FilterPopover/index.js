@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 
-import { Box, Button, Flex, Option, Popover, Select } from '@strapi/design-system';
+import { Box, Button, Flex, Option, Popover, Select } from '@atlas/design-system';
 import { Plus } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

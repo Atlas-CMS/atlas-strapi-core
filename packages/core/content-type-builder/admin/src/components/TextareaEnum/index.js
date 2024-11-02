@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Textarea } from '@strapi/design-system';
+import { Textarea } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 

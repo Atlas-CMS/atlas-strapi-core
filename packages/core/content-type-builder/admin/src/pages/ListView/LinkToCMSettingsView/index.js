@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-import { Button } from '@strapi/design-system';
+import { Button } from '@atlas/design-system';
 import { CheckPermissions } from '@strapi/helper-plugin';
 import { Layer } from '@strapi/icons';
 import PropTypes from 'prop-types';

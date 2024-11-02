@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Flex, IconButton } from '@strapi/design-system';
+import { Flex, IconButton } from '@atlas/design-system';
 import { useTracking } from '@strapi/helper-plugin';
 import { Crop as Resize, Download as DownloadIcon, Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';

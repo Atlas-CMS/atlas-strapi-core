@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, lightTheme, ThemeProvider, Typography } from '@strapi/design-system';
+import { Flex, lightTheme, ThemeProvider, Typography } from '@atlas/design-system';
 import { act, fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 

@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 
-import { Checkbox } from '@strapi/design-system';
+import { Checkbox } from '@atlas/design-system';
 import { ConfirmDialog } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

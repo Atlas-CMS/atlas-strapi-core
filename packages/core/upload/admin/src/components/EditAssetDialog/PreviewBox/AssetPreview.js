@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { forwardRef } from 'react';
 
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import { usePersistentState } from '@strapi/helper-plugin';
 import { File, FilePdf } from '@strapi/icons';
 import PropTypes from 'prop-types';

@@ -1,4 +1,4 @@
-import { Flex, inputFocusStyle, Typography } from '@strapi/design-system';
+import { Flex, inputFocusStyle, Typography } from '@atlas/design-system';
 import styled from 'styled-components';
 
 const Wrapper = styled(Flex)`

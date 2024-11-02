@@ -8,7 +8,7 @@ import { CSSProperties, useEffect, useState } from 'react';
 // Utils
 import { useMainNav } from '@atlas/design-system/components/v2/MainNav/MainNavContext';
 import { useElementSize, useClickOutside } from '@mantine/hooks';
-import { useUserInfo } from '@atlas/hooks';
+import { useUserInfo } from '@atlas/design-system/hooks';
 
 // Components
 import { TextOverflowContainer, AvatarWithContext, M_Typography } from '@atlas/design-system';

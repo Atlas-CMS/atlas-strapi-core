@@ -7,7 +7,7 @@
 /* eslint-disable import/no-cycle */
 import React, { useState } from 'react';
 
-import { Box, Flex, Typography } from '@strapi/design-system';
+import { Box, Flex, Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { Plus } from '@strapi/icons';
 import PropTypes from 'prop-types';

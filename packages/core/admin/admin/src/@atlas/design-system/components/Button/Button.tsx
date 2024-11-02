@@ -1,126 +1,85 @@
-import React from 'react';
+// Styles
+import styled, { useTheme } from 'styled-components';
+import styles from './button.module.scss';
+import clsx from 'clsx';
 
-import { Loader } from '@strapi/icons';
-import styled, { keyframes } from 'styled-components';
+// React
+import { NavLink as RouterLink, LinkProps } from 'react-router-dom';
+import React, { forwardRef } from 'react';
 
-import { BUTTON_SIZES, Variant, ButtonSizes, DEFAULT } from './constants';
-import { getDisabledStyle, getHoverStyle, getActiveStyle, getVariantStyle } from './utils';
-import { BaseButton, BaseButtonProps } from '../BaseButton';
-import { Box } from '../Box';
-import { Flex } from '../Flex';
-import { Typography } from '../Typography';
+// Components
+import { Button as MantineButton, ButtonProps as MantineButtonProps } from '@mantine/core';
 
-const rotation = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-`;
+// Utils
+import { mapButtonPropsToMantine } from './utils';
 
-const LoaderAnimated = styled(Loader)`
-  animation: ${rotation} 2s infinite linear;
-  will-change: transform;
-`;
+// Types
+import type { ButtonProps as StrapiButtonProps } from './StrapiButton';
+import ConditionalWrapper from '@iliad/components/ConditionalWrapper';
 
-export const ButtonWrapper = styled(BaseButton)<Required<Pick<ButtonProps, 'size' | 'variant'>>>`
-  height: ${({ theme, size }) => theme.sizes.button[size]};
+export type ButtonProps = ComponentBaseProps & MantineButtonProps & {};
+type _StrapiButtonProps = StrapiButtonProps & {
+  variant:
+    | 'default'
+    | 'secondary'
+    | 'tertiary'
+    | 'danger'
+    | 'danger-light'
+    | 'ghost'
+    | 'success'
+    | 'success-light'
+    | (string & {});
+  icon: React.ReactNode;
+  label: string;
+  to: string;
+};
 
-  svg {
-    height: ${12 / 16}rem;
-    width: auto;
-  }
+const __Button = forwardRef(({ children, to, ...props }: Partial<_StrapiButtonProps> & {}, ref) => {
+  let { className, component, size = 'sm', ...btn_props } = mapButtonPropsToMantine(props);
 
-  &[aria-disabled='true'] {
-    ${getDisabledStyle}
-
-    &:active {
-      ${getDisabledStyle}
-    }
-  }
-
-  &:hover {
-    ${getHoverStyle}
-  }
-
-  &:active {
-    ${getActiveStyle}
-  }
-
-  ${getVariantStyle}
-`;
-
-export interface ButtonProps extends BaseButtonProps {
-  endIcon?: React.ReactNode;
-  fullWidth?: boolean;
-  loading?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  size?: ButtonSizes;
-  startIcon?: React.ReactNode;
-  variant?: Variant;
-}
-
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      variant = DEFAULT,
-      startIcon,
-      endIcon,
-      disabled = false,
-      children,
-      onClick,
-      size = BUTTON_SIZES[0],
-      loading = false,
-      fullWidth = false,
-      ...props
-    },
-    ref
-  ) => {
-    const isDisabled = disabled || loading;
-
-    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e: any) => {
-      if (!isDisabled && onClick) {
-        onClick(e);
-      }
-    };
-
-    return (
-      <ButtonWrapper
-        ref={ref}
-        aria-disabled={isDisabled}
-        disabled={isDisabled}
+  console.log('ButtonProps:', {
+    className,
+    component,
+    btn_props,
+    children,
+    props,
+    size,
+    to,
+  });
+  return (
+    <ConditionalWrapper condition={to} wrapper={(c, _to) => <RouterLink to={_to}>{c}</RouterLink>}>
+      <MantineButton
+        className={clsx(styles.button, 'atlas-Button-sds', className)}
+        data-loading={props.loading}
+        {...btn_props}
         size={size}
-        variant={variant}
-        onClick={handleClick}
-        fullWidth={fullWidth}
-        alignItems="center"
-        background="buttonPrimary600"
-        borderColor="buttonPrimary600"
-        gap={2}
-        inline={fullWidth}
-        justifyContent={fullWidth ? 'center' : undefined}
-        paddingLeft={4}
-        paddingRight={4}
-        width={fullWidth ? '100%' : undefined}
-        {...props}
+        // @ts-ignore
+        ref={ref}
+        radius="xl"
       >
-        {(startIcon || loading) && (
-          <Box aria-hidden>{loading ? <LoaderAnimated /> : startIcon}</Box>
-        )}
+        {children}
+      </MantineButton>
+    </ConditionalWrapper>
+  );
+});
 
-        <Typography
-          variant={size === 'S' ? 'pi' : undefined}
-          fontWeight="bold"
-          textColor="buttonNeutral0"
-        >
-          {children}
-        </Typography>
+// This is nonsense, I hate styled components and this approach to coercion is... questionable.
+const _Button = styled(__Button)<Partial<_StrapiButtonProps> & {}>``;
 
-        {endIcon && <Flex aria-hidden>{endIcon}</Flex>}
-      </ButtonWrapper>
-    );
-  }
-);
+// We need to intercept the `as` prop and pass it to the Mantine Text component before styled-components has a chance to muck with it.
+// We 100% want Mantine to handle polymorphism. (unless something breaks, I guess. I should probably include an escape hatch.)
+const Button = forwardRef<HTMLDivElement, PolymorphEscapeHatch<_StrapiButtonProps>>(
+  ({ as = 'button', icon, label, ...props }, ref) => (
+    <_Button ref={ref} component={as} icon={icon} label={label} {...props} />
+  )
+) as typeof _Button;
 
-Button.displayName = 'Button';
+const IconButton = forwardRef<HTMLDivElement, PolymorphEscapeHatch<_StrapiButtonProps>>(
+  ({ as = 'button', icon, label, ...props }, ref) => (
+    <_Button ref={ref} component={as} icon={icon} label={label} {...props} />
+  )
+) as typeof _Button;
+
+export default Button;
+// export { Button, IconButton };
+export { Button };

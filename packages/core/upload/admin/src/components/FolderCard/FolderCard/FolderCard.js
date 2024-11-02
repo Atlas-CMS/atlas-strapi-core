@@ -1,6 +1,6 @@
 import React, { forwardRef, useMemo } from 'react';
 
-import { Box, CardAction, Flex } from '@strapi/design-system';
+import { Box, CardAction, Flex } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { Folder } from '@strapi/icons';
 import PropTypes from 'prop-types';

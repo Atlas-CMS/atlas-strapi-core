@@ -9,7 +9,7 @@ import { getFetchClient } from '@strapi/helper-plugin';
 import { createRoot } from 'react-dom/client';
 
 // Atlas
-import AtlasConfig, { AtlasConfigData } from '@atlas/AtlasConfig';
+import AtlasConfig, { AtlasConfigData } from '@atlas/design-system/utils/AtlasConfig';
 import { initializeElectron } from '@utils/electron';
 
 window.strapi = {

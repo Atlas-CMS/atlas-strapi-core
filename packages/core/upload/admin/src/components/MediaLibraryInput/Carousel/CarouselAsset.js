@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Flex } from '@strapi/design-system';
+import { Box, Flex } from '@atlas/design-system';
 import { File, FilePdf } from '@strapi/icons';
 import styled from 'styled-components';
 

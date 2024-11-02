@@ -7,7 +7,7 @@
 /* eslint-disable import/no-cycle */
 import React from 'react';
 
-import { Box, Button, Table, TFooter, Th, Thead, Tr, Typography } from '@strapi/design-system';
+import { Box, Button, Table, TFooter, Th, Thead, Tr, Typography } from '@atlas/design-system';
 import { EmptyBodyTable, useTracking } from '@strapi/helper-plugin';
 import { Plus } from '@strapi/icons';
 import PropTypes from 'prop-types';

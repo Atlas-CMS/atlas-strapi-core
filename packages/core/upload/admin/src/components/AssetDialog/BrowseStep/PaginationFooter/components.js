@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { buttonFocusStyle, Typography, VisuallyHidden } from '@strapi/design-system';
+import { buttonFocusStyle, Typography, VisuallyHidden } from '@atlas/design-system';
 import { ChevronLeft, ChevronRight } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';

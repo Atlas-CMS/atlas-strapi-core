@@ -18,7 +18,7 @@ import {
   ModalLayout,
   TextInput,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Form, getFileExtension, pxToRem, useTracking } from '@strapi/helper-plugin';
 import { Formik } from 'formik';
 import isEqual from 'lodash/isEqual';

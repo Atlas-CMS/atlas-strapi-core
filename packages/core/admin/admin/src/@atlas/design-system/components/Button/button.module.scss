@@ -1,0 +1,48 @@
+.button {
+  --button-height-xs: calc(1.75rem * var(--mantine-scale)) !important;
+  --button-height-md: calc(2.25rem * var(--mantine-scale)) !important;
+  --button-height-xl: calc(3.75rem * var(--mantine-scale)) !important;
+  --button-height-lg: calc(2.5rem * var(--mantine-scale)) !important;
+  --button-height-sm: calc(2rem * var(--mantine-scale)) !important;
+
+  *[class*='mantine-Button-section'] {
+    svg {
+      fill: currentColor;
+      color: inherit;
+
+      height: 0.75rem;
+      width: 0.75rem;
+      * {
+        fill: currentColor;
+        color: inherit;
+      }
+    }
+  }
+  border-width: 0.5px;
+  border-color: rgba(0, 0, 0, 0);
+
+  &[data-strapi-variant='secondary'] {
+    &:hover {
+      border-color: var(--mantine-color-strapi-purple-7);
+    }
+  }
+  &[data-strapi-variant='tertiary'] {
+  }
+  &[data-strapi-variant='success'] {
+  }
+  &[data-strapi-variant='success-light'] {
+  }
+  &[data-strapi-variant='success-light'] {
+  }
+  &[data-strapi-variant='danger-light'] {
+  }
+  &[data-strapi-variant='ghost'] {
+  }
+
+  &:disabled,
+  &[data-disabled] {
+    *[class*='mantine-Button-inner'] {
+      opacity: 0.8;
+    }
+  }
+}

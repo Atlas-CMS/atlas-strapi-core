@@ -11,7 +11,7 @@ import {
   CardTitle,
   Flex,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import styled from 'styled-components';

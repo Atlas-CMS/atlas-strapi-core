@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Flex, Icon, Typography } from '@strapi/design-system';
+import { Flex, Icon, Typography } from '@atlas/design-system';
 import { PicturePlus } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

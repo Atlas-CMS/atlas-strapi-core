@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import { Button } from '@strapi/design-system';
+import { Button } from '@atlas/design-system';
 import { useQueryParams, useTracking } from '@strapi/helper-plugin';
 import { Filter } from '@strapi/icons';
 import { useIntl } from 'react-intl';

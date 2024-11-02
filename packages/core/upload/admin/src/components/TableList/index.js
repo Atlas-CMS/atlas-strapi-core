@@ -10,7 +10,7 @@ import {
   Tr,
   Typography,
   VisuallyHidden,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { CarretDown, CarretUp } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

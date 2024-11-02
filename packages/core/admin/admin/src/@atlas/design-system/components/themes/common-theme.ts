@@ -3,6 +3,7 @@ import { Sizes, sizes } from './sizes';
 export interface CommonTheme {
   sizes: Sizes;
   zIndices: [5, 10, 15, 20];
+  paperBorderRadius: '12px';
   spaces: [
     '0px',
     '4px',
@@ -35,6 +36,7 @@ export interface CommonTheme {
 export const commonTheme: CommonTheme = {
   sizes,
   zIndices: [5, 10, 15, 20], // TBD
+  paperBorderRadius: '12px',
   spaces: [
     '0px',
     '4px',

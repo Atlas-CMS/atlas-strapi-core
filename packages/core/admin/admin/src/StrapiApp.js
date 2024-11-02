@@ -38,12 +38,12 @@ import '@mantine/dropzone/styles.css';
 import '@mantine/code-highlight/styles.css';
 
 // Atlas - Styles
+import '@atlas/design-system/styles/variables.scss';
+import '@atlas/design-system/styles/mantine.scss';
+import '@atlas/design-system/styles/global.scss';
+import '@atlas/design-system/styles/medusa.scss';
 import '@iliad/styles/mantine/_mantine.scss';
 import '@iliad/styles/coreStyles.scss';
-import '@atlas/styles/variables.scss';
-import '@atlas/styles/mantine.scss';
-import '@atlas/styles/global.scss';
-import '@atlas/styles/medusa.scss';
 
 // Atlas - Components
 import AtlasProviders from '@components/AtlasProviders';

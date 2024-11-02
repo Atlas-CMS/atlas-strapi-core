@@ -13,7 +13,7 @@ import {
   CardTitle,
   Flex,
   IconButton,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { Pencil, Trash } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

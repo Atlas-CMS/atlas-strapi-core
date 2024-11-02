@@ -3,7 +3,7 @@ import { ModalsProvider } from '@mantine/modals';
 import { MantineProvider } from '@mantine/core';
 
 // Atlas
-import mantineConfig from '@atlas/config/mantineConfig';
+import mantineConfig from '@atlas/design-system/config/mantineConfig';
 
 // Types
 import Providers from './Providers';

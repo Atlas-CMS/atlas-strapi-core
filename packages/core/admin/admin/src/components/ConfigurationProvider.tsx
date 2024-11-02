@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { ConfigurationContext, ConfigurationContextValue } from '../contexts/configuration';
-import AtlasConfig from '@atlas/AtlasConfig';
+import AtlasConfig from '@atlas/design-system/utils/AtlasConfig';
 
 export interface ConfigurationProviderProps {
   children: React.ReactNode;

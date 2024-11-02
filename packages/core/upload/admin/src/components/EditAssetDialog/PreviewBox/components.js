@@ -1,4 +1,4 @@
-import { Badge, Box, Flex } from '@strapi/design-system';
+import { Badge, Box, Flex } from '@atlas/design-system';
 import styled from 'styled-components';
 
 export const RelativeBox = styled(Box)`

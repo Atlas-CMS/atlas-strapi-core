@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Divider, Flex, Typography } from '@strapi/design-system';
+import { Box, Divider, Flex, Typography } from '@atlas/design-system';
 import { GenericInput } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 

@@ -28,13 +28,22 @@ const MenuRoot = DropdownMenu.Root;
 interface TriggerProps extends ButtonProps {}
 
 const MenuTrigger = forwardRef<HTMLButtonElement, TriggerProps>(
-  ({ size, endIcon = <CarretDown width={`${6 / 16}rem`} height={`${4 / 16}rem`} aria-hidden />, ...props }, ref) => {
+  (
+    {
+      size,
+      // @ts-ignore
+      endIcon = <CarretDown width={`${6 / 16}rem`} height={`${4 / 16}rem`} aria-hidden />,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <DropdownMenu.Trigger asChild>
+        {/* @ts-ignore */}
         <Button
           ref={ref}
           type="button"
-          variant="ghost"
+          variant={'ghost' as any}
           endIcon={endIcon}
           paddingTop={size === 'S' ? 1 : 2}
           paddingBottom={size === 'S' ? 1 : 2}
@@ -44,7 +53,7 @@ const MenuTrigger = forwardRef<HTMLButtonElement, TriggerProps>(
         />
       </DropdownMenu.Trigger>
     );
-  },
+  }
 );
 
 /* -------------------------------------------------------------------------------------------------
@@ -60,7 +69,7 @@ const MenuContent = forwardRef<HTMLDivElement, ContentProps>(
   ({ children, intersectionId, popoverPlacement = 'bottom-start', ...props }, ref) => {
     const [side, align] = popoverPlacement.split('-') as [
       DropdownMenu.DropdownMenuContentProps['side'],
-      DropdownMenu.DropdownMenuContentProps['align'],
+      DropdownMenu.DropdownMenuContentProps['align']
     ];
 
     return (
@@ -88,7 +97,7 @@ const MenuContent = forwardRef<HTMLDivElement, ContentProps>(
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     );
-  },
+  }
 );
 
 const Viewport = styled(Flex)`
@@ -105,25 +114,28 @@ const Viewport = styled(Flex)`
  * MenuItem
  * -----------------------------------------------------------------------------------------------*/
 
+// @ts-ignore
 interface ItemSharedProps extends Pick<DropdownMenu.MenuItemProps, 'disabled' | 'onSelect'> {
   children?: React.ReactNode;
   isExternal?: boolean;
   isFocused?: boolean;
 }
-
+// @ts-ignore
 interface ItemExternalLinkProps extends ItemSharedProps, Omit<LinkProps, 'onSelect'> {
   as?: never;
   isLink?: false;
   isExternal?: true;
 }
 
-type ItemInternalLinkProps<TComponent extends React.ComponentType = typeof BaseLink> = ItemSharedProps &
-  ComponentPropsWithoutRef<TComponent> & {
-    as?: TComponent;
-    isLink?: true;
-    isExternal?: false;
-  };
+type ItemInternalLinkProps<TComponent extends React.ComponentType = typeof BaseLink> =
+  ItemSharedProps &
+    ComponentPropsWithoutRef<TComponent> & {
+      as?: TComponent;
+      isLink?: true;
+      isExternal?: false;
+    };
 
+// @ts-ignore
 interface ItemButtonProps extends ItemSharedProps, Omit<BoxProps<'button'>, 'onSelect'> {
   as?: never;
   isLink?: false;
@@ -143,7 +155,13 @@ const MenuItem = ({ onSelect, disabled = false, ...props }: ItemProps) => {
           <Typography>{props.children}</Typography>
         </OptionLink>
       ) : (
-        <OptionButton cursor="pointer" color="neutral800" background="transparent" borderStyle="none" {...props}>
+        <OptionButton
+          cursor="pointer"
+          color="neutral800"
+          background="transparent"
+          borderStyle="none"
+          {...props}
+        >
           <Typography>{props.children}</Typography>
         </OptionButton>
       )}
@@ -233,25 +251,27 @@ const MenuSubRoot = DropdownMenu.Sub;
 
 interface SubTriggerProps extends BoxProps<'button'> {}
 
-const MenuSubTrigger = forwardRef<HTMLButtonElement, SubTriggerProps>(({ disabled = false, ...props }, ref) => {
-  return (
-    <DropdownMenu.SubTrigger asChild disabled={disabled}>
-      <SubmenuTrigger
-        ref={ref}
-        color="neutral800"
-        as="button"
-        type="button"
-        background="transparent"
-        borderStyle="none"
-        gap={5}
-        {...props}
-      >
-        <Typography>{props.children}</Typography>
-        <TriggerArrow height={12} width={12} />
-      </SubmenuTrigger>
-    </DropdownMenu.SubTrigger>
-  );
-});
+const MenuSubTrigger = forwardRef<HTMLButtonElement, SubTriggerProps>(
+  ({ disabled = false, ...props }, ref) => {
+    return (
+      <DropdownMenu.SubTrigger asChild disabled={disabled}>
+        <SubmenuTrigger
+          ref={ref}
+          color="neutral800"
+          as="button"
+          type="button"
+          background="transparent"
+          borderStyle="none"
+          gap={5}
+          {...props}
+        >
+          <Typography>{props.children}</Typography>
+          <TriggerArrow height={12} width={12} />
+        </SubmenuTrigger>
+      </DropdownMenu.SubTrigger>
+    );
+  }
+);
 
 const SubmenuTrigger = styled(OptionButton)`
   &[data-state='open'] {

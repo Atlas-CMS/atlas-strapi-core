@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { Box, Grid, GridItem, Typography } from '@strapi/design-system';
+import { Box, Grid, GridItem, Typography } from '@atlas/design-system';
 import { GenericInput } from '@strapi/helper-plugin';
 import get from 'lodash/get';
 import PropTypes from 'prop-types';

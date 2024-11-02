@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Icon, TextButton } from '@strapi/design-system';
+import { Box, Icon, TextButton } from '@atlas/design-system';
 import {
   SubNav,
   SubNavHeader,

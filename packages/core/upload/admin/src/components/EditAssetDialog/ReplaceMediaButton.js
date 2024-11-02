@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-import { Button, VisuallyHidden } from '@strapi/design-system';
+import { Button, VisuallyHidden } from '@atlas/design-system';
 import { useTracking } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

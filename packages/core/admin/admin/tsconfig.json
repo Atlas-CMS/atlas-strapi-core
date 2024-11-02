@@ -71,12 +71,12 @@
     "src/@iliad/@types/*",
 
     // Atlas Types
-    "src/@atlas/@types/**/*.d.ts",
-    "src/@atlas/@types/**/*.ts",
-    "src/@atlas/@types/**/*",
-    "src/@atlas/@types/*.d.ts",
-    "src/@atlas/@types/*.ts",
-    "src/@atlas/@types/*"
+    "src/@atlas/design-system/@types/**/*.d.ts",
+    "src/@atlas/design-system/@types/**/*.ts",
+    "src/@atlas/design-system/@types/**/*",
+    "src/@atlas/design-system/@types/*.d.ts",
+    "src/@atlas/design-system/@types/*.ts",
+    "src/@atlas/design-system/@types/*"
   ],
   "exclude": ["node_modules"]
 }

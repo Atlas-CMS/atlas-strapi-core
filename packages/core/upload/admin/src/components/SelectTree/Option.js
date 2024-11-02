@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Icon, Typography } from '@strapi/design-system';
+import { Flex, Icon, Typography } from '@atlas/design-system';
 import { pxToRem } from '@strapi/helper-plugin';
 import { ChevronDown, ChevronUp } from '@strapi/icons';
 import PropTypes from 'prop-types';

@@ -6,7 +6,7 @@
 
 import React from 'react';
 
-import { Layout, lightTheme, ThemeProvider } from '@strapi/design-system';
+import { Layout, lightTheme, ThemeProvider } from '@atlas/design-system';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { IntlProvider } from 'react-intl';

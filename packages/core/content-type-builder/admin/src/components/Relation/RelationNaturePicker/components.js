@@ -1,4 +1,4 @@
-import { Box, Flex } from '@strapi/design-system';
+import { Box, Flex } from '@atlas/design-system';
 import styled from 'styled-components';
 
 const Wrapper = styled(Box)`

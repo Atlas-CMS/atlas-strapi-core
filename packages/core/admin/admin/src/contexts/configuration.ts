@@ -1,4 +1,4 @@
-import AtlasConfig from '@atlas/AtlasConfig';
+import AtlasConfig from '@atlas/design-system/utils/AtlasConfig';
 import { createContext } from 'react';
 
 export interface ConfigurationContextValue {

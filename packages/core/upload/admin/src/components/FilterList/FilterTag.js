@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Tag } from '@strapi/design-system';
+import { Box, Tag } from '@atlas/design-system';
 import { Cross } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

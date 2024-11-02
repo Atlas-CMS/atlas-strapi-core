@@ -15,7 +15,7 @@ import {
   TabPanels,
   Tabs,
   Typography,
-} from '@strapi/design-system';
+} from '@atlas/design-system';
 import { AnErrorOccurred, NoPermissions, pxToRem, useSelectionState } from '@strapi/helper-plugin';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

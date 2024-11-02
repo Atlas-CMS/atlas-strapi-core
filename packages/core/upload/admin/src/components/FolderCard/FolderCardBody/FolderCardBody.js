@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex } from '@strapi/design-system';
+import { Flex } from '@atlas/design-system';
 import styled from 'styled-components';
 
 import { useFolderCard } from '../contexts/FolderCard';

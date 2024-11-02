@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { lightTheme, ThemeProvider, useNotifyAT } from '@strapi/design-system';
+import { lightTheme, ThemeProvider, useNotifyAT } from '@atlas/design-system';
 import { NotificationsProvider, useFetchClient, useNotification } from '@strapi/helper-plugin';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';

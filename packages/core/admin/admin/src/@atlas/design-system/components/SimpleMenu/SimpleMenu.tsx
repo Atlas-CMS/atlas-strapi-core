@@ -282,6 +282,7 @@ export const SimpleMenu = <As extends React.ElementType = typeof Button>({
     // TODO: review why we need to eslint it and how to solve this issue.
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div onKeyDown={handleWrapperKeyDown}>
+      {/* @ts-ignore */}
       <Component
         label={React.isValidElement(label) ? null : label}
         aria-haspopup

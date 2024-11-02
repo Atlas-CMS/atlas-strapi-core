@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MultiSelectNested } from '@strapi/design-system';
+import { MultiSelectNested } from '@atlas/design-system';
 import upperFirst from 'lodash/upperFirst';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

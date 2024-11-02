@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, ContentLayout, Flex, HeaderLayout } from '@strapi/design-system';
+import { Box, Button, ContentLayout, Flex, HeaderLayout } from '@atlas/design-system';
 import { Link, useTracking } from '@strapi/helper-plugin';
 import { ArrowLeft, Check, Pencil, Plus } from '@strapi/icons';
 import get from 'lodash/get';

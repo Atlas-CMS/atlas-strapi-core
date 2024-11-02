@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Flex, Icon } from '@strapi/design-system';
+import { Flex, Icon } from '@atlas/design-system';
 import PropTypes from 'prop-types';
 
 import { COMPONENT_ICONS } from '../../IconPicker/constants';

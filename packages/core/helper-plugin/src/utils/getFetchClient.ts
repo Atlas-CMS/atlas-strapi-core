@@ -32,6 +32,7 @@ type FetchClient = {
 };
 
 const getFetchClient = (defaultOptions: AxiosRequestConfig = {}): FetchClient => {
+  console.log(window.strapi);
   instance.defaults.baseURL = window.strapi.backendURL;
   return {
     get: (url, config) =>
