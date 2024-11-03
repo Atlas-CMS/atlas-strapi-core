@@ -2,10 +2,11 @@ import React from 'react';
 
 import { Box, Button, Flex } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
-import { LinkButton, pxToRem } from '@strapi/helper-plugin';
+import { pxToRem } from '@strapi/helper-plugin';
 import { ArrowRight } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
+import { LinkButton } from '@atlas/design-system';
 
 import { IS_ACTIVE, IS_DONE } from '../../constants';
 import StepLine from '../../Stepper/StepLine';

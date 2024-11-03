@@ -27,7 +27,6 @@ import {
 } from '@atlas/design-system';
 import {
   ConfirmDialog,
-  LinkButton,
   LoadingIndicatorPage,
   onRowClick,
   SettingsPageTitle,
@@ -38,6 +37,7 @@ import {
   useNotification,
   useRBAC,
 } from '@strapi/helper-plugin';
+import { LinkButton } from '@atlas/design-system';
 import { EmptyDocuments, Pencil, Plus, Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useMutation, useQuery } from 'react-query';

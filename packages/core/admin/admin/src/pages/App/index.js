@@ -145,23 +145,25 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<LoadingIndicatorPage />}>
-      <TrackingProvider value={trackingInfo}>
-        <Switch>
-          {authRoutes}
-          <Route
-            path="/auth/:authType"
-            render={(routerProps) => (
-              <AuthPage {...routerProps} setHasAdmin={setHasAdmin} hasAdmin={hasAdmin} />
-            )}
-            exact
-          />
-          <PrivateRoute path="/usecase" component={UseCasePage} />
-          <PrivateRoute path="/" component={AuthenticatedApp} />
-          <Route path="" component={NotFoundPage} />
-        </Switch>
-      </TrackingProvider>
-    </Suspense>
+    <>
+      <Suspense fallback={<LoadingIndicatorPage />}>
+        <TrackingProvider value={trackingInfo}>
+          <Switch>
+            {authRoutes}
+            <Route
+              path="/auth/:authType"
+              render={(routerProps) => (
+                <AuthPage {...routerProps} setHasAdmin={setHasAdmin} hasAdmin={hasAdmin} />
+              )}
+              exact
+            />
+            <PrivateRoute path="/usecase" component={UseCasePage} />
+            <PrivateRoute path="/" component={AuthenticatedApp} />
+            <Route path="" component={NotFoundPage} />
+          </Switch>
+        </TrackingProvider>
+      </Suspense>
+    </>
   );
 }
 

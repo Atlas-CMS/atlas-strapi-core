@@ -7,7 +7,9 @@
 import React from 'react';
 
 import { ContentLayout, EmptyStateLayout, HeaderLayout, Main } from '@atlas/design-system';
-import { LinkButton, useFocusWhenNavigate } from '@strapi/helper-plugin';
+import { useFocusWhenNavigate } from '@strapi/helper-plugin';
+import { LinkButton } from '@atlas/design-system';
+
 import { ArrowRight, EmptyPictures } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 

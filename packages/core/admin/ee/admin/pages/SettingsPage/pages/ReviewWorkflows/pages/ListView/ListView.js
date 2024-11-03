@@ -13,11 +13,11 @@ import {
   Th,
   Typography,
   VisuallyHidden,
+  LinkButton,
 } from '@atlas/design-system';
 import {
   ConfirmDialog,
   Link,
-  LinkButton,
   onRowClick,
   pxToRem,
   useAPIErrorHandler,

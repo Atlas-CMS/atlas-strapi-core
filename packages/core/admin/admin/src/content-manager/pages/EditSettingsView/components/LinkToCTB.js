@@ -5,8 +5,9 @@
  */
 
 import React from 'react';
+import { LinkButton } from '@atlas/design-system';
 
-import { CheckPermissions, LinkButton, useTracking } from '@strapi/helper-plugin';
+import { CheckPermissions, useTracking } from '@strapi/helper-plugin';
 import { Pencil } from '@strapi/icons';
 import get from 'lodash/get';
 import { useIntl } from 'react-intl';

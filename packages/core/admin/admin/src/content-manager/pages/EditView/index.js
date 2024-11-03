@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-import { Main, ContentLayout, Grid, GridItem, Flex, Box } from '@atlas/design-system';
+import { Main, ContentLayout, Grid, GridItem, Flex, Box, LinkButton } from '@atlas/design-system';
 import {
   CheckPermissions,
-  LinkButton,
   LoadingIndicatorPage,
   useNotification,
   useTracking,

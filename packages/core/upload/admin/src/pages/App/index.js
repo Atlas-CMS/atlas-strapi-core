@@ -12,6 +12,8 @@ import { getTrad } from '../../utils';
 
 import { MediaLibrary } from './MediaLibrary';
 
+import { CommonMantineProvider } from '@atlas/design-system/context';
+
 const ConfigureTheView = lazy(() =>
   import(/* webpackChunkName: "Upload_ConfigureTheView" */ './ConfigureTheView')
 );
@@ -35,6 +37,7 @@ const Upload = () => {
   useFocusWhenNavigate();
 
   return (
+    // <CommonMantineProvider location="upload">
     <Main aria-busy={isLoading}>
       <Helmet title={title} />
       {isLoading && <LoadingIndicatorPage />}
@@ -51,6 +54,7 @@ const Upload = () => {
         </Suspense>
       ) : null}
     </Main>
+    // </CommonMantineProvider>
   );
 };
 

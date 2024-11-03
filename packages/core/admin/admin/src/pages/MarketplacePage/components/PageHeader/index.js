@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { HeaderLayout } from '@atlas/design-system';
-import { LinkButton } from '@atlas/design-system/v2';
+import { HeaderLayout, LinkButton } from '@atlas/design-system';
 import { useTracking } from '@strapi/helper-plugin';
 import { Upload } from '@strapi/icons';
 import PropTypes from 'prop-types';

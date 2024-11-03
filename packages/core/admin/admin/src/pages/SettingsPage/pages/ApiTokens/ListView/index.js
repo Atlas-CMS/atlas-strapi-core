@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { ContentLayout, HeaderLayout, Main } from '@atlas/design-system';
 import {
-  LinkButton,
   NoContent,
   NoPermissions,
   SettingsPageTitle,
@@ -14,6 +13,8 @@ import {
   useRBAC,
   useTracking,
 } from '@strapi/helper-plugin';
+import { LinkButton } from '@atlas/design-system';
+
 import { Plus } from '@strapi/icons';
 import qs from 'qs';
 import { useIntl } from 'react-intl';

@@ -7,14 +7,15 @@ import { ThemeToggleContext, ThemeName } from '../contexts/themeToggle';
 const THEME_KEY = 'STRAPI_THEME';
 
 const getDefaultTheme = () => {
-  const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const persistedTheme = localStorage.getItem(THEME_KEY) as ThemeName | null;
+  // const browserTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  // const persistedTheme = localStorage.getItem(THEME_KEY) as ThemeName | null;
 
-  if (!persistedTheme) {
-    localStorage.setItem(THEME_KEY, browserTheme);
-  }
+  // if (!persistedTheme) {
+  //   localStorage.setItem(THEME_KEY, browserTheme);
+  // }
 
-  return persistedTheme || browserTheme;
+  // return persistedTheme || browserTheme;
+  return 'light';
 };
 
 interface ThemeToggleProviderProps {
@@ -38,7 +39,7 @@ const ThemeToggleProvider = ({ children, themes }: ThemeToggleProviderProps) => 
 
   const themeValues = React.useMemo(() => {
     return {
-      currentTheme,
+      currentTheme: 'light',
       onChangeTheme: handleChangeTheme,
       themes,
     };

@@ -1,10 +1,5 @@
-// Mantine - Components
-import { ModalsProvider } from '@mantine/modals';
-import { MantineProvider } from '@mantine/core';
-
 // Atlas
 import { CommonMantineProvider } from '@atlas/design-system/context';
-import { mantineConfig } from '@atlas/design-system/config';
 
 // Types
 import Providers from './Providers';
@@ -23,11 +18,7 @@ type AtlasProvidersProps = Partial<React.ComponentProps<typeof Providers>> & {};
  * @returns {JSX.Element} The wrapped children components.
  */
 const AtlasProviders = ({ children }: AtlasProvidersProps) => {
-  return (
-    <MantineProvider {...mantineConfig}>
-      <ModalsProvider>{children}</ModalsProvider>
-    </MantineProvider>
-  );
+  return <CommonMantineProvider location="Admin">{children}</CommonMantineProvider>;
 };
 
 export default AtlasProviders;

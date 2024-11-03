@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { Flex, IconButton, Popover } from '@atlas/design-system';
-import { CheckPermissions, LinkButton } from '@strapi/helper-plugin';
+import { CheckPermissions } from '@strapi/helper-plugin';
+import { LinkButton } from '@atlas/design-system';
+
 import { Cog, Layer } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

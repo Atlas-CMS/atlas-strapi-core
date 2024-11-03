@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { Box, Flex, IconButton, ModalLayout, ModalBody } from '@atlas/design-system';
-import { Typography } from '@atlas/design-system';
-import { LinkButton } from '@atlas/design-system/v2';
+import { Typography, LinkButton } from '@atlas/design-system';
+
 import { Cross } from '@strapi/icons';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';

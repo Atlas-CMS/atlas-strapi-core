@@ -41,7 +41,6 @@
     "test:unit:watch": "run -T jest --watch"
   },
   "dependencies": {
-    "@atlas/design-system": "^0.0.1",
     "@casl/ability": "6.5.0",
     "@codemirror/lang-json": "^6.0.1",
     "@floating-ui/react-dom": "^2.0.2",

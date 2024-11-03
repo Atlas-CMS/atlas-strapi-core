@@ -7,7 +7,8 @@ import React from 'react';
 
 import { Box, Flex, Grid, GridItem } from '@atlas/design-system';
 import { Typography } from '@atlas/design-system';
-import { Link, LinkButton } from '@atlas/design-system/v2';
+import { Link } from '@atlas/design-system/v2';
+import { LinkButton } from '@atlas/design-system';
 import { useAppInfo } from '@strapi/helper-plugin';
 import { Discord, Discourse, ExternalLink, Github, Reddit, Strapi, Twitter } from '@strapi/icons';
 import { useIntl } from 'react-intl';

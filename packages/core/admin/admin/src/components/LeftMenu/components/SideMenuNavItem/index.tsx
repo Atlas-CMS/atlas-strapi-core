@@ -20,6 +20,7 @@ type NavItemProps = ChildlessComponentBaseProps & {
 } & Record<string, any>;
 
 const NavItem = ({ notificationsCount, icon: Icon, to, className, ...props }: NavItemProps) => {
+  delete props.Component; // This comes from the docs plugin...
   delete props.permissions;
   delete props.intlLabel;
 

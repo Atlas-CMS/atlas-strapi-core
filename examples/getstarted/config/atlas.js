@@ -12,7 +12,7 @@ module.exports = ({ env }) => {
     },
     sideMenu: {
       floatingTop: ['atlas.home', 'upload.plugin.name', 'global.content-manager'],
-      mySite: ['strapi-plugin-redirects', 'plausible.plugin.name', 'menus.plugin.name'],
+      mySite: ['plausible.plugin.name', 'redirects.plugin.name', 'menus.plugin.name'],
       plugins: [
         'email-designer.plugin.name',
         'plugin-atlas-ai.plugin.name',

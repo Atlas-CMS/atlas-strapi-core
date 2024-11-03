@@ -19,6 +19,8 @@ import { PERMISSIONS } from '../../constants';
 import pluginId from '../../pluginId';
 import RecursivePath from '../RecursivePath';
 
+import { CommonMantineProvider } from '@atlas/design-system/context';
+
 const ListView = lazy(() =>
   import(/* webpackChunkName: "content-type-builder-list-view" */ '../ListView')
 );
@@ -39,6 +41,7 @@ const App = () => {
   }, []);
 
   return (
+    // <CommonMantineProvider location="content-type-builder">
     <CheckPagePermissions permissions={PERMISSIONS.main}>
       <Helmet title={title} />
       <FormModalNavigationProvider>
@@ -61,6 +64,7 @@ const App = () => {
         </DataManagerProvider>
       </FormModalNavigationProvider>
     </CheckPagePermissions>
+    // </CommonMantineProvider>
   );
 };
 
