@@ -70,7 +70,10 @@ const AttributeIcon = ({ type, customField, ...rest }) => {
   let Compo = iconByTypes[type];
 
   if (customField) {
-    const { icon } = customFieldsRegistry.get(customField);
+    console.log({ customField, customFieldsRegistry }, customFieldsRegistry.getAll());
+    const icon = customFieldsRegistry?.get(customField)?.icon;
+
+    console.log({ icon });
 
     if (icon) {
       Compo = icon;

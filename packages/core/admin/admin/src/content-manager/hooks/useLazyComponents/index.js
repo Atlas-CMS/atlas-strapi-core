@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
-
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useCustomFields } from '@strapi/helper-plugin';
 
 const componentStore = new Map();
@@ -12,22 +11,30 @@ const componentStore = new Map();
  */
 const useLazyComponents = (componentUids = []) => {
   const [lazyComponentStore, setLazyComponentStore] = useState(Object.fromEntries(componentStore));
-  /**
-   * Start loading only if there are any components passed in
-   * and there are some new to load
-   */
-  const newUids = componentUids.filter((uid) => !componentStore.get(uid));
-  const [loading, setLoading] = useState(() => !!newUids.length);
   const customFieldsRegistry = useCustomFields();
 
+  // Memoize the newUids array to prevent unnecessary re-renders
+  // ILIAD: ATLAS: NOTE: CHANGE;
+  const newUids = useMemo(
+    () => componentUids.filter((uid) => !componentStore.get(uid)),
+    [componentUids]
+  );
+
+  const [loading, setLoading] = useState(() => !!newUids.length);
+
   useEffect(() => {
+    console.log('useLazyComponents', componentUids);
     const setStore = (store) => {
       setLazyComponentStore(store);
       setLoading(false);
     };
 
     const lazyLoadComponents = async (uids, components) => {
+      console.log({ uids, components });
+
       const modules = await Promise.all(components);
+
+      console.log({ modules });
 
       uids.forEach((uid, index) => {
         componentStore.set(uid, modules[index].default);

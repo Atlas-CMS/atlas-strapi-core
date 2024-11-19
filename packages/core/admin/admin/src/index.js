@@ -52,7 +52,7 @@ const run = async () => {
   try {
     const { data: atlasConfigData } = await get('/admin/atlas-config');
     atlasConfig = new AtlasConfig(atlasConfigData);
-    console.log('atlasConfig', atlasConfig);
+    // console.log('atlasConfig', atlasConfig);
   } catch (err) {
     console.error(err);
     return;

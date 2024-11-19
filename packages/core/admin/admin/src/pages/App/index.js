@@ -29,6 +29,8 @@ import AuthPage from '../AuthPage';
 import NotFoundPage from '../NotFoundPage';
 import UseCasePage from '../UseCasePage';
 
+import { AtlasProviders } from '@components/AtlasProviders';
+
 import { ROUTES_CE, SET_ADMIN_PERMISSIONS } from './constants';
 
 const AuthenticatedApp = lazy(() =>
@@ -140,30 +142,30 @@ function App() {
     [uuid, telemetryProperties, deviceId]
   );
 
-  if (isLoading) {
-    return <LoadingIndicatorPage />;
-  }
-
   return (
-    <>
-      <Suspense fallback={<LoadingIndicatorPage />}>
-        <TrackingProvider value={trackingInfo}>
-          <Switch>
-            {authRoutes}
-            <Route
-              path="/auth/:authType"
-              render={(routerProps) => (
-                <AuthPage {...routerProps} setHasAdmin={setHasAdmin} hasAdmin={hasAdmin} />
-              )}
-              exact
-            />
-            <PrivateRoute path="/usecase" component={UseCasePage} />
-            <PrivateRoute path="/" component={AuthenticatedApp} />
-            <Route path="" component={NotFoundPage} />
-          </Switch>
-        </TrackingProvider>
-      </Suspense>
-    </>
+    <AtlasProviders>
+      {isLoading ? (
+        <LoadingIndicatorPage />
+      ) : (
+        <Suspense fallback={<LoadingIndicatorPage />}>
+          <TrackingProvider value={trackingInfo}>
+            <Switch>
+              {authRoutes}
+              <Route
+                path="/auth/:authType"
+                render={(routerProps) => (
+                  <AuthPage {...routerProps} setHasAdmin={setHasAdmin} hasAdmin={hasAdmin} />
+                )}
+                exact
+              />
+              <PrivateRoute path="/usecase" component={UseCasePage} />
+              <PrivateRoute path="/" component={AuthenticatedApp} />
+              <Route path="" component={NotFoundPage} />
+            </Switch>
+          </TrackingProvider>
+        </Suspense>
+      )}
+    </AtlasProviders>
   );
 }
 

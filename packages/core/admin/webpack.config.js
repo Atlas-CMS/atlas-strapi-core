@@ -90,7 +90,7 @@ module.exports = ({
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          // exclude: excludeRegex, // -- I'm disabling this because if I don't everything gets fricked up.
+          exclude: excludeRegex, // -- I'm disabling this because if I don't everything gets fricked up.
           use: {
             loader: 'esbuild-loader',
             options: {
@@ -102,7 +102,7 @@ module.exports = ({
         },
         {
           test: /\.(js|jsx|mjs)$/,
-          // exclude: excludeRegex, // -- I'm disabling this because if I don't everything gets fricked up.
+          exclude: excludeRegex, // -- I'm disabling this because if I don't everything gets fricked up.
           use: {
             loader: 'esbuild-loader',
             options: {

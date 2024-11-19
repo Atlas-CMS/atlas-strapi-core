@@ -28,7 +28,7 @@ import DraftAndPublishBadge from './DraftAndPublishBadge';
 import GridRow from './GridRow';
 import Header from './Header';
 import { useOnce } from './hooks/useOnce';
-import { InformationBoxCE } from './InformationBox';
+import { InformationBoxCE as Information } from './InformationBox';
 import { selectCurrentLayout, selectAttributesLayout, selectCustomFieldUids } from './selectors';
 import { getFieldsActionMatchingPermissions } from './utils';
 
@@ -37,17 +37,10 @@ const CTB_PERMISSIONS = [{ action: 'plugin::content-type-builder.read', subject:
 
 /* eslint-disable  react/no-array-index-key */
 const EditView = ({ allowedActions, isSingleType, goBack, slug, id, origin, userPermissions }) => {
-  const { trackUsage } = useTracking();
-  const { formatMessage } = useIntl();
   const permissions = useSelector(selectAdminPermissions);
-  const location = useLocation();
   const toggleNotification = useNotification();
-  const Information = useEnterprise(
-    InformationBoxCE,
-    async () =>
-      (await import('../../../../../ee/admin/content-manager/pages/EditView/InformationBox'))
-        .InformationBoxEE
-  );
+  const { formatMessage } = useIntl();
+  const location = useLocation();
 
   useOnce(() => {
     /**
@@ -65,9 +58,9 @@ const EditView = ({ allowedActions, isSingleType, goBack, slug, id, origin, user
   });
 
   const { layout, formattedContentTypeLayout, customFieldUids } = useSelector((state) => ({
-    layout: selectCurrentLayout(state),
     formattedContentTypeLayout: selectAttributesLayout(state),
     customFieldUids: selectCustomFieldUids(state),
+    layout: selectCurrentLayout(state),
   }));
 
   const { isLazyLoading, lazyComponentStore } = useLazyComponents(customFieldUids);
@@ -79,7 +72,7 @@ const EditView = ({ allowedActions, isSingleType, goBack, slug, id, origin, user
     ? permissions.contentManager.singleTypesConfigurations
     : permissions.contentManager.collectionTypesConfigurations;
 
-  // // FIXME when changing the routing
+  // FIXME when changing the routing
   const configurationsURL = `/content-manager/${
     isSingleType ? 'singleType' : 'collectionType'
   }/${slug}/configurations/edit`;
@@ -94,13 +87,11 @@ const EditView = ({ allowedActions, isSingleType, goBack, slug, id, origin, user
   };
 
   if (isLazyLoading) {
+    // return <h1>Loading</h1>;
     return <LoadingIndicatorPage />;
   }
 
   // wait until the EE component is fully loaded before rendering, to prevent flickering
-  if (!Information) {
-    return null;
-  }
 
   return (
     <DataManagementWrapper allLayoutData={layout} slug={slug} id={id} origin={origin}>

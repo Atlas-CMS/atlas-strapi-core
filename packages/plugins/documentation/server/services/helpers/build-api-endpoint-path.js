@@ -82,6 +82,7 @@ const getPathWithPrefix = (prefix, route) => {
  * @returns {object}
  */
 const getPaths = ({ routeInfo, uniqueName, contentTypeInfo, kind }) => {
+  console.log({ routeInfo, uniqueName, contentTypeInfo, kind });
   // Get the routes for the current content type
   const contentTypeRoutes = routeInfo.routes.filter((route) => {
     return (
@@ -154,6 +155,7 @@ const getPaths = ({ routeInfo, uniqueName, contentTypeInfo, kind }) => {
  * @returns {object} Open API paths
  */
 const getAllPathsForContentType = (apiInfo) => {
+  console.log({ apiInfo });
   let paths = {};
 
   const pathsObject = getPaths(apiInfo);
@@ -177,6 +179,7 @@ const getAllPathsForContentType = (apiInfo) => {
  * @returns {object}
  */
 const buildApiEndpointPath = (api) => {
+  console.log({ api, getAllPathsForContentType });
   // A reusable loop for building paths and component schemas
   // Uses the api param to build a new set of params for each content type
   // Passes these new params to the function provided

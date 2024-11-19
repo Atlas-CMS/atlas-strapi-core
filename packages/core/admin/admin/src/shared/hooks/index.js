@@ -1,1 +1,2 @@
-export { default as useInjectionZone } from './useInjectionZone';
+import useInjectionZone from './useInjectionZone';
+export { useInjectionZone };

@@ -11,6 +11,7 @@ const _ = require('lodash');
  * @returns {object}
  */
 const loopContentTypeNames = (api, callback) => {
+  console.log({ api, callback });
   let result = {};
   for (const contentTypeName of api.ctNames) {
     // Get the attributes found on the api's contentType

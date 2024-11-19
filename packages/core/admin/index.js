@@ -1,17 +1,17 @@
 'use strict';
 
-const path = require('path');
-const fs = require('fs-extra');
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
 const { isUsingTypeScript } = require('@strapi/typescript-utils');
+const WebpackDevServer = require('webpack-dev-server');
+const webpack = require('webpack');
+const fs = require('fs-extra');
 const chalk = require('chalk');
+const path = require('path');
 
 const {
   createCacheDir,
-  getCustomWebpackConfig,
-  shouldBuildAdmin,
   watchAdminFiles,
+  shouldBuildAdmin,
+  getCustomWebpackConfig,
 } = require('./utils');
 
 async function build({ appDir, buildDestDir, env, forceBuild, optimize, options, plugins }) {
@@ -136,7 +136,6 @@ async function watchAdmin({ appDir, browser, buildDestDir, host, options, plugin
   };
 
   const webpackConfig = getCustomWebpackConfig(appDir, args);
-
   const compiler = webpack(webpackConfig);
 
   const devServerArgs = {

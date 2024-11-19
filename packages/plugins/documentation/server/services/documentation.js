@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const { produce } = require('immer');
 const { getAbsoluteServerUrl } = require('@strapi/utils');
-const { builApiEndpointPath, buildComponentSchema } = require('./helpers');
+const { buildApiEndpointPath, buildComponentSchema } = require('./helpers');
 
 const defaultOpenApiComponents = require('./utils/default-openapi-components');
 const { getPluginsThatNeedDocumentation } = require('./utils/get-plugins-that-need-documentation');
@@ -171,7 +171,7 @@ module.exports = ({ strapi }) => {
       for (const api of apisThatNeedGeneratedDocumentation) {
         const apiName = api.name;
 
-        const newApiPath = builApiEndpointPath(api);
+        const newApiPath = buildApiEndpointPath(api);
         const generatedSchemas = buildComponentSchema(api);
 
         // TODO: To be confirmed, do we still need to write these files...?

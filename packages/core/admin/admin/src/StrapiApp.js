@@ -455,46 +455,44 @@ class StrapiApp {
     } = this.library;
 
     return (
-      <AtlasProviders>
-        <Providers
-          showReleaseNotification={this.configurations.notifications.releases}
-          getAdminInjectedComponents={this.getAdminInjectedComponents}
-          showTutorials={this.configurations.tutorials}
-          messages={this.configurations.translations}
-          authLogo={this.configurations.authLogo}
-          menuLogo={this.configurations.menuLogo}
-          runHookParallel={this.runHookParallel}
-          themes={this.configurations.themes}
-          runHookSeries={this.runHookSeries}
-          customFields={this.customFields}
-          atlasConfig={this.atlasConfig}
-          getPlugin={this.getPlugin}
-          localeNames={localeNames}
-          settings={this.settings}
-          components={components}
-          plugins={this.plugins}
-          menu={this.menu}
-          fields={fields}
-          store={store}
-          runHookWaterfall={(name, initialValue, async = false) => {
-            return this.runHookWaterfall(name, initialValue, async, store);
-          }}
-        >
-          <Helmet
-            htmlAttributes={{ lang: localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) || 'en' }}
-            link={[
-              {
-                href: this.configurations.head.favicon,
-                type: 'image/png',
-                rel: 'icon',
-              },
-            ]}
-          />
-          <BrowserRouter basename={basename}>
-            <App store={store} />
-          </BrowserRouter>
-        </Providers>
-      </AtlasProviders>
+      <Providers
+        showReleaseNotification={this.configurations.notifications.releases}
+        getAdminInjectedComponents={this.getAdminInjectedComponents}
+        showTutorials={this.configurations.tutorials}
+        messages={this.configurations.translations}
+        authLogo={this.configurations.authLogo}
+        menuLogo={this.configurations.menuLogo}
+        runHookParallel={this.runHookParallel}
+        themes={this.configurations.themes}
+        runHookSeries={this.runHookSeries}
+        customFields={this.customFields}
+        atlasConfig={this.atlasConfig}
+        getPlugin={this.getPlugin}
+        localeNames={localeNames}
+        settings={this.settings}
+        components={components}
+        plugins={this.plugins}
+        menu={this.menu}
+        fields={fields}
+        store={store}
+        runHookWaterfall={(name, initialValue, async = false) => {
+          return this.runHookWaterfall(name, initialValue, async, store);
+        }}
+      >
+        <Helmet
+          htmlAttributes={{ lang: localStorage.getItem(LANGUAGE_LOCAL_STORAGE_KEY) || 'en' }}
+          link={[
+            {
+              href: this.configurations.head.favicon,
+              type: 'image/png',
+              rel: 'icon',
+            },
+          ]}
+        />
+        <BrowserRouter basename={basename}>
+          <App store={store} />
+        </BrowserRouter>
+      </Providers>
     );
   }
 }

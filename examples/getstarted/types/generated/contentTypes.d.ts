@@ -303,6 +303,135 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles';
+  info: {
+    singularName: 'article';
+    pluralName: 'articles';
+    displayName: 'Article';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    derived_data: Attribute.JSON;
+    title: Attribute.String &
+      Attribute.CustomField<
+        'plugin::bold-title-editor.title',
+        {
+          output: 'html';
+        }
+      >;
+    body: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::plugin-atlas-ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
+    image: Attribute.Media & Attribute.Required;
+    slug: Attribute.UID & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    llm_snippets: Attribute.Relation<
+      'api::article.article',
+      'manyToMany',
+      'api::llm-snippet.llm-snippet'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::article.article', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::article.article', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLlmSnippetLlmSnippet extends Schema.CollectionType {
+  collectionName: 'llm_snippets';
+  info: {
+    singularName: 'llm-snippet';
+    pluralName: 'llm-snippets';
+    displayName: 'LLM Snippet';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    data: Attribute.Text;
+    contentType: Attribute.String & Attribute.Private;
+    field: Attribute.String & Attribute.Private;
+    entryId: Attribute.Integer & Attribute.Private;
+    articles: Attribute.Relation<
+      'api::llm-snippet.llm-snippet',
+      'manyToMany',
+      'api::article.article'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::llm-snippet.llm-snippet', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::llm-snippet.llm-snippet', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSiteConfigSiteConfig extends Schema.SingleType {
+  collectionName: 'site_configs';
+  info: {
+    singularName: 'site-config';
+    pluralName: 'site-configs';
+    displayName: 'Site Config';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    socialMedia: Attribute.Component<'misc.social-media', true>;
+    contactInfo: Attribute.Component<'site-config.contact-info'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::site-config.site-config', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::site-config.site-config', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiStaticLlmSnippetStaticLlmSnippet extends Schema.SingleType {
+  collectionName: 'static_llm_snippets';
+  info: {
+    singularName: 'static-llm-snippet';
+    pluralName: 'static-llm-snippets';
+    displayName: 'Static LLM Snippet';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    llmSnippet: Attribute.Component<'llm.llm-snippet', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::static-llm-snippet.static-llm-snippet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::static-llm-snippet.static-llm-snippet',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -387,6 +516,43 @@ export interface PluginUploadFolder extends Schema.CollectionType {
     createdBy: Attribute.Relation<'plugin::upload.folder', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'plugin::upload.folder', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface PluginReactIconsIconlibrary extends Schema.CollectionType {
+  collectionName: 'iconlibrary';
+  info: {
+    singularName: 'iconlibrary';
+    pluralName: 'iconlibraries';
+    displayName: 'IconLibrary';
+  };
+  options: {
+    draftAndPublish: false;
+    comment: '';
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    abbreviation: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 3;
+      }>;
+    isEnabled: Attribute.Boolean & Attribute.DefaultTo<true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'plugin::react-icons.iconlibrary', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'plugin::react-icons.iconlibrary', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -561,683 +727,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAddressAddress extends Schema.CollectionType {
-  collectionName: 'addresses';
-  info: {
-    displayName: 'Address';
-    singularName: 'address';
-    pluralName: 'addresses';
-    description: '';
-    name: 'Address';
-  };
-  options: {
-    reviewWorkflows: true;
-    draftAndPublish: false;
-  };
-  attributes: {
-    postal_code: Attribute.String &
-      Attribute.SetMinMaxLength<{
-        maxLength: 2;
-      }>;
-    categories: Attribute.Relation<'api::address.address', 'manyToMany', 'api::category.category'>;
-    cover: Attribute.Media;
-    images: Attribute.Media;
-    city: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 200;
-      }>;
-    json: Attribute.JSON;
-    slug: Attribute.UID;
-    notrepeat_req: Attribute.Component<'blog.test-como'> & Attribute.Required;
-    repeat_req: Attribute.Component<'blog.test-como', true> & Attribute.Required;
-    repeat_req_min: Attribute.Component<'blog.test-como', true> &
-      Attribute.SetMinMax<{
-        min: 2;
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::address.address', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::address.address', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiCategoryCategory extends Schema.CollectionType {
-  collectionName: 'categories';
-  info: {
-    displayName: 'Category';
-    singularName: 'category';
-    pluralName: 'categories';
-    description: '';
-    name: 'Category';
-  };
-  options: {
-    reviewWorkflows: true;
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    addresses: Attribute.Relation<'api::category.category', 'manyToMany', 'api::address.address'>;
-    temps: Attribute.Relation<'api::category.category', 'manyToMany', 'api::temp.temp'>;
-    datetime: Attribute.DateTime &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    date: Attribute.Date &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    relation_locales: Attribute.Relation<
-      'api::category.category',
-      'manyToMany',
-      'api::relation-locale.relation-locale'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::category.category', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::category.category', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::category.category'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiCountryCountry extends Schema.CollectionType {
-  collectionName: 'countries';
-  info: {
-    displayName: 'Country';
-    singularName: 'country';
-    pluralName: 'countries';
-    description: '';
-    name: 'Country';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 3;
-      }>;
-    code: Attribute.String &
-      Attribute.Unique &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 2;
-        maxLength: 3;
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::country.country', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::country.country', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    localizations: Attribute.Relation<'api::country.country', 'oneToMany', 'api::country.country'>;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiHomepageHomepage extends Schema.SingleType {
-  collectionName: 'homepages';
-  info: {
-    displayName: 'Homepage';
-    singularName: 'homepage';
-    pluralName: 'homepages';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    slug: Attribute.UID<'api::homepage.homepage', 'title'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    single: Attribute.Media;
-    multiple: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::homepage.homepage', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::homepage.homepage', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::homepage.homepage',
-      'oneToMany',
-      'api::homepage.homepage'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiKitchensinkKitchensink extends Schema.CollectionType {
-  collectionName: 'kitchensinks';
-  info: {
-    displayName: 'Kitchen Sink';
-    singularName: 'kitchensink';
-    pluralName: 'kitchensinks';
-    description: '';
-    name: 'Kitchen Sink';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    short_text: Attribute.String;
-    long_text: Attribute.Text;
-    rich_text: Attribute.RichText;
-    blocks: Attribute.Blocks;
-    integer: Attribute.Integer;
-    biginteger: Attribute.BigInteger;
-    decimal: Attribute.Decimal;
-    float: Attribute.Float;
-    date: Attribute.Date;
-    datetime: Attribute.DateTime;
-    time: Attribute.Time;
-    timestamp: Attribute.Timestamp;
-    boolean: Attribute.Boolean;
-    email: Attribute.Email;
-    password: Attribute.Password;
-    enumeration: Attribute.Enumeration<['A', 'B', 'C', 'D', 'E']>;
-    single_media: Attribute.Media;
-    multiple_media: Attribute.Media;
-    json: Attribute.JSON;
-    single_compo: Attribute.Component<'basic.simple'>;
-    repeatable_compo: Attribute.Component<'basic.simple', true>;
-    dynamiczone: Attribute.DynamicZone<['basic.simple', 'blog.test-como']>;
-    one_way_tag: Attribute.Relation<'api::kitchensink.kitchensink', 'oneToOne', 'api::tag.tag'>;
-    one_to_one_tag: Attribute.Relation<'api::kitchensink.kitchensink', 'oneToOne', 'api::tag.tag'> &
-      Attribute.Private;
-    one_to_many_tags: Attribute.Relation<
-      'api::kitchensink.kitchensink',
-      'oneToMany',
-      'api::tag.tag'
-    >;
-    many_to_one_tag: Attribute.Relation<
-      'api::kitchensink.kitchensink',
-      'manyToOne',
-      'api::tag.tag'
-    >;
-    many_to_many_tags: Attribute.Relation<
-      'api::kitchensink.kitchensink',
-      'manyToMany',
-      'api::tag.tag'
-    >;
-    many_way_tags: Attribute.Relation<'api::kitchensink.kitchensink', 'oneToMany', 'api::tag.tag'>;
-    morph_to_one: Attribute.Relation<'api::kitchensink.kitchensink', 'morphToOne'>;
-    morph_to_many: Attribute.Relation<'api::kitchensink.kitchensink', 'morphToMany'>;
-    custom_field: Attribute.String & Attribute.CustomField<'plugin::color-picker.color'>;
-    custom_field_with_default_options: Attribute.String &
-      Attribute.CustomField<'plugin::color-picker.color'>;
-    cats: Attribute.DynamicZone<['basic.relation', 'basic.simple']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::kitchensink.kitchensink', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::kitchensink.kitchensink', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLikeLike extends Schema.CollectionType {
-  collectionName: 'likes';
-  info: {
-    displayName: 'Like';
-    singularName: 'like';
-    pluralName: 'likes';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  attributes: {
-    author: Attribute.Relation<'api::like.like', 'oneToOne', 'plugin::users-permissions.user'>;
-    review: Attribute.Relation<'api::like.like', 'manyToOne', 'api::review.review'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::like.like', 'oneToOne', 'admin::user'> & Attribute.Private;
-    updatedBy: Attribute.Relation<'api::like.like', 'oneToOne', 'admin::user'> & Attribute.Private;
-  };
-}
-
-export interface ApiMenuMenu extends Schema.CollectionType {
-  collectionName: 'menus';
-  info: {
-    description: '';
-    displayName: 'Menu';
-    singularName: 'menu';
-    pluralName: 'menus';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  attributes: {
-    description: Attribute.Text;
-    menusections: Attribute.Relation<'api::menu.menu', 'oneToMany', 'api::menusection.menusection'>;
-    restaurant: Attribute.Relation<'api::menu.menu', 'oneToOne', 'api::restaurant.restaurant'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> & Attribute.Private;
-    updatedBy: Attribute.Relation<'api::menu.menu', 'oneToOne', 'admin::user'> & Attribute.Private;
-  };
-}
-
-export interface ApiMenusectionMenusection extends Schema.CollectionType {
-  collectionName: 'menusections';
-  info: {
-    displayName: 'Menu Section';
-    singularName: 'menusection';
-    pluralName: 'menusections';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        minLength: 6;
-      }>;
-    dishes: Attribute.Component<'default.dish', true> & Attribute.Required;
-    menu: Attribute.Relation<'api::menusection.menusection', 'manyToOne', 'api::menu.menu'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::menusection.menusection', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::menusection.menusection', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRelationLocaleRelationLocale extends Schema.CollectionType {
-  collectionName: 'relation_locales';
-  info: {
-    singularName: 'relation-locale';
-    pluralName: 'relation-locales';
-    displayName: 'Relations';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    categories: Attribute.Relation<
-      'api::relation-locale.relation-locale',
-      'manyToMany',
-      'api::category.category'
-    >;
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    repeatable_relations: Attribute.Component<'basic.relation', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    dynamic_relations: Attribute.DynamicZone<['basic.relation', 'basic.simple']> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    single_relation: Attribute.Component<'basic.relation'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    require_single_relation: Attribute.Component<'basic.relation'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::relation-locale.relation-locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::relation-locale.relation-locale',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::relation-locale.relation-locale',
-      'oneToMany',
-      'api::relation-locale.relation-locale'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiRestaurantRestaurant extends Schema.CollectionType {
-  collectionName: 'restaurants';
-  info: {
-    displayName: 'Restaurant';
-    singularName: 'restaurant';
-    pluralName: 'restaurants';
-    description: '';
-    name: 'Restaurant';
-  };
-  options: {
-    draftAndPublish: true;
-    populateCreatorFields: true;
-    comment: '';
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    name: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 5;
-        maxLength: 50;
-      }>;
-    slug: Attribute.UID<'api::restaurant.restaurant', 'name'>;
-    priceRange: Attribute.Enumeration<
-      ['very_cheap', 'cheap', 'average', 'expensive', 'very_expensive']
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    closingPeriod: Attribute.Component<'default.closingperiod'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    contactEmail: Attribute.Email &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    stars: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMax<{
-        min: 0;
-        max: 3;
-      }>;
-    averagePrice: Attribute.Float &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMax<{
-        min: 0;
-        max: 35.12;
-      }>;
-    address: Attribute.Relation<'api::restaurant.restaurant', 'oneToOne', 'api::address.address'>;
-    cover: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    timestamp: Attribute.Timestamp;
-    images: Attribute.Media &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    shortDescription: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    since: Attribute.Date &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    categories: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToMany',
-      'api::category.category'
-    >;
-    description: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        minLength: 10;
-      }>;
-    services: Attribute.Component<'default.restaurantservice', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMax<{
-        max: 1;
-      }>;
-    menu: Attribute.Relation<'api::restaurant.restaurant', 'oneToOne', 'api::menu.menu'>;
-    openingTimes: Attribute.Component<'default.openingtimes', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 10;
-      }>;
-    dz: Attribute.DynamicZone<
-      ['default.openingtimes', 'default.restaurantservice', 'default.closingperiod', 'default.dish']
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::restaurant.restaurant', 'oneToOne', 'admin::user'>;
-    updatedBy: Attribute.Relation<'api::restaurant.restaurant', 'oneToOne', 'admin::user'>;
-    localizations: Attribute.Relation<
-      'api::restaurant.restaurant',
-      'oneToMany',
-      'api::restaurant.restaurant'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiReviewReview extends Schema.CollectionType {
-  collectionName: 'reviews';
-  info: {
-    displayName: 'Review';
-    singularName: 'review';
-    pluralName: 'reviews';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-    comment: '';
-  };
-  attributes: {
-    comment: Attribute.Text & Attribute.Required;
-    rating: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<{
-        min: 1;
-        max: 5;
-      }>;
-    likes: Attribute.Relation<'api::review.review', 'oneToMany', 'api::like.like'>;
-    author: Attribute.Relation<'api::review.review', 'oneToOne', 'plugin::users-permissions.user'>;
-    restaurant: Attribute.Relation<'api::review.review', 'oneToOne', 'api::restaurant.restaurant'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::review.review', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::review.review', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTagTag extends Schema.CollectionType {
-  collectionName: 'tags';
-  info: {
-    displayName: 'Tag';
-    singularName: 'tag';
-    pluralName: 'tags';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    many_to_one_kitchensink: Attribute.Relation<
-      'api::tag.tag',
-      'manyToOne',
-      'api::kitchensink.kitchensink'
-    >;
-    one_to_many_kitchensinks: Attribute.Relation<
-      'api::tag.tag',
-      'oneToMany',
-      'api::kitchensink.kitchensink'
-    >;
-    many_to_many_kitchensinks: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::kitchensink.kitchensink'
-    >;
-    one_to_one_kitchensink: Attribute.Relation<
-      'api::tag.tag',
-      'oneToOne',
-      'api::kitchensink.kitchensink'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> & Attribute.Private;
-    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> & Attribute.Private;
-  };
-}
-
-export interface ApiTempTemp extends Schema.CollectionType {
-  collectionName: 'temps';
-  info: {
-    singularName: 'temp';
-    pluralName: 'temps';
-    displayName: 'temp';
-    name: 'temp';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    category: Attribute.Relation<'api::temp.temp', 'oneToOne', 'api::category.category'>;
-    categories: Attribute.Relation<'api::temp.temp', 'manyToMany', 'api::category.category'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::temp.temp', 'oneToOne', 'admin::user'> & Attribute.Private;
-    updatedBy: Attribute.Relation<'api::temp.temp', 'oneToOne', 'admin::user'> & Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1248,25 +737,17 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::article.article': ApiArticleArticle;
+      'api::llm-snippet.llm-snippet': ApiLlmSnippetLlmSnippet;
+      'api::site-config.site-config': ApiSiteConfigSiteConfig;
+      'api::static-llm-snippet.static-llm-snippet': ApiStaticLlmSnippetStaticLlmSnippet;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
+      'plugin::react-icons.iconlibrary': PluginReactIconsIconlibrary;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::address.address': ApiAddressAddress;
-      'api::category.category': ApiCategoryCategory;
-      'api::country.country': ApiCountryCountry;
-      'api::homepage.homepage': ApiHomepageHomepage;
-      'api::kitchensink.kitchensink': ApiKitchensinkKitchensink;
-      'api::like.like': ApiLikeLike;
-      'api::menu.menu': ApiMenuMenu;
-      'api::menusection.menusection': ApiMenusectionMenusection;
-      'api::relation-locale.relation-locale': ApiRelationLocaleRelationLocale;
-      'api::restaurant.restaurant': ApiRestaurantRestaurant;
-      'api::review.review': ApiReviewReview;
-      'api::tag.tag': ApiTagTag;
-      'api::temp.temp': ApiTempTemp;
     }
   }
 }
