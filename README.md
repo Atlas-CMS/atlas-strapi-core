@@ -14,7 +14,7 @@ Atlas, in combination with our other tools ([@iliad.dev/iliad-standard-issue](ht
 
 ### Dead simple queries
 
-!(Simple Query Comparison)[https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/q_compare.png]
+![Simply Query Comparison](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/q_compare.png)
 
 >  This is literally from a [strapi tutorial](https://strapi.io/blog/client-side-search-for-static-sites-with-strapi-nextjs-fusejs-and-cloudflare). Forget that!
 
@@ -22,6 +22,7 @@ Atlas, in combination with our other tools ([@iliad.dev/iliad-standard-issue](ht
 
 
 !(Simple Query Comparison)[https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/auto_types.png]
+![Simple Query Comparison](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/auto_types.png)
 
 Plus autocomplete for all content types, single types, and even arbitrary API endpoints.
 
