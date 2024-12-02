@@ -20,8 +20,6 @@ Atlas, in combination with our other tools ([@iliad.dev/iliad-standard-issue](ht
 
 ### Strong types, directly from Atlas, by default!
 
-
-!(Simple Query Comparison)[https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/auto_types.png]
 ![Simple Query Comparison](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/auto_types.png)
 
 Plus autocomplete for all content types, single types, and even arbitrary API endpoints.
