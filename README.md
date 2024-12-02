@@ -92,7 +92,7 @@ We look forward to contributing to your continued success.
 
 
 ---
----
+
 
 # Atlas Strapi Core
 
