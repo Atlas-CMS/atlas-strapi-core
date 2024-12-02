@@ -1,161 +1,129 @@
-<p align="center">
-  <a href="https://strapi.io/#gh-light-mode-only">
-    <img src="https://strapi.io/assets/strapi-logo-dark.svg" width="318px" alt="Strapi logo" />
-  </a>
-  <a href="https://strapi.io/#gh-dark-mode-only">
-    <img src="https://strapi.io/assets/strapi-logo-light.svg" width="318px" alt="Strapi logo" />
-  </a>
-</p>
+<img src="https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/atlas_full.svg" width="400px" alt="Atlas Logo"/>
 
-<h3 align="center">Open-source headless CMS, self-hosted or Cloud you’re in control.</h3>
-<p align="center">The leading open-source headless CMS, 100% JavaScript/TypeScript, flexible and fully customizable.</p>
-<p align="center"><a href="https://cloud.strapi.io/signups?source=github1">Cloud</a> · <a href="https://strapi.io/demo">Try live demo</a></p>
-<br />
+Atlas is a custom-built desktop application designed to enhance the capabilities of users working with Content Management Systems (CMS). Built upon Strapi, Atlas is not an off-the-shelf solution but a tailored system that offers substantial performance improvements, especially for media-rich and content-heavy platforms.
 
-<p align="center">
-  <a href="https://www.npmjs.org/package/@strapi/strapi">
-    <img src="https://img.shields.io/npm/v/@strapi/strapi/latest.svg" alt="NPM Version" />
-  </a>
-  <a href="https://github.com/strapi/strapi/actions/workflows/tests.yml">
-    <img src="https://github.com/strapi/strapi/actions/workflows/tests.yml/badge.svg?branch=main" alt="Tests" />
-  </a>
-  <a href="https://discord.strapi.io">
-    <img src="https://img.shields.io/discord/811989166782021633?label=Discord" alt="Strapi on Discord" />
-  </a>
-  <a href="https://github.com/strapi/strapi/actions/workflows/nightly.yml">
-    <img src="https://github.com/strapi/strapi/actions/workflows/nightly.yml/badge.svg" alt="Strapi Nightly Release Build Status" />
-  </a>
-</p>
+![Atlas Demo Banner](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/atlas_banner_aux.png)
 
-<br>
+If only you knew how good things really are 🐸
 
-<p align="center">
-  <a href="https://strapi.io">
-    <img src="https://raw.githubusercontent.com/strapi/strapi/main/public/assets/admin-demo.gif" alt="Administration panel" />
-  </a>
-</p>
+## Overview
 
-<br>
+Current CMS solutions often provide generic features that may not fully address the specific needs of organizations. Atlas aims to solve these issues by offering a comprehensive solution that focuses on current and future requirements. Our primary goal is to provide a system that doesn't need to be replaced but can be iterated upon to cover additional needs.
 
-Strapi Community Edition is a free and open-source headless CMS enabling you to manage any content, anywhere.
+Having identified common concerns and pain points regarding website management and customer engagement, Atlas addresses many issues currently faced by teams. By introducing advanced technology, including Artificial Intelligence (AI), we bring greater synergy to our proposed solutions. This, along with an extensive technical overhaul, will significantly benefit users.
 
-- **Self-hosted or Cloud**: You can host and scale Strapi projects the way you want. You can save time by deploying to [Strapi Cloud](https://cloud.strapi.io/signups?source=github1) or deploy to the hosting platform you want\*\*: AWS, Azure, Google Cloud, DigitalOcean.
-- **Modern Admin Pane**: Elegant, entirely customizable and a fully extensible admin panel.
-- **Multi-database support**: You can choose the database you prefer: PostgreSQL, MySQL, MariaDB, and SQLite.
-- **Customizable**: You can quickly build your logic by fully customizing APIs, routes, or plugins to fit your needs perfectly.
-- **Blazing Fast and Robust**: Built on top of Node.js and TypeScript, Strapi delivers reliable and solid performance.
-- **Front-end Agnostic**: Use any front-end framework (React, Next.js, Vue, Angular, etc.), mobile apps or even IoT.
-- **Secure by default**: Reusable policies, CORS, CSP, P3P, Xframe, XSS, and more.
-- **Powerful CLI**: Scaffold projects and APIs on the fly.
+## Developer Experience
 
-## Getting Started
+Atlas, in combination with our other tools ([@iliad.dev/iliad-standard-issue](https://github.com/iliadwebdev/iliad-standard-issue)) can completely transform the developer experience. Enjoy strong types by default, even for arbitrary API endpoints. Do away with hundreds of lines of boilerplate; just write simple, semantic code and get your data right away.
 
-<a href="https://docs.strapi.io/developer-docs/latest/getting-started/quick-start.html" target="_blank">Read the Getting Started tutorial</a> or follow the steps below:
+### Dead simple queries
 
-### ⏳ Installation
+![Simply Query Comparison](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/q_compare.png)
 
-Install Strapi with this **Quickstart** command to create a Strapi project instantly:
+>  This is literally from a [strapi tutorial](https://strapi.io/blog/client-side-search-for-static-sites-with-strapi-nextjs-fusejs-and-cloudflare). Forget that!
 
-- (Use **yarn** to install the Strapi project (recommended). [Install yarn with these docs](https://yarnpkg.com/lang/en/docs/install/).)
+### Strong types, directly from Atlas, by default!
 
-```bash
-yarn create strapi-app my-project --quickstart
-```
+![Simple Query Comparison](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/auto_types.png)
 
-**or**
+Plus autocomplete for all content types, single types, and even arbitrary API endpoints.
 
-- (Use npm/npx to install the Strapi project.)
+> Auth functionality to come!
 
-```bash
-npx create-strapi-app my-project --quickstart
-```
 
-This command generates a brand new project with the default features (authentication, permissions, content management, content type builder & file upload). The **Quickstart** command installs Strapi using a **SQLite** database which is used for prototyping in development.
 
-Enjoy 🎉
-
-### 🖐 Requirements
-
-Complete installation requirements can be found in the documentation under <a href="https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html">Installation Requirements</a>.
-
-**Supported operating systems**:
-
-- Ubuntu LTS/Debian 9.x
-- CentOS/RHEL 8
-- macOS Mojave
-- Windows 10
-- Docker
-
-(Please note that Strapi may work on other operating systems, but these are not tested nor officially supported at this time.)
-
-**Node:**
-
-Strapi only supports maintenance and LTS versions of Node.js. Please refer to the <a href="https://nodejs.org/en/about/releases/">Node.js release schedule</a> for more information. NPM versions installed by default with Node.js are supported. Generally it's recommended to use yarn over npm where possible.
-
-| Strapi Version  | Recommended | Minimum |
-| --------------- | ----------- | ------- |
-| 4.11.0 and up   | 18.x        | 16.x    |
-| 4.3.9 to 4.10.x | 18.x        | 14.x    |
-| 4.0.x to 4.3.8  | 16.x        | 14.x    |
-
-**Database:**
-
-| Database   | Recommended | Minimum |
-| ---------- | ----------- | ------- |
-| MySQL      | 8.0         | 5.7.8   |
-| MariaDB    | 10.6        | 10.3    |
-| PostgreSQL | 14.0        | 11.0    |
-| SQLite     | 3           | 3       |
-
-**We recommend always using the latest version of Strapi stable to start your new projects**.
 
 ## Features
 
-- **Content Types Builder**: Build the most flexible publishing experience for your content managers, by giving them the freedom to create any page on the go with [fields](https://docs.strapi.io/user-docs/content-manager/writing-content#filling-up-fields), components and [Dynamic Zones](https://docs.strapi.io/user-docs/content-manager/writing-content#dynamic-zones).
-- **Media Library**: Upload your images, videos, audio or documents to the media library. Easily find the right asset, edit and reuse it.
-- **Internationalization**: The Internationalization (i18n) plugin allows Strapi users to create, manage and distribute localized content in different languages, called "locales"
-- **Role Based Access Control**: Create an unlimited number of custom roles and permissions for admin and end users.
-- **GraphQL or REST**: Consume the API using REST or GraphQL
+Atlas offers a range of features designed to improve workflow efficiency and user engagement:
 
-You can unlock additional features such as SSO, Audit Logs, Review Workflows in [Strapi Cloud](https://cloud.strapi.io/login?source=github1) or [Strapi Enterprise](https://strapi.io/enterprise?source=github1).
+### 1. Brand Growth
 
-**[See more on our website](https://strapi.io/overview)**.
+- **Site Analytics**: Gain insights into who views your webpage, articles, and newsletters. Understand reader engagement to make informed decisions on content creation.
+- **Search Engine Optimization (SEO)**: Implement top-of-the-line SEO practices to improve search rankings and attract more site traffic.
 
-## Contributing
+### 2. Customer Support and Assistance
 
-Please read our [Contributing Guide](./CONTRIBUTING.md) before submitting a Pull Request to the project.
+- **User-Friendly Interface**: A streamlined and visual overhaul of the Strapi interface for easier navigation and reduced overwhelm.
+- **Content Drafts and To-Do Lists**: Create drafts and see what content looks like before publishing. Keep track of tasks with integrated to-do lists.
+- **Advanced Text Editor**: Overhauled text editor compatible with Google Docs, Microsoft Word, etc. Includes features like image placement, grids, graphs, and content styling.
+- **Scheduled Publishing**: Publish content immediately or schedule it for a future date. Set content to automatically unpublish when no longer relevant.
+- **Calendar Integration**: Visualize publications and track progress in real-time with an automatically generated calendar.
+- **Data Export and Graph Generation**: Extract data and generate graphs for analytics like page views or viewer retention.
 
-## Community support
+### 3. Mail Integration
 
-For general help using Strapi, please refer to [the official Strapi documentation](https://docs.strapi.io). For additional help, you can use one of these channels to ask a question:
+- **Email Support**: Send emails directly to individuals on your mailing list from content produced within the text editor.
+- **User Subscriptions**: Allow users to sign up for email notifications for specific content types.
+- **Click-Through Rate Tracking**: Monitor the effectiveness of emails by tracking engagement metrics.
+- **Email List Management**: Manage multiple email lists with precise setup to ensure correct and error-free email distribution.
 
-- [Discord](https://discord.strapi.io) (For live discussion with the Community and Strapi team)
-- [GitHub](https://github.com/strapi/strapi) (Bug reports, Contributions)
-- [Community Forum](https://forum.strapi.io) (Questions and Discussions)
-- [Feedback section](https://feedback.strapi.io) (Roadmap, Feature requests)
-- [Twitter](https://twitter.com/strapijs) (Get the news fast)
-- [Facebook](https://www.facebook.com/Strapi-616063331867161)
-- [YouTube Channel](https://www.youtube.com/strapi) (Learn from Video Tutorials)
+### 4. Artificial Intelligence
 
-## Migration
+- **Integrated AI Assistant**: Leverage a personalized Large Language Model (LLM) trained on your content to assist in generating new content and insights.
+- **Customizable Data Input**: Feed various types of data into the AI model for diverse outputs.
+- **Time-Saving Content Generation**: Generate content based on your company's data without manual configuration.
 
-Follow our [migration guides](https://docs.strapi.io/developer-docs/latest/update-migration-guides/migration-guides.html) on the documentation to keep your projects up-to-date.
+### 5. Website Quality of Life
 
-## Roadmap
+- **User Engagement Features**: Optional commenting system with extensive moderation capabilities to drive engagement and gather feedback.
+- **Google Maps Integration**: Seamless integration with Google Maps for event locations, providing accurate directions to users.
+- **Phone Number Authentication**: Full phone number authentication to ensure accurate data collection during sign-ups or contact forms.
+- **Enhanced Search Functionality**: Implementation of Meili-Search for high-performance, optimized search capabilities.
 
-Check out our [roadmap](https://feedback.strapi.io) to get informed of the latest features released and the upcoming ones. You may also give us insights and vote for a specific feature.
+### 6. Technical Performance Enhancements
 
-## Documentation
+- **Improved Admin Panel Performance**: Faster load times and API pulls for a smoother backend experience.
+- **Automatic API Documentation**: Simplify third-party data linking with automatic API documentation.
+- **Media Management Overhaul**: Automatic processing and conversion of uploaded media to web-optimized formats. Features include blur hash generation and automatic color palette extraction.
+- **URL Redirects**: Create SEO-friendly URL redirects to improve search rankings and user experience.
 
-See our dedicated [repository](https://github.com/strapi/documentation) for the Strapi documentation, or view our documentation live:
+## Conclusion
 
-- [Developer docs](https://docs.strapi.io/developer-docs/latest/getting-started/introduction.html)
-- [User guide](https://docs.strapi.io/user-docs/latest/getting-started/introduction.html)
+Atlas is a comprehensive solution that combines the power of a marketing agency, development team, SEO specialist, data analyst, and copywriter into a single, user-friendly application. It synergizes with existing workflows and stands to significantly enhance your digital presence and operational efficiency.
 
-## Try live demo
+This solution is designed to be easily customizable, allowing for quick iterations to meet evolving needs. We are excited to bring Atlas to your team and believe it will greatly benefit your organization.
 
-See for yourself what's under the hood by getting access to a [hosted Strapi project](https://strapi.io/demo) with sample data.
+## Acknowledgments
 
-## License
+We extend our sincere gratitude to everyone considering Atlas. Your interest means a great deal to us, and we are committed to tailoring our approach to meet your unique requirements. We are happy to refine our proposal further based on any feedback or specific preferences you may have.
 
-See the [LICENSE](./LICENSE) file for licensing information.
+We look forward to contributing to your continued success.
+
+
+---
+---
+
+# Atlas Strapi Core
+
+This is a forked version of Strapi `v4.14.5`. To start the development panel, navigate to `packages/core/admin` and run `yarn develop`. This will start the admin server.
+
+## Next steps
+
+- Create Atlas server instance that can:
+
+  1. Run with the watch-admin command, allowing the admin panel to live reload when it detects changes in the `atlas-strapi-core` monorepo.
+  2. Resolve all strapi dependencies as atlas dependencies instead.
+
+     - Figure out how to actually build and collect dependencies
+     - Publish these somewhere - could theoretically ghetto-patch the dependency again, assuming I can collect and publish the distributes version.
+
+## New Atlas structure
+
+- @atlas/
+
+  - atlas-strapi-core\* - Contains this repo
+  - atlas-design-system - Contains the patched version of @strapi/design-system (ick) (TBD)
+  - atlas-strapi-plugins - Contains all of the atlas feature plugins, as well as any core plugins.
+  - patched-strapi-plugins - Contains any open source Strapi plugins whose dependencies have been patched.
+  - atlas-instance-manager - Contains the instance manager server (TBD)
+  - atlas-electron-client - Contains the Electron client wrapper for Atlas.
+
+- @iliad/
+
+  - iliad-hermes-ts - Iliad's mixed-method networking library with first class support for Strapi configuration
+
+- @smoke/
+  - iliad-strapi-adapter - Owen's Strapi interface library.
+
+\*you are here
