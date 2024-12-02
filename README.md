@@ -1,4 +1,4 @@
-# Atlas
+![Atlas Logo]()
 
 Atlas is a custom-built desktop application designed to enhance the capabilities of users working with Content Management Systems (CMS). Built upon Strapi, Atlas is not an off-the-shelf solution but a tailored system that offers substantial performance improvements, especially for media-rich and content-heavy platforms.
 
@@ -14,14 +14,13 @@ Atlas, in combination with our other tools ([@iliad.dev/iliad-standard-issue](ht
 
 ### Dead simple queries
 
-![https://lego.com/](Simple Query Comparison)
+![Simply Query Comparison](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/q_compare.png)
 
 >  This is literally from a [strapi tutorial](https://strapi.io/blog/client-side-search-for-static-sites-with-strapi-nextjs-fusejs-and-cloudflare). Forget that!
 
 ### Strong types, directly from Atlas, by default!
 
-
-![https://lego.com/](Simple Query Comparison)
+![Simple Query Comparison](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/auto_types.png)
 
 Plus autocomplete for all content types, single types, and even arbitrary API endpoints.
 
