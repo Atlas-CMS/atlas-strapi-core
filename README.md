@@ -2,6 +2,8 @@
 
 Atlas is a custom-built desktop application designed to enhance the capabilities of users working with Content Management Systems (CMS). Built upon Strapi, Atlas is not an off-the-shelf solution but a tailored system that offers substantial performance improvements, especially for media-rich and content-heavy platforms.
 
+![Atlas Demo Banner](https://github.com/Atlas-CMS/atlas-strapi-core/blob/develop/md-assets/atlas_banner_aux.png)
+
 ## Overview
 
 Current CMS solutions often provide generic features that may not fully address the specific needs of organizations. Atlas aims to solve these issues by offering a comprehensive solution that focuses on current and future requirements. Our primary goal is to provide a system that doesn't need to be replaced but can be iterated upon to cover additional needs.
