@@ -21,6 +21,12 @@ Atlas, in combination with our other tools ([@iliad.dev/iliad-standard-issue](ht
 ### Strong types, directly from Atlas, by default!
 
 
+![https://lego.com/](Simple Query Comparison)
+
+Plus autocomplete for all content types, single types, and even arbitrary API endpoints.
+
+> Auth functionality to come!
+
 
 
 
@@ -81,6 +87,9 @@ We extend our sincere gratitude to everyone considering Atlas. Your interest mea
 
 We look forward to contributing to your continued success.
 
+
+---
+---
 
 # Atlas Strapi Core
 
